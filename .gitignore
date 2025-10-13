@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+
+# IDE
+.vscode/
+
+# Documentation and archives
+digitalia-content-context/
+documentacion/
+old_archives/
+
+# macOS
+.DS_Store

@@ -1,0 +1,51 @@
+{
+    "apiVersion": 2,
+    "name": "digitalia/hero",
+    "title": "Hero Section",
+    "category": "design",
+    "icon": "align-wide",
+    "description": "A hero section with customizable content and layout",
+    "supports": {
+        "html": false
+    },
+    "textdomain": "digitalia",
+    "editorScript": "file:./build/index.js",
+    "attributes": {
+        "subtitle": {
+            "type": "string",
+            "default": "Educomunicación Para la Paz"
+        },
+        "title": {
+            "type": "string",
+            "default": "Digital·IA"
+        },
+        "description": {
+            "type": "string",
+            "default": "Digital-IA es un programa nacional de educomunicación que fortalece las capacidades ciudadanas frente a los desafíos de las tecnologías emergentes, promoviendo la alfabetización mediática e informacional con enfoque de paz."
+        },
+        "primaryButtonText": {
+            "type": "string",
+            "default": "Primary"
+        },
+        "secondaryButtonText": {
+            "type": "string",
+            "default": "Secondary"
+        },
+        "backgroundImage": {
+            "type": "string",
+            "default": "/wp-content/uploads/2024/12/svgbackdrop.svg"
+        },
+        "containerClasses": {
+            "type": "string",
+            "default": "container"
+        },
+        "gridClasses": {
+            "type": "string",
+            "default": "grid items-center gap-8 lg:grid-cols-2"
+        },
+        "contentClasses": {
+            "type": "string",
+            "default": "flex flex-col items-center py-32 text-center lg:mx-auto lg:items-start lg:px-0 lg:text-left"
+        }
+    }
+}

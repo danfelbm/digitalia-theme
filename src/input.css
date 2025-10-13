@@ -1,0 +1,283 @@
+/*
+Theme Name: Digitalia
+Theme URI: https://danielbecerra.org
+Author: Daniel Becerra
+Author URI: https://danielbecerra.org
+Description: Tema para Digitalia
+Version: 2.4.9
+Requires at least: 5.0
+Tested up to: 6.4
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: digitalia
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+    --ring: 215 20.2% 65.1%;
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    --ring: 216 34% 17%;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+    .filter-red {
+        filter: hue-rotate(0deg) brightness(0.7);
+        mix-blend-mode: multiply;
+    }
+    .filter-teal {
+        filter: hue-rotate(180deg) brightness(0.8);
+        mix-blend-mode: overlay;
+    }
+    .content-auto {
+        content-visibility: auto;
+    }
+    .container{padding-right:2rem;padding-left:2rem}
+}
+
+body { font-family: 'Work Sans', sans-serif; }
+h1, h2 { font-family: 'Lexend', sans-serif; font-weight: 700; }
+h3, h4 { font-family: 'JetBrains Mono', monospace; font-weight: 500; }
+
+/* Base navigation styles */
+.nav-top-link {
+    @apply text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium uppercase;
+}
+
+/* Default nav-menu-title styling */
+.nav-menu-title {
+    @apply text-black;
+}
+
+/* Module-specific header colors */
+.page-template-academia #main-navigation {
+    @apply bg-digitalia-yellow;
+}
+.page-template-academia .nav-logo {
+    @apply invert;
+}
+.page-template-academia .nav-top-link {
+    @apply text-yellow-800 hover:bg-yellow-400 hover:text-yellow-950;
+}
+.page-template-academia .nav-main-link {
+    @apply text-yellow-800;
+}
+.page-template-academia .nav-chevron {
+    @apply text-yellow-800;
+}
+.page-template-academia .nav-social-icons li {
+    @apply text-yellow-800 hover:text-yellow-950;
+}
+.page-template-academia .nav-submenu {
+    @apply bg-yellow-50;
+}
+.page-template-academia .nav-menu-title {
+    @apply text-yellow-900;
+}
+.page-template-academia .nav-menu-description {
+    @apply text-yellow-800;
+}
+.page-template-academia .nav-submenu-item:hover {
+    @apply bg-yellow-100 !important;
+}
+
+.page-template-total-transmedia #main-navigation {
+    @apply bg-blue-700;
+}
+.page-template-total-transmedia .nav-top-link {
+    @apply text-white hover:bg-blue-800;
+}
+.page-template-total-transmedia .nav-main-link {
+    @apply text-white hover:text-white hover:bg-blue-800;
+}
+.page-template-total-transmedia .nav-chevron {
+    @apply text-white;
+}
+.page-template-total-transmedia .nav-submenu {
+    @apply bg-blue-50;
+}
+.page-template-total-transmedia .nav-menu-title {
+    @apply text-blue-900;
+}
+.page-template-total-transmedia .nav-menu-description {
+    @apply text-blue-800;
+}
+.page-template-total-transmedia .nav-submenu-item:hover {
+    @apply bg-blue-100 !important;
+}
+
+.page-template-en-linea #main-navigation {
+    @apply bg-red-600;
+}
+.page-template-en-linea .nav-top-link {
+    @apply text-white hover:bg-red-700;
+}
+.page-template-en-linea .nav-main-link {
+    @apply text-white hover:text-white hover:bg-red-700;
+}
+.page-template-en-linea .nav-chevron {
+    @apply text-white;
+}
+.page-template-en-linea .nav-submenu {
+    @apply bg-red-50;
+}
+.page-template-en-linea .nav-menu-title {
+    @apply text-red-900;
+}
+.page-template-en-linea .nav-menu-description {
+    @apply text-red-800;
+}
+.page-template-en-linea .nav-submenu-item:hover {
+    @apply bg-red-100 !important;
+}
+
+.page-template-colaboratorios #main-navigation {
+    @apply bg-teal-600;
+}
+.page-template-colaboratorios .nav-top-link {
+    @apply text-white hover:bg-teal-700;
+}
+.page-template-colaboratorios .nav-main-link {
+    @apply text-white hover:text-white hover:bg-teal-700;
+}
+.page-template-colaboratorios .nav-chevron {
+    @apply text-white;
+}
+.page-template-colaboratorios .nav-submenu {
+    @apply bg-teal-50;
+}
+.page-template-colaboratorios .nav-menu-title {
+    @apply text-teal-900;
+}
+.page-template-colaboratorios .nav-menu-description {
+    @apply text-teal-800;
+}
+.page-template-colaboratorios .nav-submenu-item:hover {
+    @apply bg-teal-100 !important;
+}
+
+.page-template-ready #main-navigation {
+    @apply bg-purple-600;
+}
+.page-template-ready .nav-top-link {
+    @apply text-white hover:bg-purple-700;
+}
+.page-template-ready .nav-main-link {
+    @apply text-white hover:text-white hover:bg-purple-700;
+}
+.page-template-ready .nav-chevron {
+    @apply text-white;
+}
+.page-template-ready .nav-submenu {
+    @apply bg-purple-50;
+}
+.page-template-ready .nav-menu-title {
+    @apply text-purple-900;
+}
+.page-template-ready .nav-menu-description {
+    @apply text-purple-800;
+}
+.page-template-ready .nav-submenu-item:hover {
+    @apply bg-purple-100 !important;
+}
+
+/* Hover state adjustments for each module */
+.page-template-academia #main-navigation > div a:hover {
+    @apply bg-yellow-400;
+}
+
+.page-template-total-transmedia #main-navigation > div a:hover {
+    @apply bg-blue-700;
+}
+
+.page-template-en-linea #main-navigation > div a:hover {
+    @apply bg-red-700;
+}
+
+.page-template-colaboratorios #main-navigation > div a:hover {
+    @apply bg-teal-700;
+}
+
+.page-template-ready #main-navigation > div a:hover {
+    @apply bg-purple-700;
+}
+
+/* Hover state adjustments for each module's submenu links */
+.page-template-academia #main-navigation > div .nav-submenu a:hover {
+    @apply bg-yellow-200;
+}
+
+.page-template-total-transmedia #main-navigation > div .nav-submenu a:hover {
+    @apply bg-blue-200;
+}
+
+.page-template-en-linea #main-navigation > div .nav-submenu a:hover {
+    @apply bg-red-200;
+}
+
+.page-template-colaboratorios #main-navigation > div .nav-submenu a:hover {
+    @apply bg-teal-200;
+}
+
+.page-template-ready #main-navigation > div .nav-submenu a:hover {
+    @apply bg-purple-200;
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
