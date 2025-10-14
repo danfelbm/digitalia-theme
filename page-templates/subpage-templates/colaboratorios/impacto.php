@@ -118,7 +118,7 @@ get_header();
                 </div>
             </div>
         <?php endif; ?>
-        <div class="pointer-events-none absolute bottom-0 left-0 hidden w-full sm:block sm:h-[16.875rem] sm:bg-[linear-gradient(transparent_0%,#f0fdfa_100%)] lg:h-56"></div>
+        <div class="pointer-events-none absolute bottom-0 left-0 hidden w-full sm:block sm:h-67.5 sm:bg-[linear-gradient(transparent_0%,#f0fdfa_100%)] lg:h-56"></div>
     <?php endif; ?>
 </section>
 

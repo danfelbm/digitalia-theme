@@ -24,7 +24,7 @@ get_header();
                 <?php if (has_post_thumbnail()) : ?>
                 <div class="absolute inset-0 w-full h-full">
                     <?php the_post_thumbnail('full', ['class' => 'w-full h-full object-cover']); ?>
-                    <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/90"></div>
+                    <div class="absolute inset-0 bg-linear-to-b from-black/60 to-black/90"></div>
                 </div>
                 <?php endif; ?>
 
@@ -108,7 +108,7 @@ get_header();
                                     <?php if (!empty($participante['foto'])) : ?>
                                         <img src="<?php echo esc_url($participante['foto']); ?>" 
                                              alt="<?php echo esc_attr($participante['nombre']); ?>"
-                                             class="w-20 h-20 rounded-full object-cover flex-shrink-0">
+                                             class="w-20 h-20 rounded-full object-cover shrink-0">
                                     <?php endif; ?>
                                     <div>
                                         <h3 class="text-lg font-semibold text-gray-900 mb-1">

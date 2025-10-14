@@ -13,7 +13,7 @@ get_header();
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
     <div id="app" class="lg:container">
-        <div v-if="isLoading" class="fixed inset-0 bg-black/50 z-[9999] flex items-center justify-center">
+        <div v-if="isLoading" class="fixed inset-0 bg-black/50 z-9999 flex items-center justify-center">
             <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center justify-center gap-3 w-48">
                 <i class="fas fa-circle-notch text-3xl text-black animate-spin"></i>
                 <span class="text-black text-base font-medium">Cargando...</span>
@@ -27,9 +27,9 @@ get_header();
 
             <div :class="['bg-background', {'grid lg:grid-cols-5': !isSidebarOpen}]">
                 <!-- Sidebar -->
-                <div :class="['pb-12 col-span-2 lg:col-span-1 transform transition-transform duration-300 ease-in-out md:transform-none overflow-y-auto', isSidebarOpen ? 'fixed inset-y-0 right-0 z-[9999] w-80 bg-background shadow-lg md:mt-0' : 'hidden md:block']">
+                <div :class="['pb-12 col-span-2 lg:col-span-1 transform transition-transform duration-300 ease-in-out md:transform-none overflow-y-auto', isSidebarOpen ? 'fixed inset-y-0 right-0 z-9999 w-80 bg-background shadow-lg md:mt-0' : 'hidden md:block']">
                     <!-- Close button for mobile -->
-                    <button v-if="isSidebarOpen" @click="toggleSidebar" class="md:hidden fixed right-4 top-1/2 -translate-y-1/2 z-[9999] bg-primary text-white rounded-full p-3 shadow-lg">
+                    <button v-if="isSidebarOpen" @click="toggleSidebar" class="md:hidden fixed right-4 top-1/2 -translate-y-1/2 z-9999 bg-primary text-white rounded-full p-3 shadow-lg">
                         <i class="fas fa-times h-6 w-6"></i>
                     </button>
                     <!-- Reset Filters Button -->
@@ -114,7 +114,7 @@ get_header();
                                         <template v-for="post in posts" :key="post.id">
                                             <a :href="post.link" class="block group hover:bg-accent/5 transition-colors">
                                                 <div class="grid items-center gap-4 px-4 py-5 md:grid-cols-4">
-                                                    <div class="order-2 flex items-center gap-2 md:order-none">
+                                                    <div class="order-2 flex items-center gap-2 md:order-0">
                                                         <span class="flex h-14 w-16 shrink-0 items-center justify-center rounded-md bg-muted">
                                                             <img v-if="post.featured_media_url" :src="post.featured_media_url" 
                                                                  :alt="post.title.rendered"
@@ -128,9 +128,9 @@ get_header();
                                                             </p>
                                                         </div>
                                                     </div>
-                                                    <p class="order-1 text-2xl font-semibold md:order-none md:col-span-2 group-hover:text-primary transition-colors" v-html="post.title.rendered">
+                                                    <p class="order-1 text-2xl font-semibold md:order-0 md:col-span-2 group-hover:text-primary transition-colors" v-html="post.title.rendered">
                                                     </p>
-                                                    <div class="order-3 ml-auto w-fit gap-2 md:order-none">
+                                                    <div class="order-3 ml-auto w-fit gap-2 md:order-0">
                                                         <button @click="window.location.href = post.link" 
                                                                 class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2">
                                                             <span>Ver contenido</span>

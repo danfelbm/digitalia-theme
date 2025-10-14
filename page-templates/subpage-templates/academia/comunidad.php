@@ -49,7 +49,7 @@ get_header();
                         <?php foreach ($red_section['mentors'] as $mentor): ?>
                             <li>
                                 <?php if (!empty($mentor['image'])): ?>
-                                    <img class="aspect-[3/2] w-full rounded-2xl object-cover object-top" 
+                                    <img class="aspect-3/2 w-full rounded-2xl object-cover object-top" 
                                          src="<?php echo esc_url($mentor['image']['url']); ?>" 
                                          alt="<?php echo esc_attr($mentor['name']); ?>">
                                 <?php endif; ?>
@@ -116,7 +116,7 @@ get_header();
                                          alt="<?php echo esc_attr($event['title']); ?>" 
                                          class="absolute inset-0 -z-10 h-full w-full object-cover">
                                 <?php endif; ?>
-                                <div class="absolute inset-0 -z-10 bg-gradient-to-t from-slate-900 via-slate-900/40"></div>
+                                <div class="absolute inset-0 -z-10 bg-linear-to-t from-slate-900 via-slate-900/40"></div>
                                 <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-slate-900/10"></div>
 
                                 <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-slate-300">
@@ -155,11 +155,11 @@ get_header();
                 </h1>
                 <?php if (!empty($foros_section['items'])): ?>
                     <div class="flex flex-col">
-                        <div data-orientation="horizontal" role="none" class="shrink-0 bg-border h-[1px] w-full"></div>
+                        <div data-orientation="horizontal" role="none" class="shrink-0 bg-border h-px w-full"></div>
                         
                         <?php foreach ($foros_section['items'] as $item): ?>
                             <div class="grid items-center gap-4 px-4 py-5 md:grid-cols-4">
-                                <div class="order-2 flex items-center gap-2 md:order-none">
+                                <div class="order-2 flex items-center gap-2 md:order-0">
                                     <span class="flex h-14 w-16 shrink-0 items-center justify-center rounded-md bg-muted">
                                         <i class="fa <?php echo esc_attr($item['icon']); ?> fa-lg"></i>
                                     </span>
@@ -168,16 +168,16 @@ get_header();
                                         <p class="text-sm text-muted-foreground"><?php echo esc_html($item['subcategory']); ?></p>
                                     </div>
                                 </div>
-                                <p class="order-1 text-2xl font-semibold md:order-none md:col-span-2">
+                                <p class="order-1 text-2xl font-semibold md:order-0 md:col-span-2">
                                     <?php echo esc_html($item['title']); ?>
                                 </p>
-                                <a class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 order-3 ml-auto w-fit gap-2 md:order-none" 
+                                <a class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 order-3 ml-auto w-fit gap-2 md:order-0" 
                                    href="<?php echo esc_url($item['url']); ?>">
                                     <span>Ver proyecto</span>
                                     <i class="fa fa-arrow-right"></i>
                                 </a>
                             </div>
-                            <div data-orientation="horizontal" role="none" class="shrink-0 bg-border h-[1px] w-full"></div>
+                            <div data-orientation="horizontal" role="none" class="shrink-0 bg-border h-px w-full"></div>
                         <?php endforeach; ?>
                     </div>
                 <?php endif; ?>

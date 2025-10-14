@@ -7,9 +7,9 @@ get_header(); ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('bg-gray-100'); ?>>
     <!-- Character Header Section -->
-    <div class="relative h-[70vh] bg-gradient-to-r from-purple-900 to-indigo-900 text-white overflow-hidden">
+    <div class="relative h-[70vh] bg-linear-to-r from-purple-900 to-indigo-900 text-white overflow-hidden">
         <div class="absolute inset-0">
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+            <div class="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent"></div>
             <?php 
             if (has_post_thumbnail()) {
                 the_post_thumbnail('full', ['class' => 'w-full h-full object-cover opacity-40']);
@@ -19,7 +19,7 @@ get_header(); ?>
         
         <div class="relative container mx-auto px-6 h-full flex items-end pb-20">
             <div class="flex flex-col md:flex-row items-center md:items-start md:space-x-8 max-w-3xl w-full">
-                <div class="flex-shrink-0 mb-6 md:mb-0">
+                <div class="shrink-0 mb-6 md:mb-0">
                     <div class="w-40 h-40 md:w-64 md:h-64 rounded-2xl border-4 border-white/20 shadow-2xl overflow-hidden backdrop-blur-sm">
                         <?php 
                         $avatar = get_field('avatar');
@@ -213,7 +213,7 @@ get_header(); ?>
                                     $avatar = get_field('avatar', $personaje->ID);
                         ?>
                         <a href="<?php echo esc_url(get_permalink($personaje->ID)); ?>" class="flex items-start space-x-4 group">
-                            <div class="flex-shrink-0">
+                            <div class="shrink-0">
                                 <?php if ($avatar): ?>
                                     <img src="<?php echo esc_url($avatar); ?>" class="w-12 h-12 rounded-full object-cover" alt="">
                                 <?php endif; ?>

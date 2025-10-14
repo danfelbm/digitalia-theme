@@ -57,7 +57,7 @@ get_header();
                 if (have_rows('features')): $counter = 0; ?>
                 <?php while (have_rows('features')): the_row(); 
                   if ($counter % 2 == 0): ?>
-                  <div class="flex gap-x-8 odd:pl-[calc(theme(spacing.32)+16px)]">
+                  <div class="flex gap-x-8 odd:pl-[calc(--spacing(32)+16px)]">
                   <?php endif; ?>
                     <div class="flex w-64 gap-x-3 rounded-xl border border-white bg-white p-4 shadow-sm">
                       <div class="flex size-7 shrink-0 items-center justify-center rounded bg-blue-100">
@@ -83,10 +83,10 @@ get_header();
             <img 
               src="<?php echo esc_url($hero_image['url']); ?>" 
               alt="<?php echo esc_attr($hero_image['alt']); ?>" 
-              class="relative flex aspect-[3/6] w-[240px] object-contain object-top justify-center items-start rounded-lg border border-border sm:w-[300px]"
+              class="relative flex aspect-3/6 w-[240px] object-contain object-top justify-center items-start rounded-lg border border-border sm:w-[300px]"
             >
           <?php else: ?>
-            <div class="relative flex aspect-[3/6] w-[240px] object-contain object-top justify-center rounded-lg border border-border bg-background sm:w-[300px]"></div>
+            <div class="relative flex aspect-3/6 w-[240px] object-contain object-top justify-center rounded-lg border border-border bg-background sm:w-[300px]"></div>
           <?php endif; ?>
         </div>
       </div>
@@ -95,7 +95,7 @@ get_header();
   <section id="estrategia" class="py-32 bg-blue-200 text-blue-900" style="margin-top: -70px;">
     <div class="container">
       <div class="grid place-content-center gap-10 lg:grid-cols-2">
-        <div class="mx-auto flex max-w-screen-md flex-col items-center justify-center gap-4 lg:items-start">
+        <div class="mx-auto flex max-w-(--breakpoint-md) flex-col items-center justify-center gap-4 lg:items-start">
           <?php if ($strategy = get_field('strategy')): ?>
             <?php if ($strategy['badge']): ?>
               <div class="rounded-full border font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-foreground flex items-center gap-1 px-2.5 py-1.5 text-sm border-blue-200 bg-blue-300">
@@ -125,7 +125,7 @@ get_header();
                       <p class="mb-1.5 text-3xl font-bold"><?php echo esc_html($stats['content']); ?></p>
                       <p>Contenidos</p>
                     </div>
-                    <div data-orientation="vertical" role="none" class="shrink-0 bg-border bg-blue-400 w-[1px] h-auto"></div>
+                    <div data-orientation="vertical" role="none" class="shrink-0 bg-border bg-blue-400 w-px h-auto"></div>
                   <?php endif; ?>
 
                   <?php if ($stats['departments']): ?>
@@ -137,8 +137,8 @@ get_header();
                 </div>
 
                 <?php if ($stats['platforms'] || $stats['levels']): ?>
-                  <div data-orientation="vertical" role="none" class="shrink-0 bg-border bg-border bg-blue-400 w-[1px] hidden h-auto md:block"></div>
-                  <div data-orientation="horizontal" role="none" class="shrink-0 bg-border bg-border bg-blue-400 h-[1px] w-full block md:hidden"></div>
+                  <div data-orientation="vertical" role="none" class="shrink-0 bg-border bg-border bg-blue-400 w-px hidden h-auto md:block"></div>
+                  <div data-orientation="horizontal" role="none" class="shrink-0 bg-border bg-border bg-blue-400 h-px w-full block md:hidden"></div>
 
                   <div class="flex justify-between gap-6">
                     <?php if ($stats['platforms']): ?>
@@ -146,7 +146,7 @@ get_header();
                         <p class="mb-1.5 text-3xl font-bold"><?php echo esc_html($stats['platforms']); ?></p>
                         <p>Plataformas</p>
                       </div>
-                      <div data-orientation="vertical" role="none" class="shrink-0 bg-border bg-border bg-blue-400 w-[1px] h-auto"></div>
+                      <div data-orientation="vertical" role="none" class="shrink-0 bg-border bg-border bg-blue-400 w-px h-auto"></div>
                     <?php endif; ?>
 
                     <?php if ($stats['levels']): ?>
@@ -396,13 +396,13 @@ get_header();
           <div class="grid gap-6 md:grid-cols-2 lg:gap-8">
             <?php if ($cards['narratives_title'] && $cards['narratives_description']): ?>
               <div class="flex flex-col overflow-clip rounded-xl border border-slate-200 bg-slate-200 md:col-span-2 md:grid md:grid-cols-2 md:gap-6 lg:gap-8">
-                <div class="md:min-h-[24rem] lg:min-h-[28rem] xl:min-h-[32rem]">
+                <div class="md:min-h-96 lg:min-h-112 xl:min-h-128">
                   <?php if ($cards['narratives_media']): 
                     $file_type = wp_check_filetype($cards['narratives_media']['url'])['type'];
                     if (strpos($file_type, 'video') !== false): ?>
                       <video 
                         src="<?php echo esc_url($cards['narratives_media']['url']); ?>" 
-                        class="aspect-[16/9] h-full w-full object-cover object-center"
+                        class="aspect-video h-full w-full object-cover object-center"
                         controls
                         playsinline
                       >
@@ -412,14 +412,14 @@ get_header();
                       <img 
                         src="<?php echo esc_url($cards['narratives_media']['url']); ?>" 
                         alt="<?php echo esc_attr($cards['narratives_title']); ?>" 
-                        class="aspect-[16/9] h-full w-full object-cover object-center"
+                        class="aspect-video h-full w-full object-cover object-center"
                       >
                     <?php endif; ?>
                   <?php else: ?>
                     <img 
                       src="https://placehold.co/800x600/1f3a8a/bfdbfe" 
                       alt="<?php echo esc_attr($cards['narratives_title']); ?>" 
-                      class="aspect-[16/9] h-full w-full object-cover object-center"
+                      class="aspect-video h-full w-full object-cover object-center"
                     >
                   <?php endif; ?>
                 </div>
@@ -464,13 +464,13 @@ get_header();
                     </div>
                   <?php endif; ?>
                 </div>
-                <div class="md:min-h-[24rem] lg:min-h-[28rem] xl:min-h-[32rem]">
+                <div class="md:min-h-96 lg:min-h-112 xl:min-h-128">
                   <?php if ($cards['literacy_media']): 
                     $file_type = wp_check_filetype($cards['literacy_media']['url'])['type'];
                     if (strpos($file_type, 'video') !== false): ?>
                       <video 
                         src="<?php echo esc_url($cards['literacy_media']['url']); ?>" 
-                        class="aspect-[16/9] h-full w-full object-cover object-center"
+                        class="aspect-video h-full w-full object-cover object-center"
                         controls
                         playsinline
                       >
@@ -480,14 +480,14 @@ get_header();
                       <img 
                         src="<?php echo esc_url($cards['literacy_media']['url']); ?>" 
                         alt="<?php echo esc_attr($cards['literacy_title']); ?>" 
-                        class="aspect-[16/9] h-full w-full object-cover object-center"
+                        class="aspect-video h-full w-full object-cover object-center"
                       >
                     <?php endif; ?>
                   <?php else: ?>
                     <img 
                       src="https://placehold.co/800x600/1f3a8a/bfdbfe" 
                       alt="<?php echo esc_attr($cards['literacy_title']); ?>" 
-                      class="aspect-[16/9] h-full w-full object-cover object-center"
+                      class="aspect-video h-full w-full object-cover object-center"
                     >
                   <?php endif; ?>
                 </div>
@@ -590,18 +590,18 @@ get_header();
                 >
                   <a href="#" class="group rounded-xl">
                     <div class="bg-blue-200 text-blue-900 flex flex-col text-clip rounded-xl border border-border md:col-span-2 md:grid md:grid-cols-2 md:gap-6 lg:gap-8">
-                      <div class="md:min-h-[24rem] lg:min-h-[28rem] xl:min-h-[32rem]">
+                      <div class="md:min-h-96 lg:min-h-112 xl:min-h-128">
                         <?php if ($tabs[$key . '_image']): ?>
                           <img 
                             src="<?php echo esc_url($tabs[$key . '_image']['url']); ?>" 
                             alt="<?php echo esc_attr($tabs[$key . '_image']['alt'] ?: $item['alt']); ?>" 
-                            class="aspect-[16/9] size-full object-cover object-center"
+                            class="aspect-video size-full object-cover object-center"
                           >
                         <?php else: ?>
                           <img 
                             src="https://placehold.co/800x600/1f3a8a/bfdbfe" 
                             alt="<?php echo esc_attr($item['alt']); ?>" 
-                            class="aspect-[16/9] size-full object-cover object-center"
+                            class="aspect-video size-full object-cover object-center"
                           >
                         <?php endif; ?>
                       </div>
@@ -631,7 +631,7 @@ get_header();
     <div class="container mx-auto flex flex-col items-center">
       <div class="w-full overflow-clip rounded-lg bg-blue-50/50 2xl:w-[calc(min(100vw-2*theme(container.padding),100%+8rem))]">
         <div class="grid items-center gap-8 lg:grid-cols-2">
-          <div class="container flex flex-col items-center px-[4rem] py-16 text-center lg:mx-auto lg:items-start lg:px-[4rem] lg:py-32 lg:text-left">
+          <div class="container flex flex-col items-center px-16 py-16 text-center lg:mx-auto lg:items-start lg:px-16 lg:py-32 lg:text-left">
             <?php if ($participation = get_field('participation')): ?>
               <?php if (!empty($participation['badge'])): ?>
                 <p class="text-blue-600 font-semibold"><?php echo esc_html($participation['badge']); ?></p>
@@ -671,7 +671,7 @@ get_header();
                   </video>
                 </div>
               <?php else: ?>
-                <div class="relative aspect-[7/8] h-full w-full">
+                <div class="relative aspect-7/8 h-full w-full">
                   <?php if (!empty($participation['gallery']['image_1'])): ?>
                     <div class="absolute right-[50%] top-[12%] flex aspect-square w-[24%] justify-center rounded-lg border border-blue-200 bg-blue-100 shadow-sm overflow-hidden">
                       <img src="<?php echo esc_url($participation['gallery']['image_1']['url']); ?>" 
@@ -681,7 +681,7 @@ get_header();
                     </div>
                   <?php endif; ?>
                   <?php if (!empty($participation['gallery']['image_2'])): ?>
-                    <div class="absolute right-[50%] top-[36%] flex aspect-[5/6] w-[40%] justify-center rounded-lg border border-blue-200 bg-blue-100 shadow-sm overflow-hidden">
+                    <div class="absolute right-[50%] top-[36%] flex aspect-5/6 w-[40%] justify-center rounded-lg border border-blue-200 bg-blue-100 shadow-sm overflow-hidden">
                       <img src="<?php echo esc_url($participation['gallery']['image_2']['url']); ?>" 
                            alt="<?php echo esc_attr($participation['gallery']['image_2']['alt']); ?>" 
                            class="object-cover w-full h-full"
@@ -689,7 +689,7 @@ get_header();
                     </div>
                   <?php endif; ?>
                   <?php if (!empty($participation['gallery']['image_3'])): ?>
-                    <div class="absolute bottom-[36%] left-[54%] flex aspect-[5/6] w-[40%] justify-center rounded-lg border border-blue-200 bg-blue-100 shadow-sm overflow-hidden">
+                    <div class="absolute bottom-[36%] left-[54%] flex aspect-5/6 w-[40%] justify-center rounded-lg border border-blue-200 bg-blue-100 shadow-sm overflow-hidden">
                       <img src="<?php echo esc_url($participation['gallery']['image_3']['url']); ?>" 
                            alt="<?php echo esc_attr($participation['gallery']['image_3']['alt']); ?>" 
                            class="object-cover w-full h-full"

@@ -56,8 +56,8 @@ $total_pages = ceil($total_posts / $posts_per_page);
         <!-- Archive Header -->
         <header class="relative mb-12 text-center">
             <div class="absolute inset-0 -z-10">
-                <div class="absolute inset-0 bg-gradient-to-br from-purple-100/50 to-transparent"></div>
-                <div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-gray-50 to-transparent"></div>
+                <div class="absolute inset-0 bg-linear-to-br from-purple-100/50 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 h-1/2 bg-linear-to-t from-gray-50 to-transparent"></div>
             </div>
             <div class="max-w-3xl mx-auto pt-8 pb-12">
                 <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
@@ -193,9 +193,9 @@ $total_pages = ceil($total_posts / $posts_per_page);
                     <article <?php post_class('podcast-episode group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col'); ?> data-terms="<?php echo esc_attr(implode(' ', $term_ids)); ?>">
                         <!-- Thumbnail -->
                         <?php if (has_post_thumbnail()) : ?>
-                            <a href="<?php the_permalink(); ?>" class="block aspect-[16/9] overflow-hidden bg-gray-100 relative">
+                            <a href="<?php the_permalink(); ?>" class="block aspect-video overflow-hidden bg-gray-100 relative">
                                 <?php the_post_thumbnail('medium_large', ['class' => 'w-full h-full object-cover group-hover:scale-105 transition-transform duration-300']); ?>
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <div class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                 <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     <span class="px-4 py-2 bg-white/90 text-gray-900 rounded-full text-sm font-medium">
                                         <?php echo $is_podcast ? 'Ver Episodio' : 'Ver Entrada'; ?>

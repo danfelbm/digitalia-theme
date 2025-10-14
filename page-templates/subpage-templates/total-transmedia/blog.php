@@ -61,7 +61,7 @@ get_header();
                         </div>
                     </div>
                     <div class="order-first sm:order-last sm:col-span-5">
-                        <div class="aspect-[16/9] text-clip rounded-lg border border-border">
+                        <div class="aspect-video text-clip rounded-lg border border-border">
                             <?php if (has_post_thumbnail()): ?>
                                 <?php the_post_thumbnail('large', array('class' => 'size-full object-cover transition-transform group-hover:scale-105')); ?>
                             <?php else: ?>

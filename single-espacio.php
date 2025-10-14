@@ -14,7 +14,7 @@ while (have_posts()) :
             <?php if (has_post_thumbnail()) : ?>
                 <?php the_post_thumbnail('full', ['class' => 'w-full h-full object-cover opacity-80']); ?>
             <?php endif; ?>
-            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+            <div class="absolute inset-0 bg-linear-to-t from-gray-900 to-transparent"></div>
             <div class="absolute bottom-0 left-0 right-0 p-8">
                 <div class="max-w-7xl mx-auto">
                     <div class="max-w-3xl">

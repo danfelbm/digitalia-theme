@@ -461,9 +461,9 @@ get_header();
                     <a href="<?php the_permalink(); ?>" class="flex flex-col text-clip rounded-xl border border-border">
                         <div>
                             <?php if (has_post_thumbnail()) : ?>
-                                <?php the_post_thumbnail('large', array('class' => 'aspect-[16/9] size-full object-cover object-center')); ?>
+                                <?php the_post_thumbnail('large', array('class' => 'aspect-video size-full object-cover object-center')); ?>
                             <?php else : ?>
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/placeholder.jpg" alt="<?php the_title(); ?>" class="aspect-[16/9] size-full object-cover object-center">
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/placeholder.jpg" alt="<?php the_title(); ?>" class="aspect-video size-full object-cover object-center">
                             <?php endif; ?>
                         </div>
                         <div class="px-6 py-8 md:px-8 md:py-10 lg:px-10 lg:py-12">

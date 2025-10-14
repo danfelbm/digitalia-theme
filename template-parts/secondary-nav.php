@@ -169,7 +169,7 @@ $colors = get_section_colors($parent_slug);
 </nav>
 
 <!-- Mobile Secondary Navigation Button -->
-<div id="secondary-nav-mobile" x-data="{ subMenuOpen: false }" class="md:hidden fixed bottom-16 left-0 right-0 z-[44]">
+<div id="secondary-nav-mobile" x-data="{ subMenuOpen: false }" class="md:hidden fixed bottom-16 left-0 right-0 z-44">
     <button @click="subMenuOpen = !subMenuOpen" 
             class="w-full <?php echo $colors['bg-dark']; ?> text-white h-12 flex items-center justify-center space-x-2">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -180,7 +180,7 @@ $colors = get_section_colors($parent_slug);
 
     <!-- Mobile Secondary Navigation Menu -->
     <div x-show="subMenuOpen" 
-         class="fixed bottom-28 left-0 right-0 <?php echo $colors['bg-light']; ?> shadow-lg z-[44]">
+         class="fixed bottom-28 left-0 right-0 <?php echo $colors['bg-light']; ?> shadow-lg z-44">
         <div class="py-2">
             <!-- Parent page link -->
             <a href="<?php echo "/modulos/{$parent_slug}"; ?>" 

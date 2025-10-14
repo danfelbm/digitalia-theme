@@ -35,7 +35,7 @@ $title_start = !empty($title_words) ? implode(' ', $title_words) . ' ' : '';
     <!-- Background color layer -->
     <div class="absolute inset-0 bg-gray-200"></div>
     <!-- Grid overlay with mask -->
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--muted))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--muted))_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_50%_100%_at_50%_50%,#000_60%,transparent_100%)]"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--muted))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--muted))_1px,transparent_1px)] bg-size-[64px_64px] mask-[radial-gradient(ellipse_50%_100%_at_50%_50%,#000_60%,transparent_100%)]"></div>
     
     <div class="container relative">
         <div class="relative max-w-5xl">

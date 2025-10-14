@@ -17,7 +17,7 @@ get_header();
         <p class="text-lg text-muted-foreground"><?php echo esc_html(get_field('ready_recursos_hero')['description']); ?></p>
       </div>
       <div class="relative hidden w-full lg:block">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-transparent to-background"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,var(--tw-gradient-stops))] from-transparent to-background"></div>
         <div class="grid w-full grid-cols-8 grid-rows-4 gap-2"><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="flex w-full rounded-md bg-muted p-3"></div><div class="col-start-3 rounded-md row-start-3 bg-muted p-3"><img src="https://shadcnblocks.com/images/block/block-1.svg" alt="placeholder" class="h-full w-full object-cover"></div><div class="col-start-4 rounded-md row-start-4 bg-muted p-3"><img src="https://shadcnblocks.com/images/block/block-2.svg" alt="placeholder" class="h-full w-full object-cover"></div><div class="col-start-7 rounded-md row-start-4 bg-muted p-3"><img src="https://shadcnblocks.com/images/block/block-2.svg" alt="placeholder" class="h-full w-full object-cover"></div></div>
       </div>
     </div>
@@ -62,7 +62,7 @@ get_header();
             <h4 class="mb-4 text-xl font-medium"><?php echo esc_html($title); ?></h4>
             <p class="font-base mb-8 text-muted-foreground"><?php echo esc_html($description); ?></p>
             <div class="relative m-auto mt-4 w-full overflow-hidden">
-              <div class="absolute bottom-0 left-0 right-0 z-[2] h-[100px] bg-[linear-gradient(to_top,white_0%,rgba(255,255,255,0)_100%)]"></div>
+              <div class="absolute bottom-0 left-0 right-0 z-2 h-[100px] bg-[linear-gradient(to_top,white_0%,rgba(255,255,255,0)_100%)]"></div>
               <?php if($image): ?>
                 <img src="<?php echo esc_url($image['url']); ?>" 
                      alt="<?php echo esc_attr($image['alt']); ?>" 

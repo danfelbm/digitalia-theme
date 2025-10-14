@@ -29,7 +29,7 @@ get_header();
             <?php if (has_post_thumbnail()) : ?>
                 <?php the_post_thumbnail('full', array('class' => 'h-full w-full object-cover')); ?>
             <?php endif; ?>
-            <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/80"></div>
+            <div class="absolute inset-0 bg-linear-to-b from-black/50 to-black/80"></div>
         </div>
         
         <div class="container relative py-24">

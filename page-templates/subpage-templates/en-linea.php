@@ -14,7 +14,7 @@ get_header();
         <div class="container">
             <div class="grid items-center gap-8 lg:grid-cols-2">
                 <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
-                    <div style="transform:translate(-50%, -50%)" class="absolute left-1/2 top-1/2 -z-10 mx-auto size-[800px] rounded-full border-red-300/60 border-2 p-16 [mask-image:linear-gradient(to_top,transparent,transparent,rgba(255,255,255,0.9),white,rgba(255,255,255,0.9),transparent,transparent)] md:size-[1300px] md:p-32">
+                    <div style="transform:translate(-50%, -50%)" class="absolute left-1/2 top-1/2 -z-10 mx-auto size-[800px] rounded-full border-red-300/60 border-2 p-16 mask-[linear-gradient(to_top,transparent,transparent,rgba(255,255,255,0.9),white,rgba(255,255,255,0.9),transparent,transparent)] md:size-[1300px] md:p-32">
                         <div class="size-full rounded-full border-red-400/70 border-2 p-16 md:p-32">
                             <div class="size-full rounded-full border-red-500/80 border-2"></div>
                         </div>
@@ -161,7 +161,7 @@ get_header();
                      class="h-full max-h-[420px] w-full rounded-xl object-cover">
                 <?php endif; ?>
             </div>
-            <div data-orientation="horizontal" role="none" class="shrink-0 bg-border h-[1px] w-full my-12"></div>
+            <div data-orientation="horizontal" role="none" class="shrink-0 bg-border h-px w-full my-12"></div>
             <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                 <?php 
                 $stats = get_field('enlinea_stats');
@@ -325,11 +325,11 @@ get_header();
                         ?>
                         <div role="group" aria-roledescription="slide" class="min-w-0 shrink-0 grow-0 basis-full max-w-[320px] pl-5 lg:max-w-[360px]">
                             <a href="<?php the_permalink(); ?>" class="group rounded-xl">
-                                <div class="group relative h-full min-h-[27rem] max-w-full overflow-hidden rounded-xl bg-red-200 md:aspect-[5/4] lg:aspect-[16/9]">
+                                <div class="group relative h-full min-h-108 max-w-full overflow-hidden rounded-xl bg-red-200 md:aspect-5/4 lg:aspect-video">
                                         <?php if (has_post_thumbnail()) : ?>
                                             <?php the_post_thumbnail('large', array('class' => 'absolute size-full object-cover object-center transition-transform duration-300 group-hover:scale-105')); ?>
                                         <?php endif; ?>
-                                    <div class="absolute inset-0 h-full bg-gradient-to-b from-black/20 to-black/80 mix-blend-multiply"></div>
+                                    <div class="absolute inset-0 h-full bg-linear-to-b from-black/20 to-black/80 mix-blend-multiply"></div>
                                     <div class="absolute inset-x-0 bottom-0 flex flex-col items-start p-6 text-white md:p-8">
                                         <?php
                                         $temporadas = get_the_terms(get_the_ID(), 'temporadas');
@@ -415,14 +415,14 @@ get_header();
                         ?>
                             <div role="group" aria-roledescription="slide" class="min-w-0 shrink-0 grow-0 basis-full max-w-[320px] pl-5 lg:max-w-[360px]">
                                 <a href="<?php the_permalink(); ?>" class="group rounded-xl">
-                                    <div class="group relative h-full min-h-[27rem] max-w-full overflow-hidden rounded-xl bg-red-200 md:aspect-[5/4] lg:aspect-[16/9]">
+                                    <div class="group relative h-full min-h-108 max-w-full overflow-hidden rounded-xl bg-red-200 md:aspect-5/4 lg:aspect-video">
                                             <?php 
                                                 $avatar = get_field('avatar');
                                                 if ($avatar) : 
                                             ?>
                                             <img src="<?php echo esc_url($avatar); ?>" alt="<?php the_title_attribute(); ?>" class="absolute size-full object-cover object-center transition-transform duration-300 group-hover:scale-105">
                                         <?php endif; ?>
-                                        <div class="absolute inset-0 h-full bg-gradient-to-b from-black/20 to-black/80 mix-blend-multiply"></div>
+                                        <div class="absolute inset-0 h-full bg-linear-to-b from-black/20 to-black/80 mix-blend-multiply"></div>
                                         <div class="absolute inset-x-0 bottom-0 flex flex-col items-start p-6 text-white md:p-8">
                                             <?php
                                             $temporada = $serie; // Get the first temporada
@@ -464,7 +464,7 @@ get_header();
     ?>
     <section id="blog" class="py-32">
         <div class="container">
-            <div class="mx-auto flex max-w-screen-md flex-col items-center gap-4 text-center">
+            <div class="mx-auto flex max-w-(--breakpoint-md) flex-col items-center gap-4 text-center">
                 <?php $blog_header = get_field('enlinea_blog_header'); ?>
                 <div class="inline-flex items-center rounded-full border px-2.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-foreground gap-1 py-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text h-full w-4">
@@ -491,7 +491,7 @@ get_header();
                         <div class="px-3 pb-4 pt-2">
                             <h2 class="mb-1 font-medium"><?php the_title(); ?></h2>
                             <p class="line-clamp-2 text-sm text-muted-foreground"><?php echo wp_trim_words(get_the_excerpt(), 20); ?></p>
-                            <div data-orientation="horizontal" role="none" class="shrink-0 bg-border h-[1px] w-full my-5"></div>
+                            <div data-orientation="horizontal" role="none" class="shrink-0 bg-border h-px w-full my-5"></div>
                             <div class="flex items-center justify-between gap-4">
                                 <div class="flex items-center gap-3">
                                     <?php echo get_avatar(get_the_author_meta('ID'), 36, '', '', array('class' => 'relative flex shrink-0 overflow-hidden size-9 rounded-full ring-1 ring-input')); ?>

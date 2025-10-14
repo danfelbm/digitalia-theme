@@ -96,7 +96,7 @@ get_header(); ?>
                             $personaje = get_sub_field('personaje');
                             if ($actor) : ?>
                             <div class="flex items-center space-x-4">
-                                <div class="flex-shrink-0">
+                                <div class="shrink-0">
                                     <?php 
                                     $avatar = get_field('avatar', $actor->ID);
                                     if ($avatar) : ?>
@@ -184,7 +184,7 @@ get_header(); ?>
 </article>
 
 <!-- Video Modal -->
-<div id="videoModal" class="relative z-[70] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+<div id="videoModal" class="relative z-70 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <div class="fixed inset-0 bg-gray-500/75 transition-opacity"></div>
     <div class="fixed inset-0 z-50 w-screen overflow-y-auto">
         <div class="flex min-h-full items-center justify-center p-0">

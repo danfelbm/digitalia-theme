@@ -6,7 +6,7 @@
  */
 ?>
 
-<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-black z-[55] mobile-footer-nav">
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-black z-55 mobile-footer-nav">
     <div class="grid grid-cols-4 h-16">
         <a href="/en-linea" class="flex flex-col items-center justify-center text-white hover:text-gray-300">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

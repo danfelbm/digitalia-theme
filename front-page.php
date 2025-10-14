@@ -45,7 +45,7 @@ get_header();
 		<?php endif; ?>
 
 		<?php if ($featured = get_field('featured_module')) : ?>
-		<div class="flex w-full flex-grow flex-col gap-4 rounded-lg bg-black p-5 md:col-span-2 md:col-start-2 md:row-span-2 md:row-start-2 lg:p-8">
+		<div class="flex w-full grow flex-col gap-4 rounded-lg bg-black p-5 md:col-span-2 md:col-start-2 md:row-span-2 md:row-start-2 lg:p-8">
 			<div class="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center md:gap-2">
 			<h3 class="max-w-[80%] text-2xl font-bold text-white md:max-w-[60%] lg:text-4xl"><?php echo esc_html($featured['title']); ?></h3>
 			<a href="<?php echo esc_url($featured['button_link']); ?>" class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-black hover:bg-white/90 h-11 rounded-md px-8 w-full md:w-auto">
@@ -62,7 +62,7 @@ get_header();
 	</div>
 	</section>
 
-	<div class="max-w-screen-xl px-8 py-10 sm:px-6 lg:px-8 lg:py-32 mx-auto" style="margin-top: -8rem;">
+	<div class="max-w-(--breakpoint-xl) px-8 py-10 sm:px-6 lg:px-8 lg:py-32 mx-auto" style="margin-top: -8rem;">
 	<div class="grid md:grid-cols-2 gap-12">
 		<?php if ($vision = get_field('vision_section')) : 
 			$vision_title = $vision['title'];
@@ -201,7 +201,7 @@ get_header();
 	<section class="py-32">
 		<div class="container">
 			<div class="flex items-center justify-center rounded-2xl border bg-cover bg-center px-8 py-20 text-center md:p-20" style="background-image: url('<?php echo get_field('intro_background') ?: 'https://www.shadcnblocks.com/images/block/circles.svg'; ?>">
-				<div class="mx-auto max-w-screen-md">
+				<div class="mx-auto max-w-(--breakpoint-md)">
 					<h1 class="mb-4 text-balance text-3xl font-semibold md:text-5xl"><?php echo get_field('intro_title'); ?></h1>
 					<p class="text-muted-foreground md:text-lg"><?php echo get_field('intro_description'); ?></p>
 					<div class="mt-11 flex flex-col justify-center gap-2 sm:flex-row">

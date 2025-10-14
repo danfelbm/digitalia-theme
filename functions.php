@@ -1251,6 +1251,9 @@ add_action('wp_enqueue_scripts', 'digitalia_enqueue_acf_map_scripts', 20);
 // Custom Roles
 require get_template_directory() . '/inc/custom-roles.php';
 
+// Theme Switcher (Shadcnblocks Integration)
+require get_template_directory() . '/inc/theme-switcher.php';
+
 // Include custom dashboards
 require_once get_template_directory() . '/inc/admin/custom-dashboards.php';
 

@@ -32,7 +32,7 @@ get_header();
     <!-- Catálogo de Cursos Section -->
     <section class="py-32 bg-slate-50">
         <div class="container mx-auto px-4">
-            <div class="mx-auto flex max-w-screen-md flex-col items-center gap-6 text-center">
+            <div class="mx-auto flex max-w-(--breakpoint-md) flex-col items-center gap-6 text-center">
                 
                 <h1 class="text-balance text-4xl font-semibold text-slate-900">
                     Catálogo de Cursos Educativos

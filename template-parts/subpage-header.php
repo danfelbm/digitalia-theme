@@ -31,7 +31,7 @@ $current_colors = isset($colors[$header_color]) ? $colors[$header_color] : array
     <div class="absolute inset-0 <?php echo esc_attr($current_colors['bg']); ?>"></div>
     
     <!-- Grid overlay with mask -->
-    <div class="opacity-20 absolute inset-0 <?php echo esc_attr($current_colors['grid']); ?>/10 bg-[linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_50%_100%_at_50%_50%,#000_60%,transparent_100%)]"></div>
+    <div class="opacity-20 absolute inset-0 <?php echo esc_attr($current_colors['grid']); ?>/10 bg-[linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)] bg-size-[64px_64px] mask-[radial-gradient(ellipse_50%_100%_at_50%_50%,#000_60%,transparent_100%)]"></div>
     
     <div class="container relative">
         <div class="relative max-w-5xl">

@@ -25,13 +25,13 @@ get_header();
          class="flex flex-col md:flex-row flex-1 relative">
         <!-- Mobile Toggle Button -->
         <button @click="sidebarOpen = !sidebarOpen" 
-                class="md:hidden fixed right-4 top-1/2 -translate-y-1/2 z-[9999] bg-teal-600 text-white p-3 rounded-full shadow-lg flex items-center justify-center w-12 h-12">
+                class="md:hidden fixed right-4 top-1/2 -translate-y-1/2 z-9999 bg-teal-600 text-white p-3 rounded-full shadow-lg flex items-center justify-center w-12 h-12">
             <i class="fa-solid" :class="sidebarOpen ? 'fa-times' : 'fa-list'"></i>
         </button>
 
         <!-- Sidebar -->
         <div :class="{'translate-x-0': sidebarOpen, '-translate-x-full': !sidebarOpen}" 
-             class="w-full md:w-96 bg-white border-r border-teal-100 flex flex-col transition-transform duration-300 fixed md:relative top-16 md:top-0 left-0 bottom-0 z-[100] md:translate-x-0 overflow-y-auto">
+             class="w-full md:w-96 bg-white border-r border-teal-100 flex flex-col transition-transform duration-300 fixed md:relative top-16 md:top-0 left-0 bottom-0 z-100 md:translate-x-0 overflow-y-auto">
             <!-- Search Bar -->
             <div class="border-b border-teal-100 p-4">
                 <div class="relative">

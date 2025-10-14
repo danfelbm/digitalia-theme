@@ -10,9 +10,9 @@ get_header();
 
 <main id="primary" class="site-main">
     <div class="absolute inset-x-0 top-0 -z-10 h-full w-full">
-        <div class="absolute inset-0 bg-gradient-to-b from-teal-50 to-white"></div>
-        <div class="absolute inset-0 bg-[radial-gradient(#0f766e_0.8px,transparent_0.8px)] [background-size:16px_16px] opacity-[0.15]"></div>
-        <div class="absolute inset-0 bg-[radial-gradient(#115e59_1.2px,transparent_1.2px)] [background-size:32px_32px] opacity-[0.1]"></div>
+        <div class="absolute inset-0 bg-linear-to-b from-teal-50 to-white"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(#0f766e_0.8px,transparent_0.8px)] bg-size-[16px_16px] opacity-[0.15]"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(#115e59_1.2px,transparent_1.2px)] bg-size-[32px_32px] opacity-[0.1]"></div>
     </div>
     
     <section class="pt-32">
@@ -35,11 +35,11 @@ get_header();
                 $hero_fields = get_field('hero');
                 
                 if ($hero_fields && is_array($hero_fields)) : ?>
-                    <h1 class="mx-auto my-5 max-w-screen-lg text-balance text-center text-3xl md:text-5xl text-teal-900">
+                    <h1 class="mx-auto my-5 max-w-(--breakpoint-lg) text-balance text-center text-3xl md:text-5xl text-teal-900">
                         <?php echo esc_html($hero_fields['hero_title']); ?>
                     </h1>
 
-                    <p class="mx-auto max-w-screen-md text-center text-sm text-teal-700 md:text-base">
+                    <p class="mx-auto max-w-(--breakpoint-md) text-center text-sm text-teal-700 md:text-base">
                         <?php echo esc_html($hero_fields['hero_description']); ?>
                     </p>
 
@@ -117,7 +117,7 @@ get_header();
     <section id="acerca" class="bg-teal-900 pb-32 pt-12">
         <div class="container">
             <div class="grid place-content-center gap-10 lg:grid-cols-2">
-                <div class="mx-auto flex max-w-screen-md flex-col items-center justify-center gap-4 lg:items-start">
+                <div class="mx-auto flex max-w-(--breakpoint-md) flex-col items-center justify-center gap-4 lg:items-start">
                     <div class="rounded-full border border-teal-400 text-teal-400 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-foreground flex items-center gap-1 px-2.5 py-1.5 text-sm">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-<?php echo esc_attr(get_field('about')['badge']['icon']); ?> h-auto w-4">
                             <?php if (get_field('about')['badge']['icon'] === 'code-2') : ?>
@@ -143,20 +143,20 @@ get_header();
                                 <p class="mb-1.5 text-3xl font-bold text-teal-400"><?php echo esc_html(get_field('about')['stats']['departments']['number']); ?></p>
                                 <p class="text-teal-200"><?php echo esc_html(get_field('about')['stats']['departments']['label']); ?></p>
                             </div>
-                            <div data-orientation="vertical" role="none" class="shrink-0 bg-teal-700 w-[1px] h-auto"></div>
+                            <div data-orientation="vertical" role="none" class="shrink-0 bg-teal-700 w-px h-auto"></div>
                             <div class="mx-auto">
                                 <p class="mb-1.5 text-3xl font-bold text-teal-400"><?php echo esc_html(get_field('about')['stats']['spaces']['number']); ?></p>
                                 <p class="text-teal-200"><?php echo esc_html(get_field('about')['stats']['spaces']['label']); ?></p>
                             </div>
                         </div>
-                        <div data-orientation="vertical" role="none" class="shrink-0 bg-teal-700 w-[1px] hidden h-auto md:block"></div>
-                        <div data-orientation="horizontal" role="none" class="shrink-0 bg-teal-700 h-[1px] w-full block md:hidden"></div>
+                        <div data-orientation="vertical" role="none" class="shrink-0 bg-teal-700 w-px hidden h-auto md:block"></div>
+                        <div data-orientation="horizontal" role="none" class="shrink-0 bg-teal-700 h-px w-full block md:hidden"></div>
                         <div class="flex justify-between gap-6">
                             <div class="mx-auto">
                                 <p class="mb-1.5 text-3xl font-bold text-teal-400"><?php echo esc_html(get_field('about')['stats']['access']['number']); ?></p>
                                 <p class="text-teal-200"><?php echo esc_html(get_field('about')['stats']['access']['label']); ?></p>
                             </div>
-                            <div data-orientation="vertical" role="none" class="shrink-0 bg-teal-700 w-[1px] h-auto"></div>
+                            <div data-orientation="vertical" role="none" class="shrink-0 bg-teal-700 w-px h-auto"></div>
                             <div class="mx-auto">
                                 <p class="mb-1.5 text-3xl font-bold text-teal-400"><?php echo esc_html(get_field('about')['stats']['free']['number']); ?></p>
                                 <p class="text-teal-200"><?php echo esc_html(get_field('about')['stats']['free']['label']); ?></p>

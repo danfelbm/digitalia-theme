@@ -15,7 +15,7 @@ while (have_posts()) :
         <!-- Background Image with Overlay -->
         <div class="absolute inset-0">
             <img src="<?php echo esc_url($featured_img_url); ?>" alt="<?php the_title_attribute(); ?>" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
+            <div class="absolute inset-0 bg-linear-to-t from-black via-black/70 to-transparent"></div>
         </div>
 
         <!-- Content Overlay -->

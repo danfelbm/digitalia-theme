@@ -29,10 +29,10 @@ get_header();
                                 </div>
                                 <div class="relative h-6 w-7 overflow-hidden">
                                     <div class="absolute left-0 top-0 flex -translate-x-1/2 items-center transition-all duration-500 group-hover:translate-x-0">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="!h-6 !w-6 stroke-white px-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6! w-6! stroke-white px-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M5 12h14m-7-7 7 7-7 7"/>
                                         </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="!h-6 !w-6 stroke-white px-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6! w-6! stroke-white px-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M5 12h14m-7-7 7 7-7 7"/>
                                         </svg>
                                     </div>
@@ -45,11 +45,11 @@ get_header();
                     </div>
                 </div>
                 <div class="relative">
-                    <div class="h-full w-full md:max-w-[37.5rem]">
+                    <div class="h-full w-full md:max-w-150">
                         <img
                             src="https://shadcnblocks.com/images/block/placeholder-dark-1.svg"
                             alt="Productos Co-Laboratorios"
-                            class="aspect-[1.026845638_/_1] h-full w-full rounded-xl object-cover object-center lg:aspect-[1.34529148_/_1]"
+                            class="aspect-[1.026845638/1] h-full w-full rounded-xl object-cover object-center lg:aspect-[1.34529148/1]"
                         />
                     </div>
                     <div class="absolute bottom-[4%] left-[4%] w-36 lg:w-56">
@@ -64,7 +64,7 @@ get_header();
                 </div>
             </div>
         </div>
-        <div class="absolute -top-36 right-0 hidden w-1/2 rounded-bl-[1.875rem] md:block md:h-[34.375rem] xl:h-[41.5625rem]">
+        <div class="absolute -top-36 right-0 hidden w-1/2 rounded-bl-[1.875rem] md:block md:h-137.5 xl:h-166.25">
             <img
                 src="https://shadcnblocks.com/images/block/placeholder-8-wide.svg"
                 alt="Fondo decorativo"
@@ -104,14 +104,14 @@ get_header();
                             <div class="h-full w-full transition duration-300 group-hover:scale-105">
                                 <?php if (has_post_thumbnail()) : ?>
                                     <?php the_post_thumbnail('large', array(
-                                        'class' => 'aspect-[3/2] h-full w-full object-cover object-center',
+                                        'class' => 'aspect-3/2 h-full w-full object-cover object-center',
                                         'alt' => get_the_title()
                                     )); ?>
                                 <?php else : ?>
                                     <img
                                         src="https://shadcnblocks.com/images/block/placeholder-dark-1.svg"
                                         alt="<?php the_title(); ?>"
-                                        class="aspect-[3/2] h-full w-full object-cover object-center"
+                                        class="aspect-3/2 h-full w-full object-cover object-center"
                                     />
                                 <?php endif; ?>
                             </div>

@@ -9,7 +9,8 @@ This is "Digitalia" - a custom WordPress theme built on the Underscores (_s) sta
 ## Technology Stack
 
 - **WordPress Theme** based on Underscores (_s)
-- **Styling**: Tailwind CSS (v3.4.16) - **Always use Tailwind utility classes, never write custom CSS**
+- **Styling**: **Tailwind CSS v4.1.14** + **Shadcnblocks** - **Always use Tailwind utility classes, never write custom CSS**
+- **Theming System**: Shadcnblocks with dynamic theme switching (globals.css, amber-minimal.css)
 - **JavaScript Libraries**: Alpine.js (v3), Vue.js (v3, used on biblioteca-digital page), Swiper.js (v11)
 - **Custom Fields**: Advanced Custom Fields (ACF) Pro
 - **Fonts**: Lexend (headings), Work Sans (body), JetBrains Mono (monospace)
@@ -25,6 +26,12 @@ npm run watch:css
 # Build and minify CSS for production
 npm run build:css
 ```
+
+**IMPORTANT**: El archivo `src/input.css` es **GENERADO AUTOMÁTICAMENTE** mediante la concatenación de:
+1. Theme seleccionado (`globals/*.css`) - contiene todas las importaciones de Tailwind v4 y Shadcnblocks
+2. Estilos custom de Digitalia (`src/digitalia-custom.css`) - navegación, módulos, etc.
+
+**NO modifiques `src/input.css` manualmente** - cualquier cambio será sobreescrito.
 
 ### Code Quality
 ```bash
@@ -218,3 +225,214 @@ When making changes:
 4. Verify WPCS compliance with `composer lint:wpcs`
 5. Test with multiple modules to ensure color schemes work correctly
 6. Check that ACF fields save and display properly
+
+## ========================================
+## SHADCNBLOCKS THEMING SYSTEM (v4)
+## ========================================
+
+El tema ahora usa **Tailwind CSS v4.1.14** con **Shadcnblocks** para un sistema de theming dinámico y moderno.
+
+### Arquitectura del Sistema
+
+**Flujo de Compilación:**
+```
+globals/[theme].css (Theme completo de Shadcnblocks)
+   + 
+src/digitalia-custom.css (Estilos de Digitalia)
+   ↓
+src/input.css (GENERADO por PHP)
+   ↓
+npx @tailwindcss/cli (Tailwind v4 compiler)
+   ↓
+style.css (CSS final)
+```
+
+### Estructura de Archivos
+
+```
+/globals/
+  ├── globals.css          # Theme por defecto de Shadcnblocks
+  ├── amber-minimal.css    # Theme Amber Minimal (tonos cálidos)
+  └── [otros themes]       # Puedes agregar más themes aquí
+
+/src/
+  ├── digitalia-custom.css # ⚡ Estilos ÚNICOS de Digitalia (navegación, módulos)
+  └── input.css            # ❌ NO EDITAR - generado automáticamente
+
+/inc/
+  └── theme-switcher.php   # 🎨 Sistema de cambio de themes
+```
+
+### Cómo Cambiar de Theme
+
+**Método recomendado** (manualmente regenerar `input.css`):
+
+```bash
+# 1. Editar inc/theme-switcher.php línea ~54
+# Cambiar:
+#   return 'globals';
+# Por:
+#   return 'amber-minimal';
+
+# 2. Regenerar input.css
+php -r "
+\$theme_dir = getcwd();
+\$theme_file = \$theme_dir . '/globals/amber-minimal.css';  # ← CAMBIAR AQUÍ
+\$custom_file = \$theme_dir . '/src/digitalia-custom.css';
+\$output_file = \$theme_dir . '/src/input.css';
+
+\$header = '/*
+Theme Name: Digitalia
+Theme URI: https://danielbecerra.org
+Author: Daniel Becerra
+Description: Tema para Digitalia con Shadcnblocks theming system - Amber Minimal
+Version: 2.5.0
+Requires at least: 5.0
+Tested up to: 6.4
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+Text Domain: digitalia
+*/
+
+
+';
+
+\$theme_content = file_get_contents(\$theme_file);
+\$custom_content = file_get_contents(\$custom_file);
+\$final_content = \$header . \$theme_content . \"\\n\\n\" . \$custom_content;
+
+file_put_contents(\$output_file, \$final_content);
+echo \"✅ Theme cambiado a Amber Minimal\\n\";
+"
+
+# 3. Compilar CSS
+npm run build:css
+```
+
+### Themes Disponibles
+
+| Theme | Descripción | Archivo |
+|-------|-------------|---------|
+| **globals** | Theme por defecto de Shadcnblocks (neutro, versátil) | `globals/globals.css` |
+| **amber-minimal** | Theme cálido con tonos amber/dorados | `globals/amber-minimal.css` |
+
+### Agregar Nuevos Themes
+
+1. **Descargar theme de [shadcnblocks.com](https://shadcnblocks.com/)**
+2. **Copiar el CSS** a `globals/nombre-theme.css`
+3. **Asegurarse que incluya**:
+   ```css
+   @import 'tailwindcss';
+   @plugin "@tailwindcss/typography";
+   @custom-variant dark (&:where(.dark, .dark *));
+   :root { /* variables */ }
+   .dark { /* dark mode */ }
+   ```
+4. **Agregar a `inc/theme-switcher.php`**:
+   ```php
+   function digitalia_get_available_themes() {
+       return array(
+           'globals' => 'Default (Shadcnblocks)',
+           'amber-minimal' => 'Amber Minimal',
+           'nombre-theme' => 'Nombre Del Theme',  // ← AGREGAR AQUÍ
+       );
+   }
+   ```
+5. **Cambiar theme** siguiendo las instrucciones arriba
+
+### Dark Mode
+
+Los themes de Shadcnblocks incluyen **dark mode automático**. Ya está implementado en [header.php:16-25](header.php#L16-L25):
+
+```javascript
+// Initialize dark mode from localStorage
+const theme = localStorage.getItem('digitalia-theme') || 'light';
+if (theme === 'dark') {
+    document.documentElement.classList.add('dark');
+}
+```
+
+Para agregar un **toggle de dark mode**, insertar en el navigation:
+
+```html
+<button 
+    onclick="
+        const html = document.documentElement;
+        const isDark = html.classList.toggle('dark');
+        localStorage.setItem('digitalia-theme', isDark ? 'dark' : 'light');
+    "
+    class="theme-toggle"
+>
+    🌙/☀️
+</button>
+```
+
+### Características de Shadcnblocks
+
+- ✅ **Variables OKLCH** - Colores más precisos que HSL
+- ✅ **@theme inline** - Configuración CSS-first de Tailwind v4
+- ✅ **Animaciones custom** - accordion, fade, marquee, shimmer, orbit, etc.
+- ✅ **Fuentes Google** - 20+ fuentes precargadas
+- ✅ **Dark mode** - Soporte completo con .dark class
+- ✅ **Componentes** - Compatibles con bloques HTML de shadcnblocks.com
+
+### Tailwind v4 Features Usados
+
+- `@import 'tailwindcss'` - Nueva sintaxis de importación
+- `@plugin` - Carga de plugins en CSS
+- `@theme inline` - Configuración de theme en CSS
+- `@custom-variant dark` - Variant personalizada para dark mode
+- `@utility container` - Utility class personalizada
+- `@layer base/components` - Layers organizados
+
+### Estilos Personalizados de Digitalia
+
+Los estilos en `src/digitalia-custom.css` incluyen:
+
+1. **Colores de módulos**:
+   ```css
+   @theme inline {
+     --color-digitalia-yellow: #ffda00;
+     --color-red-50: #fff0f4;
+     /* ... resto de escala de rojos */
+   }
+   ```
+
+2. **Navegación por módulo**:
+   - `.page-template-academia` - Yellow
+   - `.page-template-total-transmedia` - Blue
+   - `.page-template-en-linea` - Red
+   - `.page-template-colaboratorios` - Teal
+   - `.page-template-ready` - Purple
+
+3. **Tipografía de Digitalia**:
+   - Body: Work Sans
+   - Headings (h1, h2): Lexend
+   - Mono (h3, h4): JetBrains Mono
+
+**NUNCA modifiques estos estilos en `input.css`** - siempre edita `src/digitalia-custom.css` y regenera.
+
+### Troubleshooting
+
+**Error: "Cannot apply unknown utility class"**
+- Verifica que el theme en `globals/` incluya `@import 'tailwindcss'`
+- Regenera `input.css` con el comando de arriba
+- Limpia node_modules: `rm -rf node_modules && npm install`
+
+**El theme no cambia**
+- Verifica que regeneraste `input.css` **ANTES** de compilar
+- Verifica que ejecutaste `npm run build:css` **DESPUÉS** de regenerar
+- Revisa que el archivo `globals/[theme].css` existe
+
+**Estilos de módulos no funcionan**
+- Los estilos de Digitalia están al **FINAL** de `input.css`
+- Si un theme de Shadcnblocks tiene estilos conflictivos, edita `src/digitalia-custom.css` con `!important`
+- Ejemplo: `@apply !bg-yellow-100;` (nota el `!` al inicio)
+
+### Recursos
+
+- **Shadcnblocks**: https://shadcnblocks.com/
+- **Themes**: https://docs.shadcnblocks.com/blocks/theming/
+- **Tailwind v4 Docs**: https://tailwindcss.com/docs/installation
+- **Theme Generator**: Compatible con shadcn, tweakcn, styleglide themes
+

@@ -20,7 +20,7 @@ $child_categories = get_categories([
 
 <section class="bg-muted/60 py-32">
     <div class="container">
-        <div class="relative mx-auto flex max-w-screen-xl flex-col gap-20 lg:flex-row">
+        <div class="relative mx-auto flex max-w-(--breakpoint-xl) flex-col gap-20 lg:flex-row">
             <header class="top-10 flex h-fit flex-col items-center gap-5 text-center lg:sticky lg:max-w-80 lg:items-start lg:gap-8 lg:text-left">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text h-full w-14">
                     <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
@@ -33,7 +33,7 @@ $child_categories = get_categories([
                 <?php if ($category_description) : ?>
                     <p class="text-muted-foreground lg:text-xl"><?php echo wp_kses_post($category_description); ?></p>
                 <?php endif; ?>
-                <div data-orientation="horizontal" role="none" class="shrink-0 bg-border h-[1px] w-full"></div>
+                <div data-orientation="horizontal" role="none" class="shrink-0 bg-border h-px w-full"></div>
                 <nav>
                     <ul class="flex flex-wrap items-center justify-center gap-4 lg:flex-col lg:items-start lg:gap-2">
                         <li class="<?php echo !is_category() ? 'font-medium' : 'text-muted-foreground hover:text-primary'; ?>">
@@ -56,7 +56,7 @@ $child_categories = get_categories([
                 </nav>
                 
                 <?php if ($child_categories) : ?>
-                    <div data-orientation="horizontal" role="none" class="shrink-0 bg-border h-[1px] w-full"></div>
+                    <div data-orientation="horizontal" role="none" class="shrink-0 bg-border h-px w-full"></div>
                     <nav>
                         <ul class="flex flex-wrap items-center justify-center gap-4 lg:flex-col lg:items-start lg:gap-2">
                             <li class="<?php echo !is_category() ? 'font-medium' : 'text-muted-foreground hover:text-primary'; ?>">
@@ -90,7 +90,7 @@ $child_categories = get_categories([
                             <div class="px-3 pb-4 pt-2">
                                 <h2 class="mb-1 font-medium"><?php the_title(); ?></h2>
                                 <p class="line-clamp-2 text-sm text-muted-foreground"><?php echo wp_trim_words(get_the_excerpt(), 20); ?></p>
-                                <div data-orientation="horizontal" role="none" class="shrink-0 bg-border h-[1px] w-full my-5"></div>
+                                <div data-orientation="horizontal" role="none" class="shrink-0 bg-border h-px w-full my-5"></div>
                                 <div class="flex items-center justify-between gap-4">
                                     <div class="flex items-center gap-3">
                                         <span class="relative flex shrink-0 overflow-hidden size-9 rounded-full ring-1 ring-input">

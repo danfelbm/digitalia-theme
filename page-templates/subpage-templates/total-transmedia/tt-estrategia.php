@@ -65,7 +65,7 @@ get_header();
         <div class="-mb-48 flex justify-start gap-4 pt-4">
           <div class="absolute">
             <div class="flex scale-75 flex-col gap-12 pl-32 pt-8 sm:scale-100">
-              <div class="flex gap-x-8 odd:pl-[calc(theme(spacing.32)+16px)]">
+              <div class="flex gap-x-8 odd:pl-[calc(--spacing(32)+16px)]">
                 <div class="flex w-64 gap-x-3 rounded-xl border border-white bg-white p-4 shadow-sm">
                   <div class="flex size-7 shrink-0 items-center justify-center rounded bg-blue-100">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 size-4">
@@ -89,7 +89,7 @@ get_header();
                   </div>
                 </div>
               </div>
-              <div class="flex gap-x-8 odd:pl-[calc(theme(spacing.32)+16px)]">
+              <div class="flex gap-x-8 odd:pl-[calc(--spacing(32)+16px)]">
                 <div class="flex w-64 gap-x-3 rounded-xl border border-white bg-white p-4 shadow-sm">
                   <div class="flex size-7 shrink-0 items-center justify-center rounded bg-blue-100">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 size-4">
@@ -113,7 +113,7 @@ get_header();
                   </div>
                 </div>
               </div>
-              <div class="flex gap-x-8 odd:pl-[calc(theme(spacing.32)+16px)]">
+              <div class="flex gap-x-8 odd:pl-[calc(--spacing(32)+16px)]">
                 <div class="flex w-64 gap-x-3 rounded-xl border border-white bg-white p-4 shadow-sm">
                   <div class="flex size-7 shrink-0 items-center justify-center rounded bg-blue-100">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 size-4">
@@ -137,7 +137,7 @@ get_header();
                   </div>
                 </div>
               </div>
-              <div class="flex gap-x-8 odd:pl-[calc(theme(spacing.32)+16px)]">
+              <div class="flex gap-x-8 odd:pl-[calc(--spacing(32)+16px)]">
                 <div class="flex w-64 gap-x-3 rounded-xl border border-white bg-white p-4 shadow-sm">
                   <div class="flex size-7 shrink-0 items-center justify-center rounded bg-blue-100">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 size-4">
@@ -166,7 +166,7 @@ get_header();
               </div>
             </div>
           </div>
-          <div class="relative flex aspect-[3/6] w-[240px] justify-center rounded-lg border border-border bg-background sm:w-[300px]"></div>
+          <div class="relative flex aspect-3/6 w-[240px] justify-center rounded-lg border border-border bg-background sm:w-[300px]"></div>
         </div>
       </div>
     </div>
@@ -223,11 +223,11 @@ get_header();
       </div>
       <div class="grid gap-6 md:grid-cols-2 lg:gap-8">
         <div class="flex flex-col overflow-clip rounded-xl border border-slate-200 bg-slate-200 md:col-span-2 md:grid md:grid-cols-2 md:gap-6 lg:gap-8">
-          <div class="md:min-h-[24rem] lg:min-h-[28rem] xl:min-h-[32rem]">
+          <div class="md:min-h-96 lg:min-h-112 xl:min-h-128">
             <img
               src="https://placehold.co/800x600/1f3a8a/bfdbfe"
               alt="Estrategias Transmedia"
-              class="aspect-[16/9] h-full w-full object-cover object-center"
+              class="aspect-video h-full w-full object-cover object-center"
             />
           </div>
           <div class="flex flex-col justify-center px-6 py-8 md:px-8 md:py-10 lg:px-10 lg:py-12">
@@ -248,11 +248,11 @@ get_header();
               Desarrollamos contenidos especializados para superar discursos de odio, identificar desinformación y fortalecer el periodismo ciudadano. Integramos tecnologías de IA para la detección de fake news y la promoción de una paz mediática.
             </p>
           </div>
-          <div class="md:min-h-[24rem] lg:min-h-[28rem] xl:min-h-[32rem]">
+          <div class="md:min-h-96 lg:min-h-112 xl:min-h-128">
             <img
               src="https://placehold.co/800x600/1f3a8a/bfdbfe"
               alt="Alfabetización Digital"
-              class="aspect-[16/9] h-full w-full object-cover object-center"
+              class="aspect-video h-full w-full object-cover object-center"
             />
           </div>
         </div>

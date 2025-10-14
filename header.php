@@ -12,6 +12,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<?php wp_head(); ?>
+
+	<!-- Dark Mode Initialization (Shadcnblocks compatible) -->
+	<script>
+		// Initialize dark mode from localStorage before page renders to prevent flash
+		(function() {
+			const theme = localStorage.getItem('digitalia-theme') || 'light';
+			if (theme === 'dark') {
+				document.documentElement.classList.add('dark');
+			}
+		})();
+	</script>
+
 	<!-- Add tab functionality -->
 	<script>
 	document.addEventListener('DOMContentLoaded', function() {
@@ -108,7 +120,7 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Skip to content', 'digitalia'); ?></a>
 
-	<nav x-data="{ open: false }" class="sticky top-0 z-[60] bg-black font-mono" id="main-navigation">
+	<nav x-data="{ open: false }" class="sticky top-0 z-60 bg-black font-mono" id="main-navigation">
 		<div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
 			<div class="relative flex h-16 items-center justify-between">
 				<div class="flex flex-1 items-center z-50">
@@ -118,7 +130,7 @@
 						</a>
 					</div>
 				</div>
-				<div class="flex-grow flex items-center justify-center sm:items-stretch sm:justify-end z-40">
+				<div class="grow flex items-center justify-center sm:items-stretch sm:justify-end z-40">
 					<div class="hidden sm:ml-6 sm:block w-full">
 						<div class="flex space-x-4 justify-end" id="desktop-menu">
 							<ul class="flex space-x-6">

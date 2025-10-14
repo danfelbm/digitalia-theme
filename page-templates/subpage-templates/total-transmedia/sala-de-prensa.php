@@ -31,7 +31,7 @@ get_header();
                     $equipo = get_field('equipo', 'user_' . $author_id);
                     $author_posts_url = get_author_posts_url($author_id);
                     ?>
-                    <div data-orientation="horizontal" role="none" class="shrink-0 bg-border h-[1px] w-full"></div>
+                    <div data-orientation="horizontal" role="none" class="shrink-0 bg-border h-px w-full"></div>
                     <div class="">
                         <div class="container grid grid-cols-1 gap-6 py-8 lg:grid-cols-4">
                             <div class="hidden items-center gap-3 self-start lg:flex">
@@ -81,7 +81,7 @@ get_header();
                 wp_reset_postdata();
             endif;
             ?>
-            <div data-orientation="horizontal" role="none" class="shrink-0 bg-border h-[1px] w-full"></div>
+            <div data-orientation="horizontal" role="none" class="shrink-0 bg-border h-px w-full"></div>
         </div>
     </div>
 </section>

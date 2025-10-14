@@ -52,22 +52,22 @@ get_header();
           </div>
         </div>
         <div class="grid grid-cols-3 border-t border-blue-200 md:border-l md:border-t-0">
-          <div class="-mb-px flex items-center justify-center border-b border-r border-blue-200 p-5 sm:p-6 [&:nth-child(3n)]:border-r-0">
+          <div class="-mb-px flex items-center justify-center border-b border-r border-blue-200 p-5 sm:p-6 nth-[3n]:border-r-0">
             <img src="https://placehold.co/800x600/1f3a8a/bfdbfe?text=Canal13" alt="Canal 13" class="size-12 object-cover object-center sm:size-16 lg:size-24">
           </div>
-          <div class="-mb-px flex items-center justify-center border-b border-r border-blue-200 p-5 sm:p-6 [&:nth-child(3n)]:border-r-0">
+          <div class="-mb-px flex items-center justify-center border-b border-r border-blue-200 p-5 sm:p-6 nth-[3n]:border-r-0">
             <img src="https://placehold.co/800x600/1f3a8a/bfdbfe?text=MinTIC" alt="MinTIC" class="size-12 object-cover object-center sm:size-16 lg:size-24">
           </div>
-          <div class="-mb-px flex items-center justify-center border-b border-r border-blue-200 p-5 sm:p-6 [&:nth-child(3n)]:border-r-0">
+          <div class="-mb-px flex items-center justify-center border-b border-r border-blue-200 p-5 sm:p-6 nth-[3n]:border-r-0">
             <img src="https://placehold.co/800x600/1f3a8a/bfdbfe?text=ONU" alt="Naciones Unidas" class="size-12 object-cover object-center sm:size-16 lg:size-24">
           </div>
-          <div class="-mb-px flex items-center justify-center border-b border-r border-blue-200 p-5 sm:p-6 [&:nth-child(3n)]:border-r-0">
+          <div class="-mb-px flex items-center justify-center border-b border-r border-blue-200 p-5 sm:p-6 nth-[3n]:border-r-0">
             <img src="https://placehold.co/800x600/1f3a8a/bfdbfe?text=CasaBosque" alt="Casa del Bosque" class="size-12 object-cover object-center sm:size-16 lg:size-24">
           </div>
-          <div class="-mb-px flex items-center justify-center border-b border-r border-blue-200 p-5 sm:p-6 [&:nth-child(3n)]:border-r-0">
+          <div class="-mb-px flex items-center justify-center border-b border-r border-blue-200 p-5 sm:p-6 nth-[3n]:border-r-0">
             <img src="https://placehold.co/800x600/1f3a8a/bfdbfe?text=RTVC" alt="RTVC" class="size-12 object-cover object-center sm:size-16 lg:size-24">
           </div>
-          <div class="-mb-px flex items-center justify-center border-b border-r border-blue-200 p-5 sm:p-6 [&:nth-child(3n)]:border-r-0">
+          <div class="-mb-px flex items-center justify-center border-b border-r border-blue-200 p-5 sm:p-6 nth-[3n]:border-r-0">
             <img src="https://placehold.co/800x600/1f3a8a/bfdbfe?text=SENA" alt="SENA" class="size-12 object-cover object-center sm:size-16 lg:size-24">
           </div>
         </div>

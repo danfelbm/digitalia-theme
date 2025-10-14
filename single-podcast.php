@@ -26,7 +26,7 @@ get_header();
                 <?php if (has_post_thumbnail()) : ?>
                 <div class="absolute inset-0 w-full h-full">
                     <?php the_post_thumbnail('full', ['class' => 'w-full h-full object-cover']); ?>
-                    <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/90"></div>
+                    <div class="absolute inset-0 bg-linear-to-b from-black/60 to-black/90"></div>
                 </div>
                 <?php endif; ?>
 
@@ -41,7 +41,7 @@ get_header();
                     <div class="flex flex-col lg:flex-row gap-8 items-start">
                         <!-- Featured Image (Small) -->
                         <?php if (has_post_thumbnail()) : ?>
-                            <div class="w-64 h-64 lg:w-[320px] lg:h-[320px] flex-shrink-0 rounded-xl overflow-hidden shadow-2xl">
+                            <div class="w-64 h-64 lg:w-[320px] lg:h-[320px] shrink-0 rounded-xl overflow-hidden shadow-2xl">
                                 <?php the_post_thumbnail('full', ['class' => 'w-full h-full object-cover']); ?>
                             </div>
                         <?php endif; ?>

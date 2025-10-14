@@ -315,7 +315,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <section id="acerca" class="bg-purple-800 pb-32 pt-24">
         <div class="container">
             <div class="grid place-content-center gap-10 lg:grid-cols-2">
-                <div class="mx-auto flex max-w-screen-md flex-col items-center justify-center gap-4 lg:items-start">
+                <div class="mx-auto flex max-w-(--breakpoint-md) flex-col items-center justify-center gap-4 lg:items-start">
                     <div class="rounded-full border border-purple-300 text-purple-300 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-foreground flex items-center gap-1 px-2.5 py-1.5 text-sm">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-<?php echo esc_attr(get_field('ready2_about')['badge']['icon']); ?> h-auto w-4">
                             <?php if (get_field('ready2_about')['badge']['icon'] === 'graduation-cap'): ?>
@@ -334,20 +334,20 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <p class="mb-1.5 text-3xl font-bold text-purple-300"><?php echo esc_html(get_field('ready2_about')['stats']['stat_1']['number']); ?></p>
                                 <p class="text-purple-400"><?php echo esc_html(get_field('ready2_about')['stats']['stat_1']['label']); ?></p>
                             </div>
-                            <div data-orientation="vertical" role="none" class="shrink-0 bg-purple-700 w-[1px] h-auto"></div>
+                            <div data-orientation="vertical" role="none" class="shrink-0 bg-purple-700 w-px h-auto"></div>
                             <div class="mx-auto">
                                 <p class="mb-1.5 text-3xl font-bold text-purple-300"><?php echo esc_html(get_field('ready2_about')['stats']['stat_2']['number']); ?></p>
                                 <p class="text-purple-400"><?php echo esc_html(get_field('ready2_about')['stats']['stat_2']['label']); ?></p>
                             </div>
                         </div>
-                        <div data-orientation="vertical" role="none" class="shrink-0 bg-purple-700 w-[1px] hidden h-auto md:block"></div>
-                        <div data-orientation="horizontal" role="none" class="shrink-0 bg-purple-700 h-[1px] w-full block md:hidden"></div>
+                        <div data-orientation="vertical" role="none" class="shrink-0 bg-purple-700 w-px hidden h-auto md:block"></div>
+                        <div data-orientation="horizontal" role="none" class="shrink-0 bg-purple-700 h-px w-full block md:hidden"></div>
                         <div class="flex justify-between gap-6">
                             <div class="mx-auto">
                                 <p class="mb-1.5 text-3xl font-bold text-purple-300"><?php echo esc_html(get_field('ready2_about')['stats']['stat_3']['number']); ?></p>
                                 <p class="text-purple-400"><?php echo esc_html(get_field('ready2_about')['stats']['stat_3']['label']); ?></p>
                             </div>
-                            <div data-orientation="vertical" role="none" class="shrink-0 bg-purple-700 w-[1px] h-auto"></div>
+                            <div data-orientation="vertical" role="none" class="shrink-0 bg-purple-700 w-px h-auto"></div>
                             <div class="mx-auto">
                                 <p class="mb-1.5 text-3xl font-bold text-purple-300"><?php echo esc_html(get_field('ready2_about')['stats']['stat_4']['number']); ?></p>
                                 <p class="text-purple-400"><?php echo esc_html(get_field('ready2_about')['stats']['stat_4']['label']); ?></p>
@@ -415,7 +415,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <span class="text-purple-950">Últimas novedades y actualizaciones</span>
             </h1>
             <div class="mt-8">
-                <div data-orientation="horizontal" role="none" class="shrink-0 bg-purple-200 h-[1px] w-full"></div>
+                <div data-orientation="horizontal" role="none" class="shrink-0 bg-purple-200 h-px w-full"></div>
                 <div class="">
                     <?php
                     $args = array(
@@ -475,7 +475,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             </a>
                         </div>
                         <?php if (!$query->is_last_post()) : ?>
-                            <div data-orientation="horizontal" role="none" class="shrink-0 bg-purple-200 h-[1px] w-full"></div>
+                            <div data-orientation="horizontal" role="none" class="shrink-0 bg-purple-200 h-px w-full"></div>
                         <?php endif; ?>
                     <?php
                         endwhile;

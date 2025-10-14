@@ -73,7 +73,7 @@ get_header();
                         <?php while (have_posts()) : the_post(); ?>
                             <div class="faq-item bg-white rounded-lg shadow-sm border border-gray-100">
                                 <div class="faq-header p-4">
-                                    <button class="faq-button flex-grow flex items-center justify-between font-medium hover:text-gray-500 text-left">
+                                    <button class="faq-button grow flex items-center justify-between font-medium hover:text-gray-500 text-left">
                                         <h3 class="text-lg faq-title"><?php the_title(); ?></h3>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0 transition-transform duration-200"><path d="m6 9 6 6 6-6"></path></svg>
                                     </button>

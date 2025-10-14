@@ -7,14 +7,14 @@ get_header(); ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('bg-gray-100'); ?>>
     <!-- Profile Header Section -->
-    <div class="relative bg-gradient-to-br from-red-500 via-red-800 to-indigo-900 text-white">
+    <div class="relative bg-linear-to-br from-red-500 via-red-800 to-indigo-900 text-white">
         <div class="absolute inset-0 bg-black opacity-20"></div>
         
         <div class="relative container mx-auto px-4 sm:px-6 py-20">
             <div class="max-w-7xl mx-auto">
                 <div class="md:flex items-start space-y-8 md:space-y-0 md:space-x-12">
                     <!-- Profile Image -->
-                    <div class="flex-shrink-0">
+                    <div class="shrink-0">
                         <div class="w-48 h-48 md:w-64 md:h-64 rounded-2xl border-4 border-white/20 shadow-2xl overflow-hidden backdrop-blur-sm">
                             <?php if (get_field('avatar')): ?>
                                 <img src="<?php echo esc_url(get_field('avatar')); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" class="w-full h-full object-cover">
@@ -72,7 +72,7 @@ get_header(); ?>
                                 $gradient = isset($gradients[$red_social]) ? $gradients[$red_social] : 'from-gray-600 to-gray-800 hover:from-gray-700 hover:to-gray-900';
                                 $icon = isset($icons[$red_social]) ? $icons[$red_social] : 'fa-link';
                             ?>
-                            <a href="<?php echo esc_url($link); ?>" class="inline-flex items-center px-6 py-3 rounded-lg bg-gradient-to-r <?php echo $gradient; ?> transition-all duration-200 shadow-lg hover:shadow-xl">
+                            <a href="<?php echo esc_url($link); ?>" class="inline-flex items-center px-6 py-3 rounded-lg bg-linear-to-r <?php echo $gradient; ?> transition-all duration-200 shadow-lg hover:shadow-xl">
                                 <i class="fab <?php echo $icon; ?> text-xl"></i>
                                 <span class="ml-2 font-medium"><?php echo ucfirst($red_social); ?></span>
                             </a>

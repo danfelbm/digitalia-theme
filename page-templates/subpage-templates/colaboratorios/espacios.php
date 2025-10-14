@@ -8,13 +8,13 @@ get_header();
 ?>
 
 <div class="absolute inset-x-0 top-0 -z-10 h-full w-full">
-    <div class="absolute inset-0 bg-gradient-to-b from-teal-50 to-white"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(#0f766e_0.8px,transparent_0.8px)] [background-size:16px_16px] opacity-[0.15]"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(#115e59_1.2px,transparent_1.2px)] [background-size:32px_32px] opacity-[0.1]"></div>
+    <div class="absolute inset-0 bg-linear-to-b from-teal-50 to-white"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(#0f766e_0.8px,transparent_0.8px)] bg-size-[16px_16px] opacity-[0.15]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(#115e59_1.2px,transparent_1.2px)] bg-size-[32px_32px] opacity-[0.1]"></div>
 </div>
 
 <section class="py-32">
-    <div class="container max-w-screen-lg">
+    <div class="container max-w-(--breakpoint-lg)">
         <div>
             <?php if ($header = get_field('header')) : ?>
                 <div>
@@ -187,7 +187,7 @@ get_header();
     </div>
 </section>
 
-<section class="m-x-auto container flex flex-col items-start gap-20 py-32 bg-gradient-to-t from-teal-50/50 to-white md:flex-row md:items-center">
+<section class="m-x-auto container flex flex-col items-start gap-20 py-32 bg-linear-to-t from-teal-50/50 to-white md:flex-row md:items-center">
     <?php if ($accessibility = get_field('accessibility')) : ?>
         <div class="w-full lg:w-[40%]">
             <h2 class="mb-8 text-2xl font-extrabold text-teal-900"><?php echo esc_html($accessibility['title']); ?></h2>
@@ -217,8 +217,8 @@ get_header();
             <?php endif; ?>
         </div>
 
-        <div class="relative flex h-[430px] w-full p-4 before:absolute before:inset-0 before:bg-teal-600/50 before:[mask-image:url(/wp-content/themes/digitalia/page-templates/subpage-templates/colaboratorios/cross-pattern.svg)] before:[mask-repeat:repeat] before:[mask-size:_32px_32px]">
-            <div class="z-1 absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent to-white opacity-90"></div>
+        <div class="relative flex h-[430px] w-full p-4 before:absolute before:inset-0 before:bg-teal-600/50 before:mask-[url(/wp-content/themes/digitalia/page-templates/subpage-templates/colaboratorios/cross-pattern.svg)] before:mask-repeat before:mask-size-[32px_32px]">
+            <div class="z-1 absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-transparent to-white opacity-90"></div>
             <div class="relative m-auto w-[80%]">
                 <?php if (!empty($accessibility['image'])) : ?>
                     <img src="<?php echo esc_url($accessibility['image']['url']); ?>" 

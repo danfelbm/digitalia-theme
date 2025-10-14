@@ -73,7 +73,7 @@ registerBlockType('digitalia/hero', {
                                 })
                             )
                         ),
-                        wp.element.createElement('div', { className: 'relative aspect-[3/4]' },
+                        wp.element.createElement('div', { className: 'relative aspect-3/4' },
                             wp.element.createElement('div', { className: 'absolute inset-0 flex items-center justify-center' },
                                 wp.element.createElement(MediaUpload, {
                                     onSelect: (media) => setAttributes({ backgroundImage: media.url }),
@@ -140,7 +140,7 @@ registerBlockType('digitalia/hero', {
                             })
                         )
                     ),
-                    wp.element.createElement('div', { className: 'relative aspect-[3/4]' },
+                    wp.element.createElement('div', { className: 'relative aspect-3/4' },
                         wp.element.createElement('div', { className: 'absolute inset-0 flex items-center justify-center' },
                             wp.element.createElement('img', {
                                 src: backgroundImage,

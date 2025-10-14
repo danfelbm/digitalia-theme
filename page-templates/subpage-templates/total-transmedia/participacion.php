@@ -13,7 +13,7 @@ get_header();
     <div class="container mx-auto flex flex-col items-center">
       <div class="w-full overflow-clip rounded-lg bg-blue-50/50 2xl:w-[calc(min(100vw-2*theme(container.padding),100%+8rem))]">
         <div class="grid items-center gap-8 lg:grid-cols-2">
-          <div class="container flex flex-col items-center px-[4rem] py-16 text-center lg:mx-auto lg:items-start lg:px-[4rem] lg:py-32 lg:text-left">
+          <div class="container flex flex-col items-center px-16 py-16 text-center lg:mx-auto lg:items-start lg:px-16 lg:py-32 lg:text-left">
             <p class="text-blue-600 font-semibold">Total Transmedia</p>
             <h1 class="my-6 text-pretty text-4xl font-bold text-blue-900 lg:text-6xl">
               Espacios de Participación
@@ -34,14 +34,14 @@ get_header();
             </div>
           </div>
           <div class="flex flex-col items-center justify-center p-8">
-            <div class="relative aspect-[7/8] h-full w-full">
+            <div class="relative aspect-7/8 h-full w-full">
               <div class="absolute right-[50%] top-[12%] flex aspect-square w-[24%] justify-center rounded-lg border border-blue-200 bg-blue-100 shadow-sm overflow-hidden">
                 <img src="<?php echo get_theme_file_uri('assets/images/placeholder-participacion.jpg'); ?>" alt="Participación 1" class="object-cover w-full h-full" onerror="this.src='https://placehold.co/400x400/1f3a8a/bfdbfe?text=Participación+1'">
               </div>
-              <div class="absolute right-[50%] top-[36%] flex aspect-[5/6] w-[40%] justify-center rounded-lg border border-blue-200 bg-blue-100 shadow-sm overflow-hidden">
+              <div class="absolute right-[50%] top-[36%] flex aspect-5/6 w-[40%] justify-center rounded-lg border border-blue-200 bg-blue-100 shadow-sm overflow-hidden">
                 <img src="<?php echo get_theme_file_uri('assets/images/placeholder-participacion.jpg'); ?>" alt="Participación 2" class="object-cover w-full h-full" onerror="this.src='https://placehold.co/400x480/1f3a8a/bfdbfe?text=Participación+2'">
               </div>
-              <div class="absolute bottom-[36%] left-[54%] flex aspect-[5/6] w-[40%] justify-center rounded-lg border border-blue-200 bg-blue-100 shadow-sm overflow-hidden">
+              <div class="absolute bottom-[36%] left-[54%] flex aspect-5/6 w-[40%] justify-center rounded-lg border border-blue-200 bg-blue-100 shadow-sm overflow-hidden">
                 <img src="<?php echo get_theme_file_uri('assets/images/placeholder-participacion.jpg'); ?>" alt="Participación 3" class="object-cover w-full h-full" onerror="this.src='https://placehold.co/400x480/1f3a8a/bfdbfe?text=Participación+3'">
               </div>
               <div class="absolute bottom-[12%] left-[54%] flex aspect-square w-[24%] justify-center rounded-lg border border-blue-200 bg-blue-100 shadow-sm overflow-hidden">

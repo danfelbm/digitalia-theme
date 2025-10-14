@@ -13,7 +13,7 @@ get_header();
     <section class="relative overflow-hidden py-32 bg-yellow-50 text-yellow-950">
     <div class="container">
         <div class="mx-auto flex max-w-5xl flex-col items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" class="absolute hidden opacity-25 [mask-image:linear-gradient(to_right,white,transparent,transparent,white)] lg:block">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" class="absolute hidden opacity-25 mask-[linear-gradient(to_right,white,transparent,transparent,white)] lg:block">
             <g clip-path="url(#clip0_4_5)">
             <rect width="1920" height="1080"></rect>
             <line y1="49.5" x2="1920" y2="49.5" class="stroke-muted-foreground"></line>
@@ -121,7 +121,7 @@ get_header();
     <section id="acerca" class="pb-32 pt-12">
         <div class="container">
             <div class="grid place-content-center gap-10 lg:grid-cols-2">
-                <div class="mx-auto flex max-w-screen-md flex-col items-center justify-center gap-4 lg:items-start">
+                <div class="mx-auto flex max-w-(--breakpoint-md) flex-col items-center justify-center gap-4 lg:items-start">
                     <?php 
                     $formacion = get_field('formacion_digital');
                     ?>
@@ -141,20 +141,20 @@ get_header();
                                 <p class="mb-1.5 text-3xl font-bold"><?php echo esc_html($formacion['feature_1']['number']); ?></p>
                                 <p class="text-muted-foreground"><?php echo esc_html($formacion['feature_1']['text']); ?></p>
                             </div>
-                            <div data-orientation="vertical" role="none" class="shrink-0 bg-border w-[1px] h-auto"></div>
+                            <div data-orientation="vertical" role="none" class="shrink-0 bg-border w-px h-auto"></div>
                             <div class="mx-auto">
                                 <p class="mb-1.5 text-3xl font-bold"><?php echo esc_html($formacion['feature_2']['number']); ?></p>
                                 <p class="text-muted-foreground"><?php echo esc_html($formacion['feature_2']['text']); ?></p>
                             </div>
                         </div>
-                        <div data-orientation="vertical" role="none" class="shrink-0 bg-border w-[1px] hidden h-auto md:block"></div>
-                        <div data-orientation="horizontal" role="none" class="shrink-0 bg-border h-[1px] w-full block md:hidden"></div>
+                        <div data-orientation="vertical" role="none" class="shrink-0 bg-border w-px hidden h-auto md:block"></div>
+                        <div data-orientation="horizontal" role="none" class="shrink-0 bg-border h-px w-full block md:hidden"></div>
                         <div class="flex justify-between gap-6">
                             <div class="mx-auto">
                                 <p class="mb-1.5 text-3xl font-bold"><?php echo esc_html($formacion['feature_3']['number']); ?></p>
                                 <p class="text-muted-foreground"><?php echo esc_html($formacion['feature_3']['text']); ?></p>
                             </div>
-                            <div data-orientation="vertical" role="none" class="shrink-0 bg-border w-[1px] h-auto"></div>
+                            <div data-orientation="vertical" role="none" class="shrink-0 bg-border w-px h-auto"></div>
                             <div class="mx-auto">
                                 <p class="mb-1.5 text-3xl font-bold"><?php echo esc_html($formacion['feature_4']['number']); ?></p>
                                 <p class="text-muted-foreground"><?php echo esc_html($formacion['feature_4']['text']); ?></p>
@@ -218,17 +218,17 @@ get_header();
     <section id="registro" class="bg-yellow-200 text-yellow-950 py-32">
         <div class="container">
             <?php $registration = get_field('registration_steps'); ?>
-            <div class="mx-auto flex max-w-screen-md flex-col justify-center gap-7 md:text-center">
+            <div class="mx-auto flex max-w-(--breakpoint-md) flex-col justify-center gap-7 md:text-center">
                 <h2 class="text-2xl md:text-4xl"><?php echo esc_html($registration['title']); ?></h2>
                 <p class="text-sm md:text-base"><?php echo esc_html($registration['description']); ?></p>
             </div>
-            <div class="mx-auto mt-14 flex max-w-screen-lg flex-col gap-4 lg:px-16">
+            <div class="mx-auto mt-14 flex max-w-(--breakpoint-lg) flex-col gap-4 lg:px-16">
                 <div class="flex flex-col items-center justify-between min-[960px]:flex-row min-[960px]:gap-10">
                     <div class="flex gap-4 min-[960px]:max-w-md">
                         <div class="flex flex-col items-center justify-between gap-1">
                             <span class="h-20 shrink-0"></span>
                             <span class="flex size-10 shrink-0 items-center justify-center rounded-full border bg-yellow-100 font-mono text-lg text-yellow-700">1</span>
-                            <span class="h-20 w-[3px] shrink-0 bg-gradient-to-b from-transparent to-yellow-500 opacity-70"></span>
+                            <span class="h-20 w-[3px] shrink-0 bg-linear-to-b from-transparent to-yellow-500 opacity-70"></span>
                         </div>
                         <div class="flex flex-col justify-center gap-5 px-0 min-[960px]:gap-6 min-[960px]:p-4">
                             <h3 class="text-xl min-[960px]:text-2xl"><?php echo esc_html($registration['step_1']['title']); ?></h3>
@@ -256,7 +256,7 @@ get_header();
                 <div class="flex flex-col items-center justify-between min-[960px]:flex-row min-[960px]:gap-10">
                     <div class="flex gap-4 min-[960px]:max-w-md">
                         <div class="flex flex-col items-center justify-between gap-1">
-                            <span class="h-20 w-[3px] shrink-0 bg-gradient-to-t from-transparent to-yellow-500 opacity-70"></span>
+                            <span class="h-20 w-[3px] shrink-0 bg-linear-to-t from-transparent to-yellow-500 opacity-70"></span>
                             <span class="flex size-10 shrink-0 items-center justify-center rounded-full border bg-yellow-100 font-mono text-lg text-yellow-700">3</span>
                             <span class="h-20 shrink-0"></span>
                         </div>
@@ -305,9 +305,9 @@ get_header();
                     <a href="<?php echo esc_url($link_url); ?>"<?php echo $target; ?> class="flex flex-col text-clip rounded-xl border border-border">
                         <div>
                             <?php if (has_post_thumbnail()) : ?>
-                                <?php the_post_thumbnail('full', array('class' => 'aspect-[16/9] size-full object-cover object-center')); ?>
+                                <?php the_post_thumbnail('full', array('class' => 'aspect-video size-full object-cover object-center')); ?>
                             <?php else : ?>
-                                <img src="https://www.shadcnblocks.com/images/block/placeholder-dark-1.svg" alt="<?php the_title(); ?>" class="aspect-[16/9] size-full object-cover object-center">
+                                <img src="https://www.shadcnblocks.com/images/block/placeholder-dark-1.svg" alt="<?php the_title(); ?>" class="aspect-video size-full object-cover object-center">
                             <?php endif; ?>
                         </div>
                         <div class="px-6 py-8 md:px-8 md:py-10 lg:px-10 lg:py-12">
@@ -439,7 +439,7 @@ get_header();
     <section id="comparacion" class="py-32">
         <div class="container">
             <?php $comparison = get_field('comparison_section'); ?>
-            <div class="mx-auto grid max-w-screen-xl gap-y-6 lg:grid-cols-2">
+            <div class="mx-auto grid max-w-(--breakpoint-xl) gap-y-6 lg:grid-cols-2">
                 <div class="rounded-md border p-6 md:p-10 lg:rounded-l-md lg:rounded-r-none lg:border-y lg:border-l lg:border-r-0">
                     <h2 class="mb-6 text-3xl font-semibold md:text-4xl"><?php echo esc_html($comparison['traditional_courses']['title']); ?></h2>
                     <p class="mb-6 text-lg text-muted-foreground"><?php echo esc_html($comparison['traditional_courses']['description']); ?></p>

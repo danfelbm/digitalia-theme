@@ -118,7 +118,7 @@
     {{#data}}
     <a href="{{link}}" class="group flex flex-col justify-between rounded-xl border border-border bg-slate-100 p-6">
         <div>
-            <div class="flex aspect-[3/2] text-clip rounded-xl">
+            <div class="flex aspect-3/2 text-clip rounded-xl">
                 <div class="flex-1">
                     <div class="relative size-full origin-bottom transition duration-300 group-hover:scale-105">
                         <img src="{{featured_image_src}}" alt="{{title.rendered}}" class="size-full object-cover object-center">
