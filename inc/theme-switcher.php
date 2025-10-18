@@ -30,7 +30,7 @@ if (!defined('ABSPATH')) {
 function digitalia_get_available_themes() {
     return array(
         'globals' => 'Default (Shadcnblocks)',
-        'amber-minimal' => 'Amber Minimal',
+        // 'amber-minimal' => 'Amber Minimal',
         // Add more themes here as you download them from shadcnblocks.com
         // Example:
         // 'blue' => 'Blue Theme',

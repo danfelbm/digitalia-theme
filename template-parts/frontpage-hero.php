@@ -7,26 +7,24 @@
 ?>
 
 <section id="section1" class="py-16 lg:p-0 overflow-hidden">
+  <!-- HIDDEN: Background effects (can be re-enabled later) -->
+  <!--
   <div class="absolute inset-0 -z-10 h-full w-full overflow-hidden">
-    <!-- Base gradient with center focus -->
     <div class="absolute inset-0 bg-linear-to-r from-transparent via-red-300/30 to-transparent"></div>
-    <!-- Overlapping color rays -->
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.3)_0%,transparent_70%)]"></div>
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_60%_50%,rgba(45,212,191,0.3)_0%,transparent_60%)]"></div>
-    <!-- Animated light rays effect -->
     <div class="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0deg,rgba(255,255,255,0.1)_90deg,transparent_180deg)] animate-[spin_8s_linear_infinite]"></div>
-    <!-- Top right glow -->
     <div class="absolute -top-1/2 right-0 h-[500px] w-[500px] rounded-full bg-linear-to-bl from-red-400/40 to-transparent blur-3xl"></div>
-    <!-- Bottom fade to white -->
     <div class="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-white to-transparent"></div>
-    <!-- Side fades for smooth horizontal transitions -->
     <div class="absolute inset-y-0 left-0 w-32 bg-linear-to-r from-white to-transparent"></div>
     <div class="absolute inset-y-0 right-0 w-32 bg-linear-to-l from-white to-transparent"></div>
   </div>
-  <div class="container">
-    <div class="flex flex-col items-center justify-between gap-20 lg:flex-row">
-      <div class="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,rgba(59,130,246,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(45,212,191,0.1)_1px,transparent_1px)] bg-size-[64px_64px] mask-[radial-gradient(ellipse_50%_100%_at_50%_50%,#000_60%,transparent_100%)]"></div>
-      <div class="min-w-[40%] flex flex-col items-center gap-6 text-center lg:items-start lg:text-left">
+  -->
+  <!--<div class="container">
+    <div class="flex flex-col items-center justify-between gap-20 lg:flex-row">-->
+      <!-- HIDDEN: Grid background (can be re-enabled later) -->
+      <!-- <div class="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,rgba(59,130,246,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(45,212,191,0.1)_1px,transparent_1px)] bg-size-[64px_64px] mask-[radial-gradient(ellipse_50%_100%_at_50%_50%,#000_60%,transparent_100%)]"></div> -->
+      <!--<div class="min-w-[40%] flex flex-col items-center gap-6 text-center lg:items-start lg:text-left">
         <h1 class="text-pretty text-6xl font-bold lg:max-w-md lg:text-6xl"><span id="typewriter"></span><span class="cursor">|</span></h1>
         <p class="max-w-xl text-xl font-medium lg:text-2xl">Digital-IA es un novedoso ecosistema público de Educomunicación destinado a crear y fortalecer capacidades, habilidades y competencias ciudadanas de cara a los nuevos desafíos de la desinformación.</p>
         <div class="flex w-full justify-center lg:justify-start">
@@ -37,8 +35,10 @@
       <img src="/wp-content/uploads/2024/12/hero-img2.png" alt="placeholder hero" class="hidden lg:block pointer-events-none aspect-video rounded-md object-cover" style="aspect-ratio: 13 / 9">
     </div>
   </div>
-</section>
+</section>-->
 
+<!-- HIDDEN: GlitchEffect canvas (can be re-enabled later) -->
+<!--
 <script>
     class GlitchEffect {
     constructor(parentId) {
@@ -216,3 +216,4 @@ class Typewriter {
 // Usage example:
 const glitchEffect = new GlitchEffect('section1');
 </script>
+-->

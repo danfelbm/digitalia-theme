@@ -198,6 +198,60 @@ function digitalia_enqueue_swiper() {
 add_action('wp_enqueue_scripts', 'digitalia_enqueue_swiper');
 
 /**
+ * Enqueue Three.js Globe scripts
+ */
+function digitalia_enqueue_globe() {
+	// Only load on front page or pages with globe
+	if ( is_front_page() ) {
+		// Enqueue Three.js from CDN (r128 to match our code)
+		wp_enqueue_script(
+			'threejs',
+			'https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js',
+			array(),
+			'0.128.0',
+			true
+		);
+
+		// Enqueue OrbitControls
+		wp_enqueue_script(
+			'threejs-orbit-controls',
+			'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js',
+			array( 'threejs' ),
+			'0.128.0',
+			true
+		);
+
+		// Enqueue three-globe
+		wp_enqueue_script(
+			'three-globe',
+			'https://cdn.jsdelivr.net/npm/three-globe@2.18.8/dist/three-globe.min.js',
+			array( 'threejs' ),
+			'2.18.8',
+			true
+		);
+
+		// Enqueue our globe loader
+		wp_enqueue_script(
+			'digitalia-globe-loader',
+			get_template_directory_uri() . '/js/globe/globe-loader.js',
+			array( 'threejs', 'threejs-orbit-controls', 'three-globe' ),
+			_S_VERSION,
+			true
+		);
+
+		// Pass theme URL to JavaScript
+		wp_localize_script(
+			'digitalia-globe-loader',
+			'digitaliaGlobeConfig',
+			array(
+				'themeUrl' => get_template_directory_uri(),
+			)
+		);
+	}
+}
+add_action( 'wp_enqueue_scripts', 'digitalia_enqueue_globe' );
+
+/**
  * Helper function to recursively scan template directories
  */
 function scan_template_dir($dir, $theme_dir, &$templates) {

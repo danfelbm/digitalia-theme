@@ -13,9 +13,161 @@ get_header();
 ?>
 
 	<main id="primary" class="site-main">
+
+	<!-- Globe Hero Section -->
+	<section class="relative w-full flex flex-col lg:block lg:h-screen overflow-x-hidden" style="background-color: #040d21;">
+
+		<!-- Texto - arriba en mobile, absolute overlay en desktop -->
+		<div class="container relative z-10 px-4 lg:absolute lg:inset-x-0 lg:top-1/2 lg:-translate-y-1/2" style="pointer-events: none; margin-top: -50px; padding-top: 0; padding-bottom: 0;">
+			<div class="max-w-2xl space-y-6 text-white" style="pointer-events: auto;">
+				<h1 class="text-5xl font-bold leading-tight text-white md:text-6xl">
+					Educomunicación<br>
+					<span class="text-white">para la paz</span>
+				</h1>
+				<p class="text-lg text-gray-300">
+					Digital-IA es un novedoso ecosistema público de Educomunicación destinado a crear y fortalecer capacidades, habilidades y competencias ciudadanas de cara a los nuevos desafíos de la desinformación.
+				</p>
+				<div class="flex gap-3">
+					<a href="#mas-digitalia" class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition hover:bg-gray-200">
+						Más información
+					</a>
+					<a href="https://digitalia.gov.co/campus/" class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white px-6 py-3 text-sm font-medium text-white transition hover:bg-white hover:text-black">
+						Ir al Campus virtual
+					</a>
+				</div>
+				<ul class="space-y-3 pt-6">
+					<li class="mb-3">
+						<p class="text-sm font-semibold tracking-tight text-gray-400">Cómo te ayudamos a crecer</p>
+					</li>
+					<li class="flex gap-3 items-start">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check flex-shrink-0 text-white mt-0.5"><path d="M20 6 9 17l-5-5"></path></svg>
+						<p class="text-sm font-medium text-white">Aprendizaje Acelerado<span class="block text-gray-400">Aprende habilidades digitales 10x más rápido.</span></p>
+					</li>
+					<li class="flex gap-3 items-start">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check flex-shrink-0 text-white mt-0.5"><path d="M20 6 9 17l-5-5"></path></svg>
+						<p class="text-sm font-medium text-white">Certificación Gratuita<span class="block text-gray-400">Obtén certificados reconocidos sin costo.</span></p>
+					</li>
+					<li class="flex gap-3 items-start">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check flex-shrink-0 text-white mt-0.5"><path d="M20 6 9 17l-5-5"></path></svg>
+						<p class="text-sm font-medium text-white">5 Módulos Especializados<span class="block text-gray-400">Academia, En Línea, Colaboratorios, Total Transmedia, READY.</span></p>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- Globo - abajo en mobile, absolute con offset en desktop -->
+		<div class="h-[500px] lg:absolute lg:inset-0 lg:h-full w-full">
+			<div class="globe-canvas-offset h-full" style="position: relative;">
+				<?php get_template_part('template-parts/globe-hero'); ?>
+			</div>
+		</div>
+
+	</section>
+
+	<style>
+	/* Desktop: offset canvas 440px to the right */
+	@media (min-width: 1024px) {
+		.globe-canvas-offset {
+			left: 440px;
+		}
+	}
+	</style>
+
 	<?php get_template_part('template-parts/frontpage-hero'); ?>
 
-	<section class="container py-32" style="margin-top: -8rem;">
+	<!-- Sección de Cursos -->
+	<section class="text-white overflow-hidden py-32" style="background-color: #010819;">
+		<div class="container flex w-full flex-col items-center justify-center px-4">
+			<p class="bg-white/10 mb-4 rounded-full px-2 py-1 text-xs uppercase tracking-wide text-white">Cursos Digitalia</p>
+			<h2 class="relative py-2 text-center font-sans text-5xl font-semibold tracking-tighter lg:text-6xl text-white">Formación para la Paz</h2>
+			<p class="text-md mx-auto mt-5 max-w-xl px-5 text-center lg:text-lg text-gray-300">Tres rutas de aprendizaje diseñadas para enfrentar los desafíos de la desinformación y fortalecer capacidades ciudadanas.</p>
+
+			<div class="mt-10 grid w-full max-w-5xl grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
+
+				<!-- Curso 1: Crossmedia + AMI + IA -->
+				<div class="bg-gray-900/60 flex flex-col rounded-3xl p-4">
+					<div class="bg-gradient-to-br from-blue-500 to-blue-700 p-4 max-w-md w-full rounded-xl h-48 flex items-center justify-center overflow-hidden relative">
+						<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="opacity-20 absolute">
+							<rect x="16" y="16" width="6" height="6" rx="1"></rect>
+							<rect x="2" y="16" width="6" height="6" rx="1"></rect>
+							<rect x="9" y="2" width="6" height="6" rx="1"></rect>
+							<path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path>
+							<path d="M12 12V8"></path>
+						</svg>
+					</div>
+					<div class="mt-3 flex items-center justify-start gap-3">
+						<h3 class="text-2xl font-semibold tracking-tighter text-white">Crossmedia + AMI + IA</h3>
+						<span class="bg-blue-500/20 text-blue-300 inline-block rounded-xl px-3 text-sm">Nuevo</span>
+					</div>
+					<p class="text-gray-400 mt-2 text-sm">Crea universos narrativos con IA y enfoque de Alfabetización Mediática Informacional para combatir la desinformación.</p>
+					<div class="mt-5 flex items-center justify-between">
+						<a href="https://digitalia.gov.co/crossmedia" class="bg-white/10 hover:bg-blue-500 hover:text-white transition-colors flex h-full items-center justify-center gap-2 rounded-full px-7 py-2 text-sm text-white">
+							Explorar curso
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right">
+								<path d="M5 12h14"></path>
+								<path d="m12 5 7 7-7 7"></path>
+							</svg>
+						</a>
+					</div>
+				</div>
+
+				<!-- Curso 2: Multimedia + Sostenibilidad -->
+				<div class="bg-gray-900/60 flex flex-col rounded-3xl p-4">
+					<div class="bg-gradient-to-br from-teal-500 to-teal-700 p-4 max-w-md w-full rounded-xl h-48 flex items-center justify-center overflow-hidden relative">
+						<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="opacity-20 absolute">
+							<path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"></path>
+							<path d="m6.2 5.3 3.1 3.9"></path>
+							<path d="m12.4 3.4 3.1 4"></path>
+							<path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"></path>
+						</svg>
+					</div>
+					<div class="mt-3 flex items-center justify-start gap-3">
+						<h3 class="text-2xl font-semibold tracking-tighter text-white">Multimedia + Sostenibilidad</h3>
+					</div>
+					<p class="text-gray-400 mt-2 text-sm">Genera contenido de alta calidad con herramientas libres para los desafíos ciudadanos y la paz mediática.</p>
+					<div class="mt-5 flex items-center justify-between">
+						<a href="https://digitalia.gov.co/multimedia" class="bg-white/10 hover:bg-teal-500 hover:text-white transition-colors flex h-full items-center justify-center gap-2 rounded-full px-7 py-2 text-sm text-white">
+							Explorar curso
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right">
+								<path d="M5 12h14"></path>
+								<path d="m12 5 7 7-7 7"></path>
+							</svg>
+						</a>
+					</div>
+				</div>
+
+				<!-- Curso 3: Transmedia -->
+				<div class="bg-gray-900/60 flex flex-col rounded-3xl p-4">
+					<div class="bg-gradient-to-br from-purple-500 to-purple-700 p-4 max-w-md w-full rounded-xl h-48 flex items-center justify-center overflow-hidden relative">
+						<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="opacity-20 absolute">
+							<path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path>
+							<path d="M20 3v4"></path>
+							<path d="M22 5h-4"></path>
+							<path d="M4 17v2"></path>
+							<path d="M5 18H3"></path>
+						</svg>
+					</div>
+					<div class="mt-3 flex items-center justify-start gap-3">
+						<h3 class="text-2xl font-semibold tracking-tighter text-white">Transmedia</h3>
+					</div>
+					<p class="text-gray-400 mt-2 text-sm">Revoluciona la narración llevando historias a múltiples plataformas donde la audiencia interactúa y es parte del relato.</p>
+					<div class="mt-5 flex items-center justify-between">
+						<a href="https://digitalia.gov.co/transmedia" class="bg-white/10 hover:bg-purple-500 hover:text-white transition-colors flex h-full items-center justify-center gap-2 rounded-full px-7 py-2 text-sm text-white">
+							Explorar curso
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right">
+								<path d="M5 12h14"></path>
+								<path d="m12 5 7 7-7 7"></path>
+							</svg>
+						</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<!--style="margin-top: -8rem;" -->
+	<section id="mas-digitalia" class="container py-32">
 	<div class="mb-4 grid grid-cols-1 gap-4 md:grid-cols-3 md:grid-rows-3">
 		<?php if (have_rows('modules')) : ?>
 		<?php while (have_rows('modules')) : the_row(); ?>
