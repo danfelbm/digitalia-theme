@@ -11,36 +11,224 @@ if (!function_exists('digitalia_register_acf_fields')) {
                 'key' => 'group_hero_section',
                 'title' => 'Sección Hero',
                 'fields' => array(
+                    // Hero Type Selector
+                    array(
+                        'key' => 'field_hero_type',
+                        'label' => 'Tipo de Hero',
+                        'name' => 'hero_type',
+                        'type' => 'select',
+                        'instructions' => 'Seleccione el tipo de hero a mostrar en la página principal',
+                        'choices' => array(
+                            'globe' => 'Globe Hero (con globo 3D - actual)',
+                            'classic' => 'Classic Hero (banner con imágenes)',
+                        ),
+                        'default_value' => 'globe',
+                        'allow_null' => 0,
+                        'multiple' => 0,
+                        'ui' => 1,
+                        'return_format' => 'value',
+                    ),
+                    // Globe Hero Fields
+                    array(
+                        'key' => 'field_globe_hero_title',
+                        'label' => '[Globe] Título Principal',
+                        'name' => 'globe_hero_title',
+                        'type' => 'text',
+                        'default_value' => 'Educomunicación<br>para la paz',
+                        'instructions' => 'Título principal del Globe Hero. Use &lt;br&gt; para saltos de línea.',
+                        'conditional_logic' => array(
+                            array(
+                                array(
+                                    'field' => 'field_hero_type',
+                                    'operator' => '==',
+                                    'value' => 'globe',
+                                ),
+                            ),
+                        ),
+                    ),
+                    array(
+                        'key' => 'field_globe_hero_description',
+                        'label' => '[Globe] Descripción',
+                        'name' => 'globe_hero_description',
+                        'type' => 'textarea',
+                        'default_value' => 'Digital-IA es un novedoso ecosistema público de Educomunicación destinado a crear y fortalecer capacidades, habilidades y competencias ciudadanas de cara a los nuevos desafíos de la desinformación.',
+                        'instructions' => 'Descripción principal del Globe Hero',
+                        'conditional_logic' => array(
+                            array(
+                                array(
+                                    'field' => 'field_hero_type',
+                                    'operator' => '==',
+                                    'value' => 'globe',
+                                ),
+                            ),
+                        ),
+                    ),
+                    array(
+                        'key' => 'field_globe_hero_primary_button',
+                        'label' => '[Globe] Botón Primario',
+                        'name' => 'globe_hero_primary_button',
+                        'type' => 'group',
+                        'layout' => 'block',
+                        'conditional_logic' => array(
+                            array(
+                                array(
+                                    'field' => 'field_hero_type',
+                                    'operator' => '==',
+                                    'value' => 'globe',
+                                ),
+                            ),
+                        ),
+                        'sub_fields' => array(
+                            array(
+                                'key' => 'field_globe_primary_button_text',
+                                'label' => 'Texto del Botón',
+                                'name' => 'text',
+                                'type' => 'text',
+                                'default_value' => 'Más información',
+                            ),
+                            array(
+                                'key' => 'field_globe_primary_button_url',
+                                'label' => 'URL',
+                                'name' => 'url',
+                                'type' => 'url',
+                                'default_value' => '#mas-digitalia',
+                            ),
+                        ),
+                    ),
+                    array(
+                        'key' => 'field_globe_hero_secondary_button',
+                        'label' => '[Globe] Botón Secundario',
+                        'name' => 'globe_hero_secondary_button',
+                        'type' => 'group',
+                        'layout' => 'block',
+                        'conditional_logic' => array(
+                            array(
+                                array(
+                                    'field' => 'field_hero_type',
+                                    'operator' => '==',
+                                    'value' => 'globe',
+                                ),
+                            ),
+                        ),
+                        'sub_fields' => array(
+                            array(
+                                'key' => 'field_globe_secondary_button_text',
+                                'label' => 'Texto del Botón',
+                                'name' => 'text',
+                                'type' => 'text',
+                                'default_value' => 'Ir al Campus virtual',
+                            ),
+                            array(
+                                'key' => 'field_globe_secondary_button_url',
+                                'label' => 'URL',
+                                'name' => 'url',
+                                'type' => 'url',
+                                'default_value' => 'https://digitalia.gov.co/campus/',
+                            ),
+                        ),
+                    ),
+                    array(
+                        'key' => 'field_globe_hero_features',
+                        'label' => '[Globe] Features (Cómo te ayudamos)',
+                        'name' => 'globe_hero_features',
+                        'type' => 'repeater',
+                        'layout' => 'block',
+                        'button_label' => 'Añadir Feature',
+                        'max' => 3,
+                        'conditional_logic' => array(
+                            array(
+                                array(
+                                    'field' => 'field_hero_type',
+                                    'operator' => '==',
+                                    'value' => 'globe',
+                                ),
+                            ),
+                        ),
+                        'sub_fields' => array(
+                            array(
+                                'key' => 'field_globe_feature_title',
+                                'label' => 'Título',
+                                'name' => 'title',
+                                'type' => 'text',
+                                'default_value' => '',
+                            ),
+                            array(
+                                'key' => 'field_globe_feature_description',
+                                'label' => 'Descripción',
+                                'name' => 'description',
+                                'type' => 'textarea',
+                                'rows' => 2,
+                                'default_value' => '',
+                            ),
+                        ),
+                    ),
+                    // Classic Hero Fields
                     array(
                         'key' => 'field_hero_subtitle',
-                        'label' => 'Subtítulo',
+                        'label' => '[Classic] Subtítulo',
                         'name' => 'hero_subtitle',
                         'type' => 'text',
                         'default_value' => 'Educomunicación Para la Paz',
                         'instructions' => 'Ingrese el subtítulo de la sección hero',
+                        'conditional_logic' => array(
+                            array(
+                                array(
+                                    'field' => 'field_hero_type',
+                                    'operator' => '==',
+                                    'value' => 'classic',
+                                ),
+                            ),
+                        ),
                     ),
                     array(
                         'key' => 'field_hero_title',
-                        'label' => 'Título',
+                        'label' => '[Classic] Título',
                         'name' => 'hero_title',
                         'type' => 'text',
                         'default_value' => 'Digital·IA',
                         'instructions' => 'Ingrese el título principal',
+                        'conditional_logic' => array(
+                            array(
+                                array(
+                                    'field' => 'field_hero_type',
+                                    'operator' => '==',
+                                    'value' => 'classic',
+                                ),
+                            ),
+                        ),
                     ),
                     array(
                         'key' => 'field_hero_description',
-                        'label' => 'Descripción',
+                        'label' => '[Classic] Descripción',
                         'name' => 'hero_description',
                         'type' => 'textarea',
                         'default_value' => 'Digital-IA es un programa nacional de educomunicación que fortalece las capacidades ciudadanas frente a los desafíos de las tecnologías emergentes, promoviendo la alfabetización mediática e informacional con enfoque de paz.',
                         'instructions' => 'Ingrese la descripción principal',
+                        'conditional_logic' => array(
+                            array(
+                                array(
+                                    'field' => 'field_hero_type',
+                                    'operator' => '==',
+                                    'value' => 'classic',
+                                ),
+                            ),
+                        ),
                     ),
                     array(
                         'key' => 'field_hero_primary_button',
-                        'label' => 'Botón Principal',
+                        'label' => '[Classic] Botón Principal',
                         'name' => 'hero_primary_button',
                         'type' => 'group',
                         'layout' => 'block',
+                        'conditional_logic' => array(
+                            array(
+                                array(
+                                    'field' => 'field_hero_type',
+                                    'operator' => '==',
+                                    'value' => 'classic',
+                                ),
+                            ),
+                        ),
                         'sub_fields' => array(
                             array(
                                 'key' => 'field_hero_primary_button_text',
@@ -64,10 +252,19 @@ if (!function_exists('digitalia_register_acf_fields')) {
                     ),
                     array(
                         'key' => 'field_hero_secondary_button',
-                        'label' => 'Botón Secundario',
+                        'label' => '[Classic] Botón Secundario',
                         'name' => 'hero_secondary_button',
                         'type' => 'group',
                         'layout' => 'block',
+                        'conditional_logic' => array(
+                            array(
+                                array(
+                                    'field' => 'field_hero_type',
+                                    'operator' => '==',
+                                    'value' => 'classic',
+                                ),
+                            ),
+                        ),
                         'sub_fields' => array(
                             array(
                                 'key' => 'field_hero_secondary_button_text',
@@ -91,40 +288,76 @@ if (!function_exists('digitalia_register_acf_fields')) {
                     ),
                     array(
                         'key' => 'field_hero_background_image',
-                        'label' => 'Imagen de Fondo',
+                        'label' => '[Classic] Imagen de Fondo',
                         'name' => 'hero_background_image',
                         'type' => 'image',
                         'return_format' => 'url',
                         'preview_size' => 'medium',
                         'default_value' => '/wp-content/uploads/2024/12/svgbackdrop.svg',
                         'instructions' => 'Seleccione la imagen de fondo',
+                        'conditional_logic' => array(
+                            array(
+                                array(
+                                    'field' => 'field_hero_type',
+                                    'operator' => '==',
+                                    'value' => 'classic',
+                                ),
+                            ),
+                        ),
                     ),
                     array(
                         'key' => 'field_hero_image_left',
-                        'label' => 'Imagen Decorativa Izquierda',
+                        'label' => '[Classic] Imagen Decorativa Izquierda',
                         'name' => 'hero_image_left',
                         'type' => 'image',
                         'return_format' => 'url',
                         'preview_size' => 'medium',
                         'instructions' => 'Seleccione la imagen decorativa izquierda',
+                        'conditional_logic' => array(
+                            array(
+                                array(
+                                    'field' => 'field_hero_type',
+                                    'operator' => '==',
+                                    'value' => 'classic',
+                                ),
+                            ),
+                        ),
                     ),
                     array(
                         'key' => 'field_hero_image_right',
-                        'label' => 'Imagen Decorativa Derecha',
+                        'label' => '[Classic] Imagen Decorativa Derecha',
                         'name' => 'hero_image_right',
                         'type' => 'image',
                         'return_format' => 'url',
                         'preview_size' => 'medium',
                         'instructions' => 'Seleccione la imagen decorativa derecha',
+                        'conditional_logic' => array(
+                            array(
+                                array(
+                                    'field' => 'field_hero_type',
+                                    'operator' => '==',
+                                    'value' => 'classic',
+                                ),
+                            ),
+                        ),
                     ),
                     array(
                         'key' => 'field_hero_image_bottom',
-                        'label' => 'Imagen Decorativa Inferior',
+                        'label' => '[Classic] Imagen Decorativa Inferior',
                         'name' => 'hero_image_bottom',
                         'type' => 'image',
                         'return_format' => 'url',
                         'preview_size' => 'medium',
                         'instructions' => 'Seleccione la imagen decorativa inferior',
+                        'conditional_logic' => array(
+                            array(
+                                array(
+                                    'field' => 'field_hero_type',
+                                    'operator' => '==',
+                                    'value' => 'classic',
+                                ),
+                            ),
+                        ),
                     ),
                 ),
                 'location' => array(

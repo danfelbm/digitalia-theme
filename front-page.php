@@ -14,6 +14,33 @@ get_header();
 
 	<main id="primary" class="site-main">
 
+	<?php
+	// Get hero type selection (default to globe)
+	$hero_type = get_field('hero_type') ?: 'globe';
+
+	if ($hero_type === 'globe'):
+		// Get Globe Hero ACF fields with fallbacks
+		$globe_title = get_field('globe_hero_title') ?: 'Educomunicación<br>para la paz';
+		$globe_description = get_field('globe_hero_description') ?: 'Digital-IA es un novedoso ecosistema público de Educomunicación destinado a crear y fortalecer capacidades, habilidades y competencias ciudadanas de cara a los nuevos desafíos de la desinformación.';
+		$globe_primary_btn = get_field('globe_hero_primary_button');
+		$globe_secondary_btn = get_field('globe_hero_secondary_button');
+		$globe_features = get_field('globe_hero_features');
+
+		// Set default values if fields are empty
+		if (!$globe_primary_btn || empty($globe_primary_btn['text'])) {
+			$globe_primary_btn = array('text' => 'Más información', 'url' => '#mas-digitalia');
+		}
+		if (!$globe_secondary_btn || empty($globe_secondary_btn['text'])) {
+			$globe_secondary_btn = array('text' => 'Ir al Campus virtual', 'url' => 'https://digitalia.gov.co/campus/');
+		}
+		if (!$globe_features || empty($globe_features)) {
+			$globe_features = array(
+				array('title' => 'Aprendizaje Acelerado', 'description' => 'Aprende habilidades digitales 10x más rápido.'),
+				array('title' => 'Certificación Gratuita', 'description' => 'Obtén certificados reconocidos sin costo.'),
+				array('title' => '5 Módulos Especializados', 'description' => 'Academia, En Línea, Colaboratorios, Total Transmedia, READY.')
+			);
+		}
+	?>
 	<!-- Globe Hero Section -->
 	<section class="relative w-full flex flex-col lg:block lg:h-screen overflow-x-hidden" style="background-color: #040d21;">
 
@@ -21,36 +48,29 @@ get_header();
 		<div class="container relative z-10 px-4 lg:absolute lg:inset-x-0 lg:top-1/2 lg:-translate-y-1/2" style="pointer-events: none; margin-top: -50px; padding-top: 0; padding-bottom: 0;">
 			<div class="max-w-2xl space-y-6 text-white" style="pointer-events: auto;">
 				<h1 class="text-5xl font-bold leading-tight text-white md:text-6xl">
-					Educomunicación<br>
-					<span class="text-white">para la paz</span>
+					<?php echo $globe_title; ?>
 				</h1>
 				<p class="text-lg text-gray-300">
-					Digital-IA es un novedoso ecosistema público de Educomunicación destinado a crear y fortalecer capacidades, habilidades y competencias ciudadanas de cara a los nuevos desafíos de la desinformación.
+					<?php echo esc_html($globe_description); ?>
 				</p>
 				<div class="flex gap-3">
-					<a href="#mas-digitalia" class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition hover:bg-gray-200">
-						Más información
+					<a href="<?php echo esc_url($globe_primary_btn['url']); ?>" class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition hover:bg-gray-200">
+						<?php echo esc_html($globe_primary_btn['text']); ?>
 					</a>
-					<a href="https://digitalia.gov.co/campus/" class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white px-6 py-3 text-sm font-medium text-white transition hover:bg-white hover:text-black">
-						Ir al Campus virtual
+					<a href="<?php echo esc_url($globe_secondary_btn['url']); ?>" class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white px-6 py-3 text-sm font-medium text-white transition hover:bg-white hover:text-black">
+						<?php echo esc_html($globe_secondary_btn['text']); ?>
 					</a>
 				</div>
 				<ul class="space-y-3 pt-6">
 					<li class="mb-3">
 						<p class="text-sm font-semibold tracking-tight text-gray-400">Cómo te ayudamos a crecer</p>
 					</li>
+					<?php foreach ($globe_features as $feature): ?>
 					<li class="flex gap-3 items-start">
 						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check flex-shrink-0 text-white mt-0.5"><path d="M20 6 9 17l-5-5"></path></svg>
-						<p class="text-sm font-medium text-white">Aprendizaje Acelerado<span class="block text-gray-400">Aprende habilidades digitales 10x más rápido.</span></p>
+						<p class="text-sm font-medium text-white"><?php echo esc_html($feature['title']); ?><span class="block text-gray-400"><?php echo esc_html($feature['description']); ?></span></p>
 					</li>
-					<li class="flex gap-3 items-start">
-						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check flex-shrink-0 text-white mt-0.5"><path d="M20 6 9 17l-5-5"></path></svg>
-						<p class="text-sm font-medium text-white">Certificación Gratuita<span class="block text-gray-400">Obtén certificados reconocidos sin costo.</span></p>
-					</li>
-					<li class="flex gap-3 items-start">
-						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check flex-shrink-0 text-white mt-0.5"><path d="M20 6 9 17l-5-5"></path></svg>
-						<p class="text-sm font-medium text-white">5 Módulos Especializados<span class="block text-gray-400">Academia, En Línea, Colaboratorios, Total Transmedia, READY.</span></p>
-					</li>
+					<?php endforeach; ?>
 				</ul>
 			</div>
 		</div>
@@ -72,8 +92,9 @@ get_header();
 		}
 	}
 	</style>
-
+	<?php else: ?>
 	<?php get_template_part('template-parts/frontpage-hero'); ?>
+	<?php endif; ?>
 
 	<!-- Sección de Cursos -->
 	<section class="text-white overflow-hidden py-32" style="background-color: #010819;">

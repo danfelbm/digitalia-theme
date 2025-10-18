@@ -121,19 +121,8 @@
         console.log('Globe colors updated successfully!');
       };
 
-      // Log helper message
-      console.log('%c🌍 Globe Color Editor Active!', 'font-size: 16px; font-weight: bold; color: #3a228a;');
-      console.log('%cUse: window.updateGlobeColors({ sceneBackground: 0xFFFFFF, atmosphereColor: "#FF0000", ... })', 'color: #666;');
-      console.log('%cAvailable properties:', 'font-weight: bold;');
-      console.log('- sceneBackground (hex): 0xcad5e2');
-      console.log('- atmosphereColor (string): "#3a228a"');
-      console.log('- globeColor (hex): 0x3a228a');
-      console.log('- globeEmissive (hex): 0x220038');
-      console.log('- globeEmissiveIntensity (number): 0.1');
-      console.log('- shininess (number): 0.7');
-      console.log('- sceneFog (hex): 0x535ef3');
-      console.log('%cCurrent theme colors:', 'font-weight: bold; margin-top: 10px;');
-      console.log(theme);
+      // Globe Color Editor available via window.updateGlobeColors()
+      // Call window.updateGlobeColors({ sceneBackground: 0xFFFFFF, atmosphereColor: "#FF0000", ... })
 
     } catch (error) {
       console.error('Error loading globe data:', error);
