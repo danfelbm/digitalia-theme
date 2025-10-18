@@ -97,7 +97,7 @@ get_header();
 	<?php endif; ?>
 
 	<!-- Sección de Cursos -->
-	<section class="text-white overflow-hidden py-32" style="background-color: #010819;">
+	<section id="cursos" class="text-white overflow-hidden py-32" style="background-color: #010819;">
 		<div class="container flex w-full flex-col items-center justify-center px-4">
 			<p class="bg-white/10 mb-4 rounded-full px-2 py-1 text-xs uppercase tracking-wide text-white">Cursos Digitalia</p>
 			<h2 class="relative py-2 text-center font-sans text-5xl font-semibold tracking-tighter lg:text-6xl text-white">Formación para la Paz</h2>
