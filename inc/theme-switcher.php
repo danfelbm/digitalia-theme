@@ -113,7 +113,7 @@ function digitalia_build_input_css() {
 
     // Header de WordPress para el theme
     $header = <<<CSS
-/*
+/*!
 Theme Name: Digitalia
 Theme URI: https://danielbecerra.org
 Author: Daniel Becerra
