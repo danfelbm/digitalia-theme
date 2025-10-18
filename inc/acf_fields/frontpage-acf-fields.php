@@ -844,6 +844,131 @@ if (!function_exists('digitalia_register_acf_fields')) {
                 ),
                 'menu_order' => 4,
             ));
+
+            // Courses Section Fields
+            acf_add_local_field_group(array(
+                'key' => 'group_courses_section',
+                'title' => 'Sección de Cursos',
+                'fields' => array(
+                    array(
+                        'key' => 'field_courses_background_color',
+                        'label' => 'Color de Fondo',
+                        'name' => 'courses_background_color',
+                        'type' => 'text',
+                        'default_value' => '#010819',
+                        'instructions' => 'Color hexadecimal de fondo para la sección de cursos',
+                    ),
+                    array(
+                        'key' => 'field_courses_header',
+                        'label' => 'Encabezado de Cursos',
+                        'name' => 'courses_header',
+                        'type' => 'group',
+                        'sub_fields' => array(
+                            array(
+                                'key' => 'field_courses_badge',
+                                'label' => 'Texto de Badge',
+                                'name' => 'badge',
+                                'type' => 'text',
+                                'default_value' => 'Cursos Digitalia',
+                            ),
+                            array(
+                                'key' => 'field_courses_title',
+                                'label' => 'Título',
+                                'name' => 'title',
+                                'type' => 'text',
+                                'default_value' => 'Formación para la Paz',
+                            ),
+                            array(
+                                'key' => 'field_courses_description',
+                                'label' => 'Descripción',
+                                'name' => 'description',
+                                'type' => 'textarea',
+                                'default_value' => 'Tres rutas de aprendizaje diseñadas para enfrentar los desafíos de la desinformación y fortalecer capacidades ciudadanas.',
+                            ),
+                        ),
+                    ),
+                    array(
+                        'key' => 'field_courses_items',
+                        'label' => 'Cursos',
+                        'name' => 'courses_items',
+                        'type' => 'repeater',
+                        'layout' => 'block',
+                        'button_label' => 'Añadir Curso',
+                        'sub_fields' => array(
+                            array(
+                                'key' => 'field_course_title',
+                                'label' => 'Título del Curso',
+                                'name' => 'title',
+                                'type' => 'text',
+                                'default_value' => '',
+                            ),
+                            array(
+                                'key' => 'field_course_description',
+                                'label' => 'Descripción',
+                                'name' => 'description',
+                                'type' => 'textarea',
+                                'default_value' => '',
+                            ),
+                            array(
+                                'key' => 'field_course_badge',
+                                'label' => 'Badge (opcional)',
+                                'name' => 'badge',
+                                'type' => 'text',
+                                'instructions' => 'Ej: "Nuevo", "Actualizado", etc. Dejar vacío si no se necesita.',
+                                'default_value' => '',
+                            ),
+                            array(
+                                'key' => 'field_course_url',
+                                'label' => 'URL del Curso',
+                                'name' => 'url',
+                                'type' => 'url',
+                                'default_value' => '',
+                            ),
+                            array(
+                                'key' => 'field_course_button_text',
+                                'label' => 'Texto del Botón',
+                                'name' => 'button_text',
+                                'type' => 'text',
+                                'default_value' => 'Explorar curso',
+                            ),
+                            array(
+                                'key' => 'field_course_color',
+                                'label' => 'Color del Curso',
+                                'name' => 'color',
+                                'type' => 'select',
+                                'choices' => array(
+                                    'blue' => 'Azul',
+                                    'teal' => 'Verde Azulado',
+                                    'purple' => 'Morado',
+                                    'yellow' => 'Amarillo',
+                                    'red' => 'Rojo',
+                                ),
+                                'default_value' => 'blue',
+                                'instructions' => 'Color del gradiente y botón hover',
+                            ),
+                            array(
+                                'key' => 'field_course_icon_svg',
+                                'label' => 'Ícono SVG',
+                                'name' => 'icon_svg',
+                                'type' => 'textarea',
+                                'instructions' => 'Pega aquí el código SVG completo del ícono (solo la parte entre <svg>...</svg>, sin incluir las etiquetas svg)',
+                                'default_value' => '',
+                                'rows' => 8,
+                            ),
+                        ),
+                    ),
+                ),
+                'location' => array(
+                    array(
+                        array(
+                            'param' => 'post',
+                            'operator' => '==',
+                            'value' => get_field('front_page_select', 'option'),
+                        ),
+                    ),
+                ),
+                'menu_order' => 5,
+            ));
         }
     }
 }

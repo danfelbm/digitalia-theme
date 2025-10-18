@@ -286,7 +286,7 @@ Theme Name: Digitalia
 Theme URI: https://danielbecerra.org
 Author: Daniel Becerra
 Description: Tema para Digitalia con Shadcnblocks theming system - Amber Minimal
-Version: 2.5.0
+Version: 2.5.1
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.4
