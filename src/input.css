@@ -4,7 +4,7 @@ Theme URI: https://danielbecerra.org
 Author: Daniel Becerra
 Author URI: https://danielbecerra.org
 Description: Tema para Digitalia con Shadcnblocks theming system
-Version: 2.5.1
+Version: 2.5.2
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.4
@@ -13,6 +13,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: digitalia
 Tags: tailwind, shadcnblocks, custom
 */
+
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital%2Cwght@0%2C100..900;1%2C100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital%2Cwght@0%2C100..700;1%2C100..700&display=swap");

@@ -131,3 +131,6 @@
 			</div>
 		</div>
 	</section>
+
+<div class="md:grid-cols-2 lg:grid-cols-3 lg:grid-cols-4 grayscale opacity-60 cursor-default hover:before:bg-black/30">
+</div>
