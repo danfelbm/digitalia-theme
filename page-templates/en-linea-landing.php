@@ -47,6 +47,7 @@ get_header();
                     $title = $case_study['title'];
                     $statistic_number = $case_study['statistic_number'];
                     $statistic_description = $case_study['statistic_description'];
+                    $button_text = !empty($case_study['button_text']) ? $case_study['button_text'] : 'Read Story';
                     $button_url = $case_study['button_url'];
 
                     // Get image URL - fallback to placeholder if not set
@@ -84,7 +85,7 @@ get_header();
                             </div>
 
                             <button data-slot="button" class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5 w-fit">
-                                Read Story
+                                <?php echo esc_html($button_text); ?>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right size-3.5" aria-hidden="true">
                                     <path d="M5 12h14"></path>
                                     <path d="m12 5 7 7-7 7"></path>

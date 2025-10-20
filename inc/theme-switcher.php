@@ -12,7 +12,7 @@
  * 4. Tailwind v4 compila input.css → style.css
  *
  * @package Digitalia
- * @since 2.5.2
+ * @since 2.5.3
  */
 
 // Prevent direct access
@@ -119,7 +119,7 @@ Theme URI: https://danielbecerra.org
 Author: Daniel Becerra
 Author URI: https://danielbecerra.org
 Description: Tema para Digitalia con Shadcnblocks theming system
-Version: 2.5.2
+Version: 2.5.3
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.4
