@@ -642,21 +642,30 @@ get_header();
               <?php if (!empty($participation['description'])): ?>
                 <p class="mb-8 max-w-xl text-blue-800 lg:text-xl"><?php echo esc_html($participation['description']); ?></p>
               <?php endif; ?>
-              <?php if (!empty($participation['buttons'])): ?>
+              <?php if (!empty($participation['buttons']) && is_array($participation['buttons'])): ?>
                 <div class="flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start">
-                  <?php if (!empty($participation['buttons']['explore_text']) && !empty($participation['buttons']['explore_url'])): ?>
-                    <a href="<?php echo esc_url($participation['buttons']['explore_url']); ?>" class="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                      <svg class="mr-2 size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 0118 0 9 9 0 0118 0z"></path>
-                      </svg>
-                      <?php echo esc_html($participation['buttons']['explore_text']); ?>
+                  <?php foreach ($participation['buttons'] as $button):
+                    $button_text = $button['button_text'] ?? '';
+                    $button_url = $button['button_url'] ?? '#';
+                    $button_style = $button['button_style'] ?? 'primary';
+                    $show_icon = $button['show_icon'] ?? false;
+
+                    // Definir clases según el estilo
+                    if ($button_style === 'primary') {
+                      $button_classes = 'inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors';
+                    } else {
+                      $button_classes = 'inline-flex items-center justify-center px-6 py-3 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors';
+                    }
+                  ?>
+                    <a href="<?php echo esc_url($button_url); ?>" class="<?php echo esc_attr($button_classes); ?>">
+                      <?php if ($show_icon): ?>
+                        <svg class="mr-2 size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 0118 0 9 9 0 0118 0z"></path>
+                        </svg>
+                      <?php endif; ?>
+                      <?php echo esc_html($button_text); ?>
                     </a>
-                  <?php endif; ?>
-                  <?php if (!empty($participation['buttons']['participate_text']) && !empty($participation['buttons']['participate_url'])): ?>
-                    <a href="<?php echo esc_url($participation['buttons']['participate_url']); ?>" class="inline-flex items-center justify-center px-6 py-3 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors">
-                      <?php echo esc_html($participation['buttons']['participate_text']); ?>
-                    </a>
-                  <?php endif; ?>
+                  <?php endforeach; ?>
                 </div>
               <?php endif; ?>
             <?php endif; ?>
