@@ -378,3 +378,144 @@
 			<?php endif; ?>
 		</div><!-- .site-branding -->
 	</header><!-- #masthead -->
+
+	<!-- UNESCO Live Modal (con sistema de cookies) -->
+	<div id="unesco-modal" style="
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.95);
+		z-index: 9999;
+		display: none;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 20px;
+	">
+		<!-- Modal Content -->
+		<div style="
+			width: 100%;
+			max-width: 1200px;
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+		">
+			<!-- Video Container -->
+			<div style="
+				position: relative;
+				width: 100%;
+				padding-bottom: 56.25%;
+				background: #000;
+			">
+				<iframe
+					id="unesco-iframe"
+					style="
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						border: none;
+					"
+					src=""
+					title="YouTube video player"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					referrerpolicy="strict-origin-when-cross-origin"
+					allowfullscreen>
+				</iframe>
+			</div>
+
+			<!-- Close Button -->
+			<button
+				id="close-unesco-modal"
+				style="
+					background-color: #ef4444;
+					color: white;
+					padding: 14px 32px;
+					border: none;
+					border-radius: 8px;
+					font-size: 16px;
+					font-weight: 600;
+					cursor: pointer;
+					transition: background-color 0.2s;
+					align-self: center;
+				"
+				onmouseover="this.style.backgroundColor='#dc2626'"
+				onmouseout="this.style.backgroundColor='#ef4444'"
+			>
+				Cerrar
+			</button>
+		</div>
+	</div>
+
+	<script>
+	(function() {
+		// Cookie helper functions
+		function setCookie(name, value, days) {
+			var expires = "";
+			if (days) {
+				var date = new Date();
+				date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+				expires = "; expires=" + date.toUTCString();
+			}
+			document.cookie = name + "=" + (value || "") + expires + "; path=/";
+		}
+
+		function getCookie(name) {
+			var nameEQ = name + "=";
+			var ca = document.cookie.split(';');
+			for (var i = 0; i < ca.length; i++) {
+				var c = ca[i];
+				while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+				if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+			}
+			return null;
+		}
+
+		// Modal logic
+		const modal = document.getElementById('unesco-modal');
+		const closeBtn = document.getElementById('close-unesco-modal');
+		const iframe = document.getElementById('unesco-iframe');
+		const cookieName = 'digitalia_unesco_modal_closed';
+
+		// Check if user has already closed the modal
+		const modalClosed = getCookie(cookieName);
+
+		if (!modalClosed) {
+			// Show modal if cookie doesn't exist
+			setTimeout(function() {
+				modal.style.display = 'flex';
+				// Load iframe src only when showing modal (performance)
+				iframe.src = 'https://www.youtube.com/embed/D95lC6HqHgk?si=8-bq84ePmgnO9fz1&autoplay=1';
+			}, 500); // Small delay to let page load
+		}
+
+		// Close modal function
+		function closeModal() {
+			modal.style.display = 'none';
+			// Stop video playback
+			iframe.src = '';
+			// Set cookie to remember user closed modal (expires in 24 hours)
+			setCookie(cookieName, 'true', 1);
+		}
+
+		// Close on button click
+		closeBtn.addEventListener('click', closeModal);
+
+		// Close on ESC key
+		document.addEventListener('keydown', function(e) {
+			if (e.key === 'Escape' && modal.style.display === 'flex') {
+				closeModal();
+			}
+		});
+
+		// Close on overlay click (outside video)
+		modal.addEventListener('click', function(e) {
+			if (e.target === modal) {
+				closeModal();
+			}
+		});
+	})();
+	</script>
