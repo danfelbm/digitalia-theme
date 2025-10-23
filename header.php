@@ -109,6 +109,20 @@
 
 <body <?php body_class(); ?>>
 
+<!-- UNESCO Live Bar -->
+<a href="https://www.youtube.com/watch?v=D95lC6HqHgk" target="_blank" class="w-full bg-red-600 hover:bg-red-700 h-12 flex items-center justify-center transition-colors group">
+    <div class="container mx-auto px-8 flex items-center justify-center gap-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="text-white animate-pulse">
+            <circle cx="12" cy="12" r="8"/>
+        </svg>
+        <span class="text-white font-medium text-sm md:text-base text-center">Semana Mundial de la Alfabetización Mediática e Informacional 2025: "Piensa ante la IA" - Día 1</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white group-hover:translate-x-1 transition-transform hidden md:block">
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+        </svg>
+    </div>
+</a>
+
 <!-- Gov.co Bar -->
 <div class="w-full bg-[#3366CC] h-10 flex items-center">
     <div class="container mx-auto px-8">
