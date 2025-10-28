@@ -109,7 +109,17 @@
 
 <body <?php body_class(); ?>>
 
-<!-- UNESCO Live Bar -->
+<!--
+===============================================
+BARRA DE EVENTOS EN VIVO - DESACTIVADA
+===============================================
+Usar para eventos especiales, transmisiones en vivo, etc.
+Para activar: descomentar el código de abajo
+Para personalizar: cambiar URL, texto y colores
+
+ÚLTIMA ACTIVACIÓN: Semana Mundial de la Alfabetización Mediática e Informacional 2025
+-->
+<?php /*
 <a href="https://www.youtube.com/watch?v=D95lC6HqHgk" target="_blank" class="w-full bg-red-600 hover:bg-red-700 h-12 flex items-center justify-center transition-colors group">
     <div class="container mx-auto px-8 flex items-center justify-center gap-3">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="text-white animate-pulse">
@@ -122,6 +132,7 @@
         </svg>
     </div>
 </a>
+*/ ?>
 
 <!-- Gov.co Bar -->
 <div class="w-full bg-[#3366CC] h-10 flex items-center">
@@ -379,7 +390,29 @@
 		</div><!-- .site-branding -->
 	</header><!-- #masthead -->
 
-	<!-- UNESCO Live Modal (con sistema de cookies) -->
+	<!--
+	===============================================
+	MODAL DE VIDEO EN VIVO - DESACTIVADO
+	===============================================
+	Modal full-screen para eventos especiales con sistema de cookies (24h)
+	Aparece automáticamente en todas las páginas solo si el usuario no lo ha cerrado
+
+	CARACTERÍSTICAS:
+	- Cookie de 24 horas para no molestar al usuario
+	- Lazy loading del iframe (mejora performance)
+	- 3 formas de cerrar: botón, ESC, click fuera del video
+	- Auto-stop del video al cerrar
+
+	PARA ACTIVAR:
+	1. Descomentar todo el bloque de código abajo
+	2. Cambiar la URL del iframe (línea con iframe.src)
+	3. Cambiar el ID de cookie si es un nuevo evento (línea con cookieName)
+
+	ÚLTIMA ACTIVACIÓN: Semana Mundial de la Alfabetización Mediática e Informacional 2025
+	URL: https://www.youtube.com/embed/D95lC6HqHgk
+	COOKIE: digitalia_unesco_modal_closed
+	-->
+	<?php /*
 	<div id="unesco-modal" style="
 		position: fixed;
 		top: 0;
@@ -519,3 +552,4 @@
 		});
 	})();
 	</script>
+	*/ ?>

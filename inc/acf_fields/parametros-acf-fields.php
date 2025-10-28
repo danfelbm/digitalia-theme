@@ -87,9 +87,6 @@ if (function_exists('acf_add_local_field_group')):
             );
         }
 
-        // Debug output
-        error_log('Registering ACF fields for post types: ' . print_r(array_keys($post_types), true));
-
         acf_add_local_field_group(array(
             'key' => 'group_parametros_general',
             'title' => 'Configuración General',
