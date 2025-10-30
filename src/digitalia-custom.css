@@ -289,3 +289,15 @@ h3, h4 {
     animation: timeline-reveal-desktop 5s linear;
   }
 }
+
+/* ========================================
+   SIENNA ACCESSIBILITY WIDGET - MOBILE POSITIONING
+   ======================================== */
+
+@media all and (max-width: 768px) {
+  .asw-menu-btn {
+    bottom: 170px !important;
+    right: 15px !important;
+    left: unset !important;
+  }
+}

@@ -4,7 +4,7 @@ Theme URI: https://danielbecerra.org
 Author: Daniel Becerra
 Author URI: https://danielbecerra.org
 Description: Tema para Digitalia con Shadcnblocks theming system
-Version: 2.5.7
+Version: 2.5.9
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.4
@@ -1088,5 +1088,13 @@ h3, h4 {
 @media (min-width: 640px) {
   .animate-timeline-reveal {
     animation: timeline-reveal-desktop 5s linear;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .asw-menu-btn {
+    bottom: 170px !important;
+    right: 15px !important;
+    left: unset !important;
   }
 }

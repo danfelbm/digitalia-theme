@@ -9,7 +9,7 @@
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '2.5.7' );
+	define( '_S_VERSION', '2.5.9' );
 }
 
 /**
@@ -1354,11 +1354,11 @@ function add_ust_heatmap_script() {
 }
 add_action('wp_head', 'add_ust_heatmap_script');
 
-// Adding UserWay accessibility widget script
-function add_userway_script() {
-    echo '<script src="https://cdn.userway.org/widget.js" data-account="s13jewtECK"></script>';
+// Adding Sienna Accessibility widget script
+function digitalia_add_sienna_accessibility() {
+    echo '<script src="https://cdn.jsdelivr.net/npm/sienna-accessibility@latest/dist/sienna-accessibility.umd.js" defer></script>';
 }
-add_action('wp_head', 'add_userway_script', 1);
+add_action('wp_footer', 'digitalia_add_sienna_accessibility', 999);
 
 /**
  * Customize WordPress login logo

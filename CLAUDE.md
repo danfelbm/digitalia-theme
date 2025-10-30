@@ -144,7 +144,7 @@ The theme includes:
 - **Google Analytics** (G-PNW4J4SMCE) - [functions.php:1258-1271](functions.php#L1258-L1271)
 - **Hotjar** (hjid:5306078) - [functions.php:1274-1288](functions.php#L1274-L1288)
 - **UST Heatmap** - [functions.php:1292-1298](functions.php#L1292-L1298)
-- **UserWay Accessibility Widget** - [functions.php:1301-1304](functions.php#L1301-L1304)
+- **Sienna Accessibility Widget** (free, open-source, GDPR-compliant) - [functions.php:1357-1361](functions.php#L1357-L1361)
 - **Google Maps API** with API key set via ACF - [functions.php:1209-1248](functions.php#L1209-L1248)
 
 ## Development Conventions
@@ -286,7 +286,7 @@ Theme Name: Digitalia
 Theme URI: https://danielbecerra.org
 Author: Daniel Becerra
 Description: Tema para Digitalia con Shadcnblocks theming system - Amber Minimal
-Version: 2.5.7
+Version: 2.5.9
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.4
