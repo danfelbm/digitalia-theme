@@ -22,10 +22,12 @@ function digitalia_get_public_post_types() {
     $operator = 'and'; // Both public AND show_ui must be true
     
     $post_types = get_post_types($args, $output, $operator);
-    
-    // Debug output
-    error_log('Available post types: ' . print_r(array_keys($post_types), true));
-    
+
+    // Debug output - only when WP_DEBUG is enabled
+    if (defined('WP_DEBUG') && WP_DEBUG) {
+        // temporary disable error_log('Available post types: ' . print_r(array_keys($post_types), true));
+    }
+
     return $post_types;
 }
 

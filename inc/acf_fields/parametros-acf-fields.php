@@ -9,7 +9,8 @@ if (function_exists('acf_add_local_field_group')):
 
     function digitalia_register_parametros_acf_fields() {
         if (!did_action('init')) {
-            error_log('Warning: ACF fields registered before init');
+            // Always log warnings (not wrapped in WP_DEBUG) - these indicate actual problems
+            error_log('Digitalia WARNING: ACF fields registered before init');
             return;
         }
 
@@ -17,7 +18,8 @@ if (function_exists('acf_add_local_field_group')):
 
         $post_types = digitalia_get_public_post_types();
         if (empty($post_types)) {
-            error_log('Warning: No post types found when registering ACF fields');
+            // Always log warnings (not wrapped in WP_DEBUG) - these indicate actual problems
+            error_log('Digitalia WARNING: No post types found when registering ACF fields');
             return;
         }
 

@@ -216,6 +216,17 @@ The `/digitalia-content-context/` directory contains markdown files with content
 - Font files are loaded from Google Fonts CDN
 - Font Awesome 6.7.2 is loaded from CDN
 
+### Debug Logging
+
+The theme includes conditional debug logging that respects `WP_DEBUG`:
+- **ERROR/WARNING logs**: Always written (indicate actual problems) - prefixed with "ERROR:" or "WARNING:"
+- **INFO/DEBUG logs**: Only when `WP_DEBUG` is enabled - informational messages
+- Modified files with conditional logging:
+  - [inc/theme-switcher.php](inc/theme-switcher.php) - Theme system debug messages
+  - [inc/admin/post-type-utils.php](inc/admin/post-type-utils.php) - Post type registration info
+  - [page-templates/que-es-digitalia.php](page-templates/que-es-digitalia.php) - Persona processing debug
+  - [inc/acf_fields/parametros-acf-fields.php](inc/acf_fields/parametros-acf-fields.php) - ACF registration warnings
+
 ## Testing
 
 When making changes:

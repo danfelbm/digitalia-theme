@@ -227,13 +227,15 @@ get_header();
                             closedir($img_handle);
                         }
                         
-                        // Debug information
-                        error_log("Processing persona: " . $name);
-                        error_log("Team: " . $team);
-                        error_log("Role: " . $role);
-                        error_log("Image: " . $image);
-                        error_log("Original entry: " . $entry);
-                        error_log("Parts count: " . count($parts));
+                        // Debug information - only when WP_DEBUG is enabled
+                        if (defined('WP_DEBUG') && WP_DEBUG) {
+                            error_log("Processing persona: " . $name);
+                            error_log("Team: " . $team);
+                            error_log("Role: " . $role);
+                            error_log("Image: " . $image);
+                            error_log("Original entry: " . $entry);
+                            error_log("Parts count: " . count($parts));
+                        }
                         
                         $personas[] = [
                             'name' => ucwords($name),

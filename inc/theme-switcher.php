@@ -93,12 +93,14 @@ function digitalia_build_input_css() {
 
     // Verificar que existen los archivos necesarios
     if (!$theme_file) {
-        error_log("Digitalia Theme Switcher: Theme file not found for '{$active_theme}'");
+        // Always log errors (not wrapped in WP_DEBUG)
+        error_log("Digitalia Theme Switcher ERROR: Theme file not found for '{$active_theme}'");
         return false;
     }
 
     if (!file_exists($custom_file)) {
-        error_log("Digitalia Theme Switcher: digitalia-custom.css not found");
+        // Always log errors (not wrapped in WP_DEBUG)
+        error_log("Digitalia Theme Switcher ERROR: digitalia-custom.css not found");
         return false;
     }
 
@@ -107,7 +109,8 @@ function digitalia_build_input_css() {
     $custom_content = file_get_contents($custom_file);
 
     if ($theme_content === false || $custom_content === false) {
-        error_log("Digitalia Theme Switcher: Failed to read theme or custom files");
+        // Always log errors (not wrapped in WP_DEBUG)
+        error_log("Digitalia Theme Switcher ERROR: Failed to read theme or custom files");
         return false;
     }
 
@@ -139,11 +142,16 @@ CSS;
     $result = file_put_contents($output_file, $final_content);
 
     if ($result === false) {
-        error_log("Digitalia Theme Switcher: Failed to write input.css");
+        // Always log errors (not wrapped in WP_DEBUG)
+        error_log("Digitalia Theme Switcher ERROR: Failed to write input.css");
         return false;
     }
 
-    error_log("Digitalia Theme Switcher: input.css built successfully with theme '{$active_theme}'");
+    // Only log success messages when WP_DEBUG is enabled
+    if (defined('WP_DEBUG') && WP_DEBUG) {
+        error_log("Digitalia Theme Switcher: input.css built successfully with theme '{$active_theme}'");
+    }
+
     return true;
 }
 
