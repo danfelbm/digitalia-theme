@@ -184,7 +184,9 @@ add_action('init', 'digitalia_maybe_build_on_init', 1);
  * Add theme info to admin bar (for logged-in admins)
  *
  * Displays the currently active theme in the admin bar
+ * DISABLED: Removed as unnecessary clutter in admin bar
  */
+/*
 function digitalia_add_theme_info_to_admin_bar($wp_admin_bar) {
     if (!current_user_can('manage_options')) {
         return;
@@ -204,6 +206,7 @@ function digitalia_add_theme_info_to_admin_bar($wp_admin_bar) {
     ));
 }
 add_action('admin_bar_menu', 'digitalia_add_theme_info_to_admin_bar', 100);
+*/
 
 /**
  * Force rebuild input.css (útil para debugging)

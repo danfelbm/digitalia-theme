@@ -27,11 +27,12 @@ npm run watch:css
 npm run build:css
 ```
 
-**IMPORTANT**: El archivo `src/input.css` es **GENERADO AUTOMÁTICAMENTE** mediante la concatenación de:
-1. Theme seleccionado (`globals/*.css`) - contiene todas las importaciones de Tailwind v4 y Shadcnblocks
-2. Estilos custom de Digitalia (`src/digitalia-custom.css`) - navegación, módulos, etc.
+**IMPORTANT**: El archivo `src/input.css` es el **ARCHIVO FUENTE** de CSS que contiene:
+1. Importaciones de Tailwind CSS v4 (`@import "tailwindcss"`)
+2. Theme de Shadcnblocks (variables CSS, colores OKLCH, etc.)
+3. Estilos custom de Digitalia (navegación, módulos, tipografía)
 
-**NO modifiques `src/input.css` manualmente** - cualquier cambio será sobreescrito.
+El comando `npm run build:css` usa `src/input.css` como INPUT para generar `style.css` (el archivo compilado y minificado final).
 
 ### Code Quality
 ```bash
