@@ -1259,9 +1259,34 @@ add_action('rest_api_init', function () {
     );
 });
 
-// Method 2: Setting.
+/**
+ * Initialize Google Maps API Key for ACF
+ *
+ * Retrieves the API key from the secure Parámetros options page.
+ * If not configured, logs an error and does not initialize maps.
+ *
+ * @see /wp-admin/admin.php?page=parametros
+ */
 function my_acf_init() {
-    acf_update_setting('google_api_key', 'AIzaSyC9abTOQFBcTuPsjc2mQJwBIkZkwp_Cp8A');
+    // Get API key from secure options page
+    $api_key = get_field('google_maps_api_key', 'option');
+
+    // If API key is not configured, log error and exit
+    if (empty($api_key)) {
+        // Always log this error (not wrapped in WP_DEBUG) - critical configuration issue
+        error_log('ERROR: Google Maps API key not configured. Please add it in Parámetros options page: /wp-admin/admin.php?page=parametros');
+
+        // Show admin notice if in admin panel
+        if (is_admin()) {
+            add_action('admin_notices', function() {
+                echo '<div class="notice notice-error"><p><strong>Digitalia:</strong> Google Maps API key no está configurada. Por favor configúrala en <a href="' . admin_url('admin.php?page=parametros') . '">Parámetros</a>.</p></div>';
+            });
+        }
+
+        return; // Don't initialize Google Maps without API key
+    }
+
+    acf_update_setting('google_api_key', $api_key);
 }
 add_action('acf/init', 'my_acf_init');
 

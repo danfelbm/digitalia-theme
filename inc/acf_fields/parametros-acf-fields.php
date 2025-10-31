@@ -105,6 +105,17 @@ if (function_exists('acf_add_local_field_group')):
                     'ui' => 1,
                 ),
                 array(
+                    'key' => 'field_google_maps_api_key',
+                    'label' => 'Google Maps API Key',
+                    'name' => 'google_maps_api_key',
+                    'type' => 'password',
+                    'instructions' => 'Ingresa tu Google Maps API Key. Esta clave se almacena de forma segura en la base de datos y se usa para mostrar mapas en el sitio (especialmente en Espacios). <a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">Obtener API Key</a>',
+                    'required' => 0,
+                    'placeholder' => 'AIzaSy...',
+                    'append' => '',
+                    'prepend' => '',
+                ),
+                array(
                     'key' => 'field_ctas',
                     'label' => 'CTAs',
                     'name' => 'ctas',
