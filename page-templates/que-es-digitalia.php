@@ -384,33 +384,38 @@ get_header();
                     <?php endif;
                     
                     $pill_color = get_team_color_classes($persona['team']);
+
+                    // Personalización para Farith Amed Hernández
+                    $is_farith = (stripos($persona['name'], 'farith') !== false && stripos($persona['name'], 'amed') !== false);
+                    $display_team = $is_farith ? 'Creador del programa' : $persona['team'];
+                    $display_role = $is_farith ? 'Digital-ia' : $persona['role'];
                     ?>
                     <div class="flex flex-col sm:flex-row">
                         <div class="mb-4 aspect-square w-full shrink-0 text-clip bg-accent sm:mb-0 sm:mr-5 sm:size-48 overflow-hidden">
                             <?php if ($persona['image']) : ?>
-                                <img src="<?php echo esc_url(get_template_directory_uri() . '/' . $persona['image']); ?>" 
-                                     alt="<?php echo esc_attr($persona['name']); ?>" 
+                                <img src="<?php echo esc_url(get_template_directory_uri() . '/' . $persona['image']); ?>"
+                                     alt="<?php echo esc_attr($persona['name']); ?>"
                                      class="size-full object-cover object-top">
                             <?php endif; ?>
                         </div>
                         <div class="flex flex-1 flex-col items-start">
                             <p class="w-full text-left font-medium">
                                 <span class="hover:text-accent-foreground transition-colors">
-                                    <?php 
+                                    <?php
                                     if (strtolower($persona['name']) === 'botiliti0') {
                                         echo 'BotLiti0 (Botilito)';
                                     } else {
-                                        echo esc_html($persona['name']); 
+                                        echo esc_html($persona['name']);
                                     }
                                     ?>
                                 </span>
                             </p>
                             <p class="w-full text-left">
                                 <span class="inline-flex items-center rounded-full px-2 py-1 text-xs <?php echo $pill_color; ?>">
-                                    <?php echo esc_html($persona['team']); ?>
+                                    <?php echo esc_html($display_team); ?>
                                 </span>
                             </p>
-                            <p class="w-full py-2 text-sm text-muted-foreground"><?php echo esc_html($persona['role']); ?></p>
+                            <p class="w-full py-2 text-sm text-muted-foreground"><?php echo esc_html($display_role); ?></p>
                             <?php if (strtolower($persona['name']) === 'botiliti0') : ?>
                                 <button onclick="document.querySelector('.chat-toggle').click()" class="px-4 py-2 text-sm bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">
                                     Chatear conmigo
