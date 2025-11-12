@@ -705,6 +705,61 @@ get_header();
               </div>
             </div>
 
+            <!-- Loop de 4 artículos del blog -->
+            <div class="bg-white border-2 border-blue-300 rounded-lg p-6 md:p-8 shadow-md">
+              <h4 class="text-2xl font-bold text-blue-900 mb-6">Últimas noticias</h4>
+              <?php
+              // Query para obtener los últimos 4 posts del blog
+              $blog_args = array(
+                'post_type' => 'post',
+                'posts_per_page' => 4,
+                'post_status' => 'publish',
+                'orderby' => 'date',
+                'order' => 'DESC'
+              );
+              $blog_query = new WP_Query($blog_args);
+
+              if ($blog_query->have_posts()): ?>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  <?php while ($blog_query->have_posts()): $blog_query->the_post(); ?>
+                    <article class="flex flex-col bg-blue-50 rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow">
+                      <?php if (has_post_thumbnail()): ?>
+                        <a href="<?php the_permalink(); ?>" class="block">
+                          <?php the_post_thumbnail('medium', array('class' => 'w-full h-48 object-cover')); ?>
+                        </a>
+                      <?php else: ?>
+                        <a href="<?php the_permalink(); ?>" class="block">
+                          <div class="w-full h-48 bg-blue-200 flex items-center justify-center">
+                            <i class="fa-solid fa-newspaper text-4xl text-blue-400"></i>
+                          </div>
+                        </a>
+                      <?php endif; ?>
+                      <div class="p-4 flex flex-col flex-grow">
+                        <h5 class="text-base font-semibold text-blue-900 mb-2 line-clamp-2">
+                          <a href="<?php the_permalink(); ?>" class="hover:text-blue-600 transition-colors">
+                            <?php the_title(); ?>
+                          </a>
+                        </h5>
+                        <div class="text-xs text-blue-600 mb-2">
+                          <?php echo get_the_date(); ?>
+                        </div>
+                        <div class="text-sm text-blue-800 line-clamp-3 flex-grow">
+                          <?php echo wp_trim_words(get_the_excerpt(), 15); ?>
+                        </div>
+                        <a href="<?php the_permalink(); ?>" class="inline-flex items-center gap-1 text-sm text-blue-600 hover:text-blue-700 font-medium mt-3">
+                          Leer más
+                          <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                      </div>
+                    </article>
+                  <?php endwhile; ?>
+                </div>
+                <?php wp_reset_postdata(); ?>
+              <?php else: ?>
+                <p class="text-blue-800">No hay artículos disponibles.</p>
+              <?php endif; ?>
+            </div>
+
             <!-- Imágenes abajo -->
             <?php if (!empty($coyuntura['show_images']) && $coyuntura['show_images']):
               $num_images = !empty($coyuntura['num_images']) ? $coyuntura['num_images'] : 5;
