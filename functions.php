@@ -1637,3 +1637,31 @@ function digitalia_custom_login_logo() {
     <?php
 }
 add_action('login_enqueue_scripts', 'digitalia_custom_login_logo');
+/**
+ * Force ACF image fields to return array format in REST API
+ * This ensures all image fields return full objects with URLs instead of just IDs
+ */
+add_filter('acf/rest/format_value_for_rest/type=image', 'digitalia_acf_image_rest_format', 10, 5);
+function digitalia_acf_image_rest_format($value_formatted, $value, $format, $field, $post_id) {
+    // Use $value_formatted (the actual attachment ID) instead of $value (the post ID)
+    if (is_numeric($value_formatted) && $value_formatted > 0) {
+        $attachment = wp_get_attachment_image_src($value_formatted, 'full');
+        if ($attachment) {
+            return array(
+                'ID' => $value_formatted,
+                'url' => $attachment[0],
+                'width' => $attachment[1],
+                'height' => $attachment[2],
+                'alt' => get_post_meta($value_formatted, '_wp_attachment_image_alt', true),
+                'title' => get_the_title($value_formatted),
+            );
+        }
+    }
+
+    // If already an array (like when return_format is 'array'), just return it
+    if (is_array($value_formatted)) {
+        return $value_formatted;
+    }
+
+    return $value_formatted;
+}
