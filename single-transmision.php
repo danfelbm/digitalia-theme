@@ -102,11 +102,17 @@ get_header();
                 <div class="mb-16">
                     <h2 class="text-2xl font-bold mb-8 text-gray-900">Participantes</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <?php foreach ($transmision_participantes as $participante) : ?>
+                        <?php foreach ($transmision_participantes as $participante) :
+                            // Handle foto field - can be array or string
+                            $foto_url = '';
+                            if (!empty($participante['foto'])) {
+                                $foto_url = is_array($participante['foto']) ? $participante['foto']['url'] : $participante['foto'];
+                            }
+                        ?>
                             <div class="bg-white rounded-xl p-6 shadow-sm">
                                 <div class="flex items-start gap-4">
-                                    <?php if (!empty($participante['foto'])) : ?>
-                                        <img src="<?php echo esc_url($participante['foto']); ?>" 
+                                    <?php if ($foto_url) : ?>
+                                        <img src="<?php echo esc_url($foto_url); ?>"
                                              alt="<?php echo esc_attr($participante['nombre']); ?>"
                                              class="w-20 h-20 rounded-full object-cover shrink-0">
                                     <?php endif; ?>
