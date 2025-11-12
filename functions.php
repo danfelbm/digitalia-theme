@@ -1665,3 +1665,29 @@ function digitalia_acf_image_rest_format($value_formatted, $value, $format, $fie
 
     return $value_formatted;
 }
+
+// Filtro para campos tipo 'file' (videos, PDFs, etc.) en REST API
+add_filter('acf/rest/format_value_for_rest/type=file', 'digitalia_acf_file_rest_format', 10, 5);
+function digitalia_acf_file_rest_format($value_formatted, $value, $format, $field, $post_id) {
+    // Use $value_formatted (the actual attachment ID)
+    if (is_numeric($value_formatted) && $value_formatted > 0) {
+        $attachment_url = wp_get_attachment_url($value_formatted);
+        if ($attachment_url) {
+            return array(
+                'ID' => $value_formatted,
+                'url' => $attachment_url,
+                'title' => get_the_title($value_formatted),
+                'filename' => basename(get_attached_file($value_formatted)),
+                'filesize' => filesize(get_attached_file($value_formatted)),
+                'mime_type' => get_post_mime_type($value_formatted),
+            );
+        }
+    }
+
+    // If already an array (like when return_format is 'array'), just return it
+    if (is_array($value_formatted)) {
+        return $value_formatted;
+    }
+
+    return $value_formatted;
+}

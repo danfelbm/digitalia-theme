@@ -491,7 +491,7 @@ if (!function_exists('digitalia_register_acf_fields')) {
                                 'label' => 'Video MP4',
                                 'name' => 'video',
                                 'type' => 'file',
-                                'return_format' => 'url',
+                                'return_format' => 'array',
                                 'mime_types' => 'mp4',
                                 'conditional_logic' => array(
                                     array(
