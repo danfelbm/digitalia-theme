@@ -463,19 +463,10 @@ get_header();
             </div>
 
             <!-- Imágenes abajo -->
-            <?php
-              // DEBUG: Verificar campos ACF
-              error_log('AMI show_images: ' . print_r($ami['show_images'], true));
-              error_log('AMI num_images: ' . print_r($ami['num_images'], true));
-
-              if (!empty($ami['show_images']) && $ami['show_images']):
+            <?php if (!empty($ami['show_images']) && $ami['show_images']):
               $num_images = !empty($ami['num_images']) ? $ami['num_images'] : 4;
               $display_type = !empty($ami['display_type']) ? $ami['display_type'] : 'grid';
               $random_images = digitalia_get_random_tt_images('AMI', $num_images);
-
-              // DEBUG: Verificar imágenes retornadas
-              error_log('AMI random_images count: ' . count($random_images));
-              error_log('AMI random_images: ' . print_r($random_images, true));
 
               if (!empty($random_images)):
                 if ($display_type === 'grid'): ?>
@@ -539,19 +530,10 @@ get_header();
             </div>
 
             <!-- Imágenes abajo -->
-            <?php
-              // DEBUG: Verificar campos ACF
-              error_log('Coyuntura show_images: ' . print_r($coyuntura['show_images'], true));
-              error_log('Coyuntura num_images: ' . print_r($coyuntura['num_images'], true));
-
-              if (!empty($coyuntura['show_images']) && $coyuntura['show_images']):
+            <?php if (!empty($coyuntura['show_images']) && $coyuntura['show_images']):
               $num_images = !empty($coyuntura['num_images']) ? $coyuntura['num_images'] : 5;
               $display_type = !empty($coyuntura['display_type']) ? $coyuntura['display_type'] : 'carousel';
               $random_images = digitalia_get_random_tt_images('Coyuntura', $num_images);
-
-              // DEBUG: Verificar imágenes retornadas
-              error_log('Coyuntura random_images count: ' . count($random_images));
-              error_log('Coyuntura random_images: ' . print_r($random_images, true));
 
               if (!empty($random_images)):
                 if ($display_type === 'grid'): ?>
