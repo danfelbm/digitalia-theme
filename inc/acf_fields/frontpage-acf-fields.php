@@ -10,6 +10,7 @@ if (!function_exists('digitalia_register_acf_fields')) {
             acf_add_local_field_group(array(
                 'key' => 'group_hero_section',
                 'title' => 'Sección Hero',
+                'show_in_rest' => true,
                 'fields' => array(
                     // Hero Type Selector
                     array(
@@ -376,6 +377,7 @@ if (!function_exists('digitalia_register_acf_fields')) {
             acf_add_local_field_group(array(
                 'key' => 'group_modules_section',
                 'title' => 'Sección de Módulos',
+                'show_in_rest' => true,
                 'fields' => array(
                     array(
                         'key' => 'field_modules',
@@ -520,6 +522,7 @@ if (!function_exists('digitalia_register_acf_fields')) {
             acf_add_local_field_group(array(
                 'key' => 'group_vision_commitment',
                 'title' => 'Visión y Compromiso',
+                'show_in_rest' => true,
                 'fields' => array(
                     // Vision Section
                     array(
@@ -636,6 +639,7 @@ if (!function_exists('digitalia_register_acf_fields')) {
             acf_add_local_field_group(array(
                 'key' => 'group_modules_details',
                 'title' => 'Módulos en Detalle',
+                'show_in_rest' => true,
                 'fields' => array(
                     array(
                         'key' => 'field_modules_details_header',
@@ -763,6 +767,7 @@ if (!function_exists('digitalia_register_acf_fields')) {
             acf_add_local_field_group(array(
                 'key' => 'group_front_intro',
                 'title' => 'Sección de CTA',
+                'show_in_rest' => true,
                 'fields' => array(
                     array(
                         'key' => 'field_intro_background',
@@ -849,6 +854,7 @@ if (!function_exists('digitalia_register_acf_fields')) {
             acf_add_local_field_group(array(
                 'key' => 'group_courses_section',
                 'title' => 'Sección de Cursos',
+                'show_in_rest' => true,
                 'fields' => array(
                     array(
                         'key' => 'field_courses_background_color',
