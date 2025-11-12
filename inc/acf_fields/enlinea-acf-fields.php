@@ -9,6 +9,9 @@ if (!function_exists('digitalia_register_enlinea_acf_fields')) {
             acf_add_local_field_group(array(
                 'key' => 'group_enlinea_page',
                 'title' => 'Configuración En Línea',
+                'show_in_rest' => true,
+                'show_in_rest' => true,
+                'show_in_rest' => true,
                 'fields' => array(
                     // Header Section
                     array(
@@ -364,7 +367,7 @@ if (!function_exists('digitalia_register_enlinea_acf_fields')) {
                                 'label' => 'Imagen de Fondo',
                                 'name' => 'background_image',
                                 'type' => 'image',
-                                'return_format' => 'url',
+                                'return_format' => 'array',
                                 'preview_size' => 'medium',
                             ),
                             array(

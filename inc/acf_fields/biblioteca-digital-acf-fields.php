@@ -15,6 +15,9 @@ if (!function_exists('digitalia_register_biblioteca_digital_acf_fields')) {
             acf_add_local_field_group(array(
                 'key' => 'group_biblioteca_digital_page',
                 'title' => 'Contenido de Biblioteca Digital',
+                'show_in_rest' => true,
+                'show_in_rest' => true,
+                'show_in_rest' => true,
                 'fields' => array(
                     // Page Header Section
                     array(

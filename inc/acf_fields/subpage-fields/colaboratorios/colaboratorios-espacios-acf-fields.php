@@ -8,6 +8,8 @@ if (function_exists('acf_add_local_field_group')) :
     acf_add_local_field_group(array(
         'key' => 'group_colaboratorios_espacios',
         'title' => 'Colaboratorios - Espacios Section',
+                'show_in_rest' => true,
+                'show_in_rest' => true,
         'fields' => array(
             array(
                 'key' => 'field_espacios_header',

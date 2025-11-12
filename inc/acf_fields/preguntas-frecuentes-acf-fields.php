@@ -15,6 +15,9 @@ if (!function_exists('digitalia_register_preguntas_frecuentes_acf_fields')) {
             acf_add_local_field_group(array(
                 'key' => 'group_preguntas_frecuentes_page',
                 'title' => 'Contenido de Preguntas Frecuentes',
+                'show_in_rest' => true,
+                'show_in_rest' => true,
+                'show_in_rest' => true,
                 'fields' => array(
                     // Page Header Section
                     array(

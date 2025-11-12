@@ -92,6 +92,9 @@ if (function_exists('acf_add_local_field_group')):
         acf_add_local_field_group(array(
             'key' => 'group_parametros_general',
             'title' => 'Configuración General',
+                'show_in_rest' => true,
+                'show_in_rest' => true,
+                'show_in_rest' => true,
             'fields' => array(
                 array(
                     'key' => 'field_front_page_select',

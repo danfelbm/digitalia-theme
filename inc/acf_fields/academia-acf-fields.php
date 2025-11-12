@@ -15,6 +15,9 @@ if (!function_exists('digitalia_register_academia_acf_fields')) {
             acf_add_local_field_group(array(
                 'key' => 'group_academia_page',
                 'title' => 'Contenido de Academia',
+                'show_in_rest' => true,
+                'show_in_rest' => true,
+                'show_in_rest' => true,
                 'fields' => array(
                     // Navigation Menu Section
                     array(
@@ -259,7 +262,7 @@ if (!function_exists('digitalia_register_academia_acf_fields')) {
                                 'label' => 'Imagen',
                                 'name' => 'image',
                                 'type' => 'image',
-                                'return_format' => 'url',
+                                'return_format' => 'array',
                                 'conditional_logic' => array(
                                     array(
                                         array(
@@ -336,7 +339,7 @@ if (!function_exists('digitalia_register_academia_acf_fields')) {
                                         'label' => 'Imagen',
                                         'name' => 'image',
                                         'type' => 'image',
-                                        'return_format' => 'url',
+                                        'return_format' => 'array',
                                         'preview_size' => 'medium',
                                         'default_value' => '/wp-content/uploads/2024/12/hero-sections.webp',
                                     ),
@@ -367,7 +370,7 @@ if (!function_exists('digitalia_register_academia_acf_fields')) {
                                         'label' => 'Imagen',
                                         'name' => 'image',
                                         'type' => 'image',
-                                        'return_format' => 'url',
+                                        'return_format' => 'array',
                                         'preview_size' => 'medium',
                                         'default_value' => '/wp-content/uploads/2024/12/hero-sections.webp',
                                     ),
@@ -398,7 +401,7 @@ if (!function_exists('digitalia_register_academia_acf_fields')) {
                                         'label' => 'Imagen',
                                         'name' => 'image',
                                         'type' => 'image',
-                                        'return_format' => 'url',
+                                        'return_format' => 'array',
                                         'preview_size' => 'medium',
                                         'default_value' => '/wp-content/uploads/2024/12/hero-sections.webp',
                                     ),

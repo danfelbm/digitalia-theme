@@ -5,6 +5,8 @@ if (function_exists('acf_add_local_field_group')) :
     acf_add_local_field_group(array(
         'key' => 'group_tt_recursos_hero',
         'title' => 'Total Transmedia - Recursos Hero',
+                'show_in_rest' => true,
+                'show_in_rest' => true,
         'fields' => array(
             array(
                 'key' => 'field_tt_recursos_subtitle',

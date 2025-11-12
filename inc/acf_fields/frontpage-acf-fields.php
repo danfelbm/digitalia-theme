@@ -11,6 +11,8 @@ if (!function_exists('digitalia_register_acf_fields')) {
                 'key' => 'group_hero_section',
                 'title' => 'Sección Hero',
                 'show_in_rest' => true,
+                'show_in_rest' => true,
+                'show_in_rest' => true,
                 'fields' => array(
                     // Hero Type Selector
                     array(
@@ -292,7 +294,7 @@ if (!function_exists('digitalia_register_acf_fields')) {
                         'label' => '[Classic] Imagen de Fondo',
                         'name' => 'hero_background_image',
                         'type' => 'image',
-                        'return_format' => 'url',
+                        'return_format' => 'array',
                         'preview_size' => 'medium',
                         'default_value' => '/wp-content/uploads/2024/12/svgbackdrop.svg',
                         'instructions' => 'Seleccione la imagen de fondo',
@@ -311,7 +313,7 @@ if (!function_exists('digitalia_register_acf_fields')) {
                         'label' => '[Classic] Imagen Decorativa Izquierda',
                         'name' => 'hero_image_left',
                         'type' => 'image',
-                        'return_format' => 'url',
+                        'return_format' => 'array',
                         'preview_size' => 'medium',
                         'instructions' => 'Seleccione la imagen decorativa izquierda',
                         'conditional_logic' => array(
@@ -329,7 +331,7 @@ if (!function_exists('digitalia_register_acf_fields')) {
                         'label' => '[Classic] Imagen Decorativa Derecha',
                         'name' => 'hero_image_right',
                         'type' => 'image',
-                        'return_format' => 'url',
+                        'return_format' => 'array',
                         'preview_size' => 'medium',
                         'instructions' => 'Seleccione la imagen decorativa derecha',
                         'conditional_logic' => array(
@@ -347,7 +349,7 @@ if (!function_exists('digitalia_register_acf_fields')) {
                         'label' => '[Classic] Imagen Decorativa Inferior',
                         'name' => 'hero_image_bottom',
                         'type' => 'image',
-                        'return_format' => 'url',
+                        'return_format' => 'array',
                         'preview_size' => 'medium',
                         'instructions' => 'Seleccione la imagen decorativa inferior',
                         'conditional_logic' => array(
@@ -377,6 +379,7 @@ if (!function_exists('digitalia_register_acf_fields')) {
             acf_add_local_field_group(array(
                 'key' => 'group_modules_section',
                 'title' => 'Sección de Módulos',
+                'show_in_rest' => true,
                 'show_in_rest' => true,
                 'fields' => array(
                     array(
@@ -411,7 +414,7 @@ if (!function_exists('digitalia_register_acf_fields')) {
                                 'label' => 'Ícono',
                                 'name' => 'icon',
                                 'type' => 'image',
-                                'return_format' => 'url',
+                                'return_format' => 'array',
                                 'preview_size' => 'medium',
                             ),
                             array(
@@ -474,7 +477,7 @@ if (!function_exists('digitalia_register_acf_fields')) {
                                 'label' => 'Imagen',
                                 'name' => 'image',
                                 'type' => 'image',
-                                'return_format' => 'url',
+                                'return_format' => 'array',
                                 'preview_size' => 'medium',
                                 'conditional_logic' => array(
                                     array(
@@ -522,6 +525,7 @@ if (!function_exists('digitalia_register_acf_fields')) {
             acf_add_local_field_group(array(
                 'key' => 'group_vision_commitment',
                 'title' => 'Visión y Compromiso',
+                'show_in_rest' => true,
                 'show_in_rest' => true,
                 'fields' => array(
                     // Vision Section
@@ -640,6 +644,7 @@ if (!function_exists('digitalia_register_acf_fields')) {
                 'key' => 'group_modules_details',
                 'title' => 'Módulos en Detalle',
                 'show_in_rest' => true,
+                'show_in_rest' => true,
                 'fields' => array(
                     array(
                         'key' => 'field_modules_details_header',
@@ -726,7 +731,7 @@ if (!function_exists('digitalia_register_acf_fields')) {
                                 'label' => 'Imagen',
                                 'name' => 'image',
                                 'type' => 'image',
-                                'return_format' => 'url',
+                                'return_format' => 'array',
                             ),
                             array(
                                 'key' => 'field_module_color',
@@ -768,13 +773,14 @@ if (!function_exists('digitalia_register_acf_fields')) {
                 'key' => 'group_front_intro',
                 'title' => 'Sección de CTA',
                 'show_in_rest' => true,
+                'show_in_rest' => true,
                 'fields' => array(
                     array(
                         'key' => 'field_intro_background',
                         'label' => 'Imagen de Fondo',
                         'name' => 'intro_background',
                         'type' => 'image',
-                        'return_format' => 'url',
+                        'return_format' => 'array',
                         'default_value' => 'https://www.shadcnblocks.com/images/block/circles.svg',
                     ),
                     array(
@@ -854,6 +860,7 @@ if (!function_exists('digitalia_register_acf_fields')) {
             acf_add_local_field_group(array(
                 'key' => 'group_courses_section',
                 'title' => 'Sección de Cursos',
+                'show_in_rest' => true,
                 'show_in_rest' => true,
                 'fields' => array(
                     array(

@@ -9,6 +9,9 @@ if (!function_exists('digitalia_register_queesdigitalia_acf_fields')) {
             acf_add_local_field_group(array(
                 'key' => 'group_queesdigitalia',
                 'title' => 'Qué es Digitalia - Contenido',
+                'show_in_rest' => true,
+                'show_in_rest' => true,
+                'show_in_rest' => true,
                 'fields' => array(
                     // Header Section
                     array(

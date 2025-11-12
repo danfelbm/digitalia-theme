@@ -4,6 +4,8 @@ if (function_exists('acf_add_local_field_group')) :
     acf_add_local_field_group(array(
         'key' => 'group_producto_details',
         'title' => 'Detalles del Producto',
+                'show_in_rest' => true,
+                'show_in_rest' => true,
         'fields' => array(
             // Excerpt Section
             array(

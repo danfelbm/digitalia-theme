@@ -8,6 +8,9 @@ function digitalia_register_descargas_acf_fields() {
         acf_add_local_field_group(array(
             'key' => 'group_descargas',
             'title' => 'Información del Archivo',
+                'show_in_rest' => true,
+                'show_in_rest' => true,
+                'show_in_rest' => true,
             'fields' => array(
                 array(
                     'key' => 'field_descarga_file_type',

@@ -9,6 +9,9 @@ if (!function_exists('digitalia_register_multimedia_acf_fields')) {
             acf_add_local_field_group(array(
                 'key' => 'group_multimedia',
                 'title' => 'Multimedia - Contenido',
+                'show_in_rest' => true,
+                'show_in_rest' => true,
+                'show_in_rest' => true,
                 'fields' => array(
                     // Header Section
                     array(

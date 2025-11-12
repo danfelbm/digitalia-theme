@@ -15,6 +15,9 @@ if (!function_exists('digitalia_register_blog_y_noticias_acf_fields')) {
             acf_add_local_field_group(array(
                 'key' => 'group_blog_y_noticias_page',
                 'title' => 'Contenido de Blog y Noticias',
+                'show_in_rest' => true,
+                'show_in_rest' => true,
+                'show_in_rest' => true,
                 'fields' => array(
                     // Page Header Section
                     array(

@@ -15,6 +15,8 @@ if (!function_exists('digitalia_register_ready_formacion_acf_fields')) {
             acf_add_local_field_group(array(
                 'key' => 'group_ready_formacion',
                 'title' => 'Sección de Formación',
+                'show_in_rest' => true,
+                'show_in_rest' => true,
                 'fields' => array(
                     array(
                         'key' => 'field_ready_formacion_hero',

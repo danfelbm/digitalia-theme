@@ -15,6 +15,9 @@ if (!function_exists('digitalia_register_contacto_acf_fields')) {
             acf_add_local_field_group(array(
                 'key' => 'group_contacto_page',
                 'title' => 'Contenido de Contacto',
+                'show_in_rest' => true,
+                'show_in_rest' => true,
+                'show_in_rest' => true,
                 'fields' => array(
                     // Page Header Section
                     array(
@@ -139,7 +142,7 @@ if (!function_exists('digitalia_register_contacto_acf_fields')) {
                                         'label' => 'Imagen',
                                         'name' => 'image',
                                         'type' => 'image',
-                                        'return_format' => 'url',
+                                        'return_format' => 'array',
                                         'preview_size' => 'thumbnail',
                                     ),
                                 ),
@@ -191,7 +194,7 @@ if (!function_exists('digitalia_register_contacto_acf_fields')) {
                                         'label' => 'Imagen',
                                         'name' => 'image',
                                         'type' => 'image',
-                                        'return_format' => 'url',
+                                        'return_format' => 'array',
                                         'preview_size' => 'thumbnail',
                                     ),
                                     array(

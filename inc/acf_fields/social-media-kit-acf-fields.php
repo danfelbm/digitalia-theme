@@ -15,6 +15,9 @@ if (!function_exists('digitalia_register_social_media_kit_acf_fields')) {
             acf_add_local_field_group(array(
                 'key' => 'group_social_media_kit_page',
                 'title' => 'Contenido de Social Media Kit',
+                'show_in_rest' => true,
+                'show_in_rest' => true,
+                'show_in_rest' => true,
                 'fields' => array(
                     // Page Header Section
                     array(
@@ -121,7 +124,7 @@ if (!function_exists('digitalia_register_social_media_kit_acf_fields')) {
                                         'label' => 'Imagen',
                                         'name' => 'image',
                                         'type' => 'image',
-                                        'return_format' => 'url',
+                                        'return_format' => 'array',
                                         'preview_size' => 'medium',
                                     ),
                                     array(
@@ -182,7 +185,7 @@ if (!function_exists('digitalia_register_social_media_kit_acf_fields')) {
                                         'label' => 'Imagen',
                                         'name' => 'image',
                                         'type' => 'image',
-                                        'return_format' => 'url',
+                                        'return_format' => 'array',
                                         'preview_size' => 'medium',
                                     ),
                                     array(
