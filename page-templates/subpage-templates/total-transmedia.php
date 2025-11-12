@@ -271,6 +271,103 @@ get_header();
       </div>
     <?php endif; ?>
   </section>
+
+  <?php
+  // Helper functions for team display
+  if (!function_exists('get_team_color_classes')) {
+    function get_team_color_classes($team) {
+      $team = strtolower(trim($team));
+      $colors = [
+        'direccion transversal' => 'bg-slate-500 text-white',
+        'total transmedia' => 'bg-blue-500 text-white',
+        'en linea' => 'bg-red-500 text-white',
+        'academia' => 'bg-amber-500 text-white',
+        'ready' => 'bg-purple-500 text-white',
+        'colaboratorio' => 'bg-teal-500 text-white',
+        'sin equipo' => 'bg-gray-500 text-white'
+      ];
+      return isset($colors[$team]) ? $colors[$team] : 'bg-gray-500 text-white';
+    }
+  }
+
+  if (!function_exists('get_personas_data')) {
+    function get_personas_data() {
+      $personas_dir = get_template_directory() . '/assets/personas';
+      $personas = [];
+
+      if ($handle = opendir($personas_dir)) {
+        while (false !== ($entry = readdir($handle))) {
+          if ($entry != "." && $entry != ".." && !pathinfo($entry, PATHINFO_EXTENSION)) {
+            $parts = explode('_-_', $entry);
+
+            if (count($parts) !== 3) {
+              $parts = explode('-', $entry);
+            }
+
+            if (count($parts) >= 2) {
+              $name_part = array_shift($parts);
+
+              if (count($parts) >= 2) {
+                $team_part = array_shift($parts);
+                $role_part = implode('-', $parts);
+              } else {
+                $team_part = "Sin Equipo";
+                $role_part = implode('-', $parts);
+              }
+
+              $name = str_replace('_', ' ', $name_part);
+              $team = str_replace('_', ' ', $team_part);
+              $role = str_replace('_', ' ', pathinfo($role_part, PATHINFO_FILENAME));
+
+              $person_dir = $personas_dir . '/' . $entry;
+              $image = '';
+              if ($img_handle = opendir($person_dir)) {
+                while (false !== ($img = readdir($img_handle))) {
+                  if (in_array(strtolower(pathinfo($img, PATHINFO_EXTENSION)), ['jpg', 'jpeg', 'png'])) {
+                    $image = 'assets/personas/' . $entry . '/' . $img;
+                    break;
+                  }
+                }
+                closedir($img_handle);
+              }
+
+              $personas[] = [
+                'name' => $name,
+                'team' => $team,
+                'role' => $role,
+                'image' => $image
+              ];
+            }
+          }
+        }
+        closedir($handle);
+      }
+
+      $team_order = [
+        'Direccion Transversal' => 1,
+        'Total Transmedia' => 2,
+        'En Linea' => 3,
+        'Academia' => 4,
+        'READY' => 5,
+        'Colaboratorio' => 6
+      ];
+
+      usort($personas, function($a, $b) use ($team_order) {
+        $a_order = isset($team_order[$a['team']]) ? $team_order[$a['team']] : 999;
+        $b_order = isset($team_order[$b['team']]) ? $team_order[$b['team']] : 999;
+
+        if ($a_order !== $b_order) {
+          return $a_order - $b_order;
+        }
+
+        return strcmp($a['name'], $b['name']);
+      });
+
+      return $personas;
+    }
+  }
+  ?>
+
   <section class="py-32 bg-blue-100" id="equipo">
     <?php if ($team_intro = get_field('team_intro')): ?>
       <div class="container flex flex-col items-center">
@@ -289,8 +386,8 @@ get_header();
         <?php if ($buttons = $team_intro['buttons']): ?>
           <div class="flex w-full flex-col justify-center gap-2 sm:flex-row">
             <?php if ($buttons['join_text'] && $buttons['join_url']): ?>
-              <a 
-                href="<?php echo esc_url($buttons['join_url']); ?>" 
+              <a
+                href="<?php echo esc_url($buttons['join_url']); ?>"
                 class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full sm:w-auto"
               >
                 <?php echo esc_html($buttons['join_text']); ?>
@@ -298,8 +395,8 @@ get_header();
             <?php endif; ?>
 
             <?php if ($buttons['contact_text'] && $buttons['contact_url']): ?>
-              <a 
-                href="<?php echo esc_url($buttons['contact_url']); ?>" 
+              <a
+                href="<?php echo esc_url($buttons['contact_url']); ?>"
                 class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-blue-600 text-primary-foreground hover:bg-blue-500 h-10 px-4 py-2 w-full sm:w-auto"
               >
                 <?php echo esc_html($buttons['contact_text']); ?>
@@ -309,71 +406,115 @@ get_header();
         <?php endif; ?>
       </div>
     <?php endif; ?>
-    <div class="container mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"> <?php
-                $users = get_users();
 
-                foreach ($users as $user) {
-                  $equipo = get_field('equipo', 'user_' . $user->ID);
-                  if ($equipo === 'total-transmedia') {
-                    $name = $user->display_name;
-                    $avatar = get_avatar_url($user->ID, array('size' => 200));
-                    $frase = get_field('frase', 'user_' . $user->ID);
-                    $rol = get_field('rol', 'user_' . $user->ID);
-                    ?> <div class="flex flex-col items-center bg-blue-300 p-8 text-blue-900 border border-blue-600">
-        <span class="relative flex shrink-0 overflow-hidden rounded-full mb-4 size-20 md:mb-5 lg:size-24">
-          <img class="aspect-square h-full w-full" src="
-													<?php echo esc_url($avatar); ?>" alt="
-													<?php echo esc_attr($name); ?>">
-        </span>
-        <div class="text-center">
-          <h3 class="mb-1 font-semibold">
-            <a href="
-															<?php echo esc_url(get_author_posts_url($user->ID)); ?>" class="hover:text-blue-600 hover:underline transition-colors"> <?php echo esc_html($name); ?> </a>
-          </h3> <?php if ($rol): ?> <p class="text-sm"> <?php echo esc_html($rol); ?> </p> <?php endif; ?> <?php if ($frase): ?> <p class="mt-4 text-sm"> <?php echo esc_html($frase); ?> </p> <?php endif; ?>
-        </div> <?php if (have_rows('red_social', 'user_' . $user->ID)): ?> <div class="mt-6 flex gap-4"> <?php
-                            while (have_rows('red_social', 'user_' . $user->ID)):
-                              the_row();
-                              $social_network = get_sub_field('red_social_item');
-                              $profile_url = get_sub_field('link_al_perfil');
+    <div class="container mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <?php
+      // Get personas data and filter by Total Transmedia team
+      $all_personas = get_personas_data();
+      $tt_personas = array_filter($all_personas, function($persona) {
+        return strtolower($persona['team']) === 'total transmedia';
+      });
 
-                              if ($social_network && $profile_url):
-                                $icon_class = '';
-                                switch ($social_network) {
-                                  case 'facebook':
-                                    $icon_class = 'fa-facebook';
-                                    break;
-                                  case 'twitter':
-                                    $icon_class = 'fa-twitter';
-                                    break;
-                                  case 'linkedin':
-                                    $icon_class = 'fa-linkedin';
-                                    break;
-                                  case 'instagram':
-                                    $icon_class = 'fa-instagram';
-                                    break;
-                                  case 'youtube':
-                                    $icon_class = 'fa-youtube';
-                                    break;
-                                  case 'tiktok':
-                                    $icon_class = 'fa-tiktok';
-                                    break;
-                                }
-                                ?> <a href="
-														<?php echo esc_url($profile_url); ?>" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">
-            <i class="fa-brands 
-															<?php echo esc_attr($icon_class); ?>">
-            </i>
-          </a> <?php endif;
-                            endwhile; ?> </div> <?php endif; ?>
-      </div> <?php
-                  }
-                }
+      if (!empty($tt_personas)):
+        foreach ($tt_personas as $persona):
+          $pill_color = get_team_color_classes($persona['team']);
+          ?>
+          <div class="flex flex-col sm:flex-row bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="w-full sm:w-48 h-64 sm:h-auto shrink-0 bg-accent overflow-hidden">
+              <?php if ($persona['image']): ?>
+                <img
+                  src="<?php echo esc_url(get_template_directory_uri() . '/' . $persona['image']); ?>"
+                  alt="<?php echo esc_attr($persona['name']); ?>"
+                  class="w-full h-full object-cover object-top"
+                >
+              <?php endif; ?>
+            </div>
+            <div class="flex flex-1 flex-col items-start p-6">
+              <p class="w-full text-left font-semibold text-lg mb-2">
+                <?php echo esc_html($persona['name']); ?>
+              </p>
+              <p class="w-full text-left mb-3">
+                <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium <?php echo $pill_color; ?>">
+                  <?php echo esc_html($persona['team']); ?>
+                </span>
+              </p>
+              <p class="w-full text-sm text-muted-foreground">
+                <?php echo esc_html($persona['role']); ?>
+              </p>
+            </div>
+          </div>
+        <?php
+        endforeach;
+      else: ?>
+        <div class="col-span-full text-center text-muted-foreground">
+          No se encontraron miembros del equipo Total Transmedia.
+        </div>
+      <?php endif; ?>
 
-                if (empty($users)) {
-                  echo '
-											<div class="col-span-full text-center text-muted-foreground">No se encontraron miembros del equipo.</div>';
-                }
-                ?> </div>
+      <?php
+      /* CÓDIGO ANTERIOR COMENTADO - Sistema de WordPress Users
+
+      $users = get_users();
+
+      foreach ($users as $user) {
+        $equipo = get_field('equipo', 'user_' . $user->ID);
+        if ($equipo === 'total-transmedia') {
+          $name = $user->display_name;
+          $avatar = get_avatar_url($user->ID, array('size' => 200));
+          $frase = get_field('frase', 'user_' . $user->ID);
+          $rol = get_field('rol', 'user_' . $user->ID);
+          ?>
+          <div class="flex flex-col items-center bg-blue-300 p-8 text-blue-900 border border-blue-600">
+            <span class="relative flex shrink-0 overflow-hidden rounded-full mb-4 size-20 md:mb-5 lg:size-24">
+              <img class="aspect-square h-full w-full" src="<?php echo esc_url($avatar); ?>" alt="<?php echo esc_attr($name); ?>">
+            </span>
+            <div class="text-center">
+              <h3 class="mb-1 font-semibold">
+                <a href="<?php echo esc_url(get_author_posts_url($user->ID)); ?>" class="hover:text-blue-600 hover:underline transition-colors">
+                  <?php echo esc_html($name); ?>
+                </a>
+              </h3>
+              <?php if ($rol): ?>
+                <p class="text-sm"><?php echo esc_html($rol); ?></p>
+              <?php endif; ?>
+              <?php if ($frase): ?>
+                <p class="mt-4 text-sm"><?php echo esc_html($frase); ?></p>
+              <?php endif; ?>
+            </div>
+            <?php if (have_rows('red_social', 'user_' . $user->ID)): ?>
+              <div class="mt-6 flex gap-4">
+                <?php while (have_rows('red_social', 'user_' . $user->ID)):
+                  the_row();
+                  $social_network = get_sub_field('red_social_item');
+                  $profile_url = get_sub_field('link_al_perfil');
+                  if ($social_network && $profile_url):
+                    $icon_class = '';
+                    switch ($social_network) {
+                      case 'facebook': $icon_class = 'fa-facebook'; break;
+                      case 'twitter': $icon_class = 'fa-twitter'; break;
+                      case 'linkedin': $icon_class = 'fa-linkedin'; break;
+                      case 'instagram': $icon_class = 'fa-instagram'; break;
+                      case 'youtube': $icon_class = 'fa-youtube'; break;
+                      case 'tiktok': $icon_class = 'fa-tiktok'; break;
+                    }
+                    ?>
+                    <a href="<?php echo esc_url($profile_url); ?>" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">
+                      <i class="fa-brands <?php echo esc_attr($icon_class); ?>"></i>
+                    </a>
+                  <?php endif;
+                endwhile; ?>
+              </div>
+            <?php endif; ?>
+          </div>
+          <?php
+        }
+      }
+
+      if (empty($users)) {
+        echo '<div class="col-span-full text-center text-muted-foreground">No se encontraron miembros del equipo.</div>';
+      }
+      */ ?>
+    </div>
   </section>
 
   <?php
