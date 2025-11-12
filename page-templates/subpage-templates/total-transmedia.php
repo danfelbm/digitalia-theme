@@ -1412,7 +1412,7 @@ get_header();
     'use strict';
 
     // Configuration
-    const ROTATION_INTERVAL = 3000; // 3 seconds
+    const ROTATION_INTERVAL = 4000; // 4 seconds
     const CASCADE_DELAY = 100; // Delay between each image fade (ms)
     const FADE_DURATION = 500; // Must match Tailwind duration-500
 
