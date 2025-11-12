@@ -375,7 +375,406 @@ get_header();
                 }
                 ?> </div>
   </section>
-  <section class="py-32 bg-blue-200" id="contenidos">
+
+  <?php
+  // Tácticas Transmedia Section
+  if ($tacticas = get_field('tacticas_transmedia')):
+    $intro = isset($tacticas['intro']) ? $tacticas['intro'] : null;
+    $ami = isset($tacticas['ami']) ? $tacticas['ami'] : null;
+    $coyuntura = isset($tacticas['coyuntura']) ? $tacticas['coyuntura'] : null;
+    $ami_para_ti = isset($tacticas['ami_para_ti']) ? $tacticas['ami_para_ti'] : null;
+    $magazine = isset($tacticas['magazine']) ? $tacticas['magazine'] : null;
+    $marca = isset($tacticas['marca']) ? $tacticas['marca'] : null;
+  ?>
+    <!-- Wrapper padre para navegación sticky -->
+    <div id="tacticas-transmedia-wrapper" class="relative">
+
+    <!-- Intro Section: Tácticas Transmedia -->
+    <?php if ($intro && !empty($intro['title'])): ?>
+      <section id="tacticas-transmedia" class="py-32 bg-blue-300">
+        <div class="container mx-auto px-4">
+          <div class="flex flex-col items-center text-center max-w-4xl mx-auto">
+            <h2 class="text-4xl lg:text-6xl font-bold text-blue-900 mb-6">
+              <?php echo esc_html($intro['title']); ?>
+            </h2>
+            <?php if (!empty($intro['description'])): ?>
+              <p class="text-xl text-blue-800 mb-8">
+                <?php echo esc_html($intro['description']); ?>
+              </p>
+            <?php endif; ?>
+
+            <?php if (!empty($intro['image'])): ?>
+              <img
+                src="<?php echo esc_url($intro['image']['url']); ?>"
+                alt="<?php echo esc_attr($intro['image']['alt']); ?>"
+                class="w-full max-w-3xl rounded-xl shadow-lg mt-8"
+              >
+            <?php endif; ?>
+          </div>
+        </div>
+      </section>
+    <?php endif; ?>
+
+    <!-- Barra flotante sticky con glassmorphism para navegación de tácticas -->
+    <div class="sticky top-[130px] left-0 right-0 z-50 pt-4 pb-4" style="margin-top: -156px;">
+      <div class="flex justify-center px-4">
+        <nav class="backdrop-blur-lg bg-white/70 border border-white/20 rounded-full shadow-2xl px-4 py-3 inline-flex">
+          <div class="flex flex-wrap justify-center items-center gap-2 md:gap-3">
+            <a href="#tactica-ami" class="inline-flex items-center gap-1.5 px-3 py-2 bg-blue-600/90 text-white rounded-full hover:bg-blue-700 transition-all text-xs font-medium shadow-md hover:shadow-lg hover:scale-105">
+              <i class="fa-solid fa-graduation-cap text-sm"></i>
+              <span class="hidden sm:inline">AMI</span>
+            </a>
+            <a href="#tactica-coyuntura" class="inline-flex items-center gap-1.5 px-3 py-2 bg-blue-600/90 text-white rounded-full hover:bg-blue-700 transition-all text-xs font-medium shadow-md hover:shadow-lg hover:scale-105">
+              <i class="fa-solid fa-newspaper text-sm"></i>
+              <span class="hidden sm:inline">Coyuntura</span>
+            </a>
+            <a href="#tactica-ami-para-ti" class="inline-flex items-center gap-1.5 px-3 py-2 bg-blue-600/90 text-white rounded-full hover:bg-blue-700 transition-all text-xs font-medium shadow-md hover:shadow-lg hover:scale-105">
+              <i class="fa-brands fa-tiktok text-sm"></i>
+              <span class="hidden sm:inline">De AMI para ti</span>
+            </a>
+            <a href="#tactica-magazine" class="inline-flex items-center gap-1.5 px-3 py-2 bg-blue-600/90 text-white rounded-full hover:bg-blue-700 transition-all text-xs font-medium shadow-md hover:shadow-lg hover:scale-105">
+              <i class="fa-brands fa-youtube text-sm"></i>
+              <span class="hidden sm:inline">Magazine</span>
+            </a>
+            <a href="#tactica-marca" class="inline-flex items-center gap-1.5 px-3 py-2 bg-blue-600/90 text-white rounded-full hover:bg-blue-700 transition-all text-xs font-medium shadow-md hover:shadow-lg hover:scale-105">
+              <i class="fa-brands fa-instagram text-sm"></i>
+              <span class="hidden sm:inline">Marca</span>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Táctica AMI -->
+    <?php if ($ami && !empty($ami['title'])): ?>
+      <section id="tactica-ami" class="py-32 bg-blue-200">
+        <div class="container mx-auto px-4">
+          <div class="flex flex-col gap-8">
+            <!-- Texto arriba izquierda -->
+            <div class="max-w-3xl">
+              <h3 class="text-3xl lg:text-5xl font-bold text-blue-900 mb-6">
+                <?php echo esc_html($ami['title']); ?>
+              </h3>
+              <?php if (!empty($ami['description'])): ?>
+                <p class="text-lg text-blue-800 mb-6">
+                  <?php echo esc_html($ami['description']); ?>
+                </p>
+              <?php endif; ?>
+            </div>
+
+            <!-- Imágenes abajo -->
+            <?php if (!empty($ami['show_images']) && $ami['show_images']):
+              $num_images = !empty($ami['num_images']) ? $ami['num_images'] : 4;
+              $display_type = !empty($ami['display_type']) ? $ami['display_type'] : 'grid';
+              $random_images = digitalia_get_random_tt_images('AMI', $num_images);
+
+              if (!empty($random_images)):
+                if ($display_type === 'grid'): ?>
+                  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 tt-image-rotator"
+                       data-tactic="ami"
+                       data-num-images="<?php echo esc_attr($num_images); ?>">
+                    <?php foreach ($random_images as $img_url): ?>
+                      <img
+                        src="<?php echo esc_url($img_url); ?>"
+                        alt="<?php echo esc_attr($ami['title']); ?>"
+                        class="w-full h-64 object-cover rounded-lg shadow-md hover:shadow-xl transition-all duration-500 opacity-100"
+                      >
+                    <?php endforeach; ?>
+                  </div>
+                <?php else: ?>
+                  <div class="relative overflow-x-auto">
+                    <div class="flex gap-4 pb-4">
+                      <?php foreach ($random_images as $img_url): ?>
+                        <img
+                          src="<?php echo esc_url($img_url); ?>"
+                          alt="<?php echo esc_attr($ami['title']); ?>"
+                          class="w-80 h-64 object-cover rounded-lg shadow-md flex-shrink-0"
+                        >
+                      <?php endforeach; ?>
+                    </div>
+                  </div>
+                <?php endif; ?>
+              <?php endif; ?>
+            <?php endif; ?>
+          </div>
+        </div>
+      </section>
+    <?php endif; ?>
+
+    <!-- Táctica Coyuntura -->
+    <?php if ($coyuntura && !empty($coyuntura['title'])): ?>
+      <section id="tactica-coyuntura" class="py-32 bg-blue-100">
+        <div class="container mx-auto px-4">
+          <div class="flex flex-col gap-8">
+            <!-- Texto arriba izquierda -->
+            <div class="max-w-3xl">
+              <h3 class="text-3xl lg:text-5xl font-bold text-blue-900 mb-6">
+                <?php echo esc_html($coyuntura['title']); ?>
+              </h3>
+              <?php if (!empty($coyuntura['description'])): ?>
+                <p class="text-lg text-blue-800 mb-6">
+                  <?php echo esc_html($coyuntura['description']); ?>
+                </p>
+              <?php endif; ?>
+              <?php if (!empty($coyuntura['social_link'])): ?>
+                <a
+                  href="<?php echo esc_url($coyuntura['social_link']); ?>"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  <i class="fa-brands fa-x-twitter text-xl"></i>
+                  Seguir en X/Twitter
+                </a>
+              <?php endif; ?>
+            </div>
+
+            <!-- Imágenes abajo -->
+            <?php if (!empty($coyuntura['show_images']) && $coyuntura['show_images']):
+              $num_images = !empty($coyuntura['num_images']) ? $coyuntura['num_images'] : 5;
+              $display_type = !empty($coyuntura['display_type']) ? $coyuntura['display_type'] : 'carousel';
+              $random_images = digitalia_get_random_tt_images('Coyuntura', $num_images);
+
+              if (!empty($random_images)):
+                if ($display_type === 'grid'): ?>
+                  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 tt-image-rotator"
+                       data-tactic="coyuntura"
+                       data-num-images="<?php echo esc_attr($num_images); ?>">
+                    <?php foreach ($random_images as $img_url): ?>
+                      <img
+                        src="<?php echo esc_url($img_url); ?>"
+                        alt="<?php echo esc_attr($coyuntura['title']); ?>"
+                        class="w-full h-64 object-cover rounded-lg shadow-md hover:shadow-xl transition-all duration-500 opacity-100"
+                      >
+                    <?php endforeach; ?>
+                  </div>
+                <?php else: ?>
+                  <div class="relative overflow-x-auto">
+                    <div class="flex gap-4 pb-4">
+                      <?php foreach ($random_images as $img_url): ?>
+                        <img
+                          src="<?php echo esc_url($img_url); ?>"
+                          alt="<?php echo esc_attr($coyuntura['title']); ?>"
+                          class="w-80 h-64 object-cover rounded-lg shadow-md flex-shrink-0"
+                        >
+                      <?php endforeach; ?>
+                    </div>
+                  </div>
+                <?php endif; ?>
+              <?php endif; ?>
+            <?php endif; ?>
+          </div>
+        </div>
+      </section>
+    <?php endif; ?>
+
+    <!-- Táctica De AMI para ti -->
+    <?php if ($ami_para_ti && !empty($ami_para_ti['title'])): ?>
+      <section id="tactica-ami-para-ti" class="py-32 bg-blue-50">
+        <div class="container mx-auto px-4">
+          <div class="flex flex-col gap-8">
+            <!-- Texto arriba full width -->
+            <div class="max-w-3xl">
+              <h3 class="text-3xl lg:text-5xl font-bold text-blue-900 mb-6">
+                <?php echo esc_html($ami_para_ti['title']); ?>
+              </h3>
+              <?php if (!empty($ami_para_ti['description'])): ?>
+                <p class="text-lg text-blue-800 mb-6">
+                  <?php echo esc_html($ami_para_ti['description']); ?>
+                </p>
+              <?php endif; ?>
+              <?php if (!empty($ami_para_ti['social_link'])): ?>
+                <a
+                  href="<?php echo esc_url($ami_para_ti['social_link']); ?>"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  <i class="fa-brands fa-tiktok text-xl"></i>
+                  Ver en TikTok
+                </a>
+              <?php endif; ?>
+            </div>
+
+            <!-- Imágenes abajo full width -->
+            <?php if (!empty($ami_para_ti['show_images']) && $ami_para_ti['show_images']):
+              $num_images = !empty($ami_para_ti['num_images']) ? $ami_para_ti['num_images'] : 8;
+              $display_type = !empty($ami_para_ti['display_type']) ? $ami_para_ti['display_type'] : 'grid';
+              $random_images = digitalia_get_random_composite_tt_images('ami-para-ti', $num_images);
+
+              if (!empty($random_images)):
+                if ($display_type === 'grid'): ?>
+                  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 tt-image-rotator"
+                       data-tactic="ami-para-ti"
+                       data-composite="true"
+                       data-num-images="<?php echo esc_attr($num_images); ?>">
+                    <?php foreach ($random_images as $img_url): ?>
+                      <img
+                        src="<?php echo esc_url($img_url); ?>"
+                        alt="<?php echo esc_attr($ami_para_ti['title']); ?>"
+                        class="w-full h-64 object-cover rounded-lg shadow-md hover:shadow-xl transition-all duration-500 opacity-100"
+                      >
+                    <?php endforeach; ?>
+                  </div>
+                <?php else: ?>
+                  <div class="relative overflow-x-auto">
+                    <div class="flex gap-4 pb-4">
+                      <?php foreach ($random_images as $img_url): ?>
+                        <img
+                          src="<?php echo esc_url($img_url); ?>"
+                          alt="<?php echo esc_attr($ami_para_ti['title']); ?>"
+                          class="w-80 h-64 object-cover rounded-lg shadow-md flex-shrink-0"
+                        >
+                      <?php endforeach; ?>
+                    </div>
+                  </div>
+                <?php endif; ?>
+              <?php endif; ?>
+            <?php endif; ?>
+          </div>
+        </div>
+      </section>
+    <?php endif; ?>
+
+    <!-- Táctica Magazine -->
+    <?php if ($magazine && !empty($magazine['title'])): ?>
+      <section id="tactica-magazine" class="py-32 bg-white">
+        <div class="container mx-auto px-4">
+          <div class="flex flex-col gap-8">
+            <!-- Texto arriba izquierda -->
+            <div class="max-w-3xl">
+              <h3 class="text-3xl lg:text-5xl font-bold text-blue-900 mb-6">
+                <?php echo esc_html($magazine['title']); ?>
+              </h3>
+              <?php if (!empty($magazine['description'])): ?>
+                <p class="text-lg text-blue-800 mb-6">
+                  <?php echo esc_html($magazine['description']); ?>
+                </p>
+              <?php endif; ?>
+              <?php if (!empty($magazine['social_link'])): ?>
+                <a
+                  href="<?php echo esc_url($magazine['social_link']); ?>"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  <i class="fa-brands fa-youtube text-xl"></i>
+                  Ver episodios
+                </a>
+              <?php endif; ?>
+            </div>
+
+            <!-- Imágenes abajo -->
+            <?php if (!empty($magazine['show_images']) && $magazine['show_images']):
+              $num_images = !empty($magazine['num_images']) ? $magazine['num_images'] : 6;
+              $display_type = !empty($magazine['display_type']) ? $magazine['display_type'] : 'carousel';
+              $random_images = digitalia_get_random_composite_tt_images('magazine', $num_images);
+
+              if (!empty($random_images)):
+                if ($display_type === 'grid'): ?>
+                  <div class="grid grid-cols-2 md:grid-cols-3 gap-4 tt-image-rotator"
+                       data-tactic="magazine"
+                       data-composite="true"
+                       data-num-images="<?php echo esc_attr($num_images); ?>">
+                    <?php foreach ($random_images as $img_url): ?>
+                      <img
+                        src="<?php echo esc_url($img_url); ?>"
+                        alt="<?php echo esc_attr($magazine['title']); ?>"
+                        class="w-full h-64 object-cover rounded-lg shadow-md hover:shadow-xl transition-all duration-500 opacity-100"
+                      >
+                    <?php endforeach; ?>
+                  </div>
+                <?php else: ?>
+                  <div class="relative overflow-x-auto">
+                    <div class="flex gap-4 pb-4">
+                      <?php foreach ($random_images as $img_url): ?>
+                        <img
+                          src="<?php echo esc_url($img_url); ?>"
+                          alt="<?php echo esc_attr($magazine['title']); ?>"
+                          class="w-80 h-64 object-cover rounded-lg shadow-md flex-shrink-0"
+                        >
+                      <?php endforeach; ?>
+                    </div>
+                  </div>
+                <?php endif; ?>
+              <?php endif; ?>
+            <?php endif; ?>
+          </div>
+        </div>
+      </section>
+    <?php endif; ?>
+
+    <!-- Táctica Marca -->
+    <?php if ($marca && !empty($marca['title'])): ?>
+      <section id="tactica-marca" class="py-32 bg-blue-50">
+        <div class="container mx-auto px-4">
+          <div class="flex flex-col gap-8">
+            <!-- Texto arriba izquierda -->
+            <div class="max-w-3xl">
+              <h3 class="text-3xl lg:text-5xl font-bold text-blue-900 mb-6">
+                <?php echo esc_html($marca['title']); ?>
+              </h3>
+              <?php if (!empty($marca['description'])): ?>
+                <p class="text-lg text-blue-800 mb-6">
+                  <?php echo esc_html($marca['description']); ?>
+                </p>
+              <?php endif; ?>
+              <?php if (!empty($marca['social_link'])): ?>
+                <a
+                  href="<?php echo esc_url($marca['social_link']); ?>"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  <i class="fa-brands fa-instagram text-xl"></i>
+                  Seguir en Instagram
+                </a>
+              <?php endif; ?>
+            </div>
+
+            <!-- Imágenes abajo -->
+            <?php if (!empty($marca['show_images']) && $marca['show_images']):
+              $num_images = !empty($marca['num_images']) ? $marca['num_images'] : 9;
+              $display_type = !empty($marca['display_type']) ? $marca['display_type'] : 'grid';
+              $random_images = digitalia_get_random_tt_images('marca', $num_images);
+
+              if (!empty($random_images)):
+                if ($display_type === 'grid'): ?>
+                  <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 tt-image-rotator"
+                       data-tactic="marca"
+                       data-num-images="<?php echo esc_attr($num_images); ?>">
+                    <?php foreach ($random_images as $img_url): ?>
+                      <img
+                        src="<?php echo esc_url($img_url); ?>"
+                        alt="<?php echo esc_attr($marca['title']); ?>"
+                        class="w-full h-48 object-cover rounded-lg shadow-md hover:shadow-xl transition-all duration-500 opacity-100"
+                      >
+                    <?php endforeach; ?>
+                  </div>
+                <?php else: ?>
+                  <div class="relative overflow-x-auto">
+                    <div class="flex gap-4 pb-4">
+                      <?php foreach ($random_images as $img_url): ?>
+                        <img
+                          src="<?php echo esc_url($img_url); ?>"
+                          alt="<?php echo esc_attr($marca['title']); ?>"
+                          class="w-80 h-64 object-cover rounded-lg shadow-md flex-shrink-0"
+                        >
+                      <?php endforeach; ?>
+                    </div>
+                  </div>
+                <?php endif; ?>
+              <?php endif; ?>
+            <?php endif; ?>
+          </div>
+        </div>
+      </section>
+    <?php endif; ?>
+
+    </div> <!-- Fin de tacticas-transmedia-wrapper -->
+  <?php endif; ?>
+
+  <!--<section class="py-32 bg-blue-200" id="contenidos">
     <?php if ($content = get_field('content')): ?>
       <div class="container flex flex-col gap-16 lg:px-16">
         <div class="lg:max-w-sm">
@@ -497,8 +896,8 @@ get_header();
         <?php endif; ?>
       </div>
     <?php endif; ?>
-  </section>
-  <section id="portafolio" class="flex flex-col gap-16 lg:px-16 lg:pt-32 pt-16 text-blue-950 bg-blue-300">
+  </section>-->
+  <!--<section id="portafolio" class="flex flex-col gap-16 lg:px-16 lg:pt-32 pt-16 text-blue-950 bg-blue-300">
     <?php if ($portfolio = get_field('portfolio')): ?>
       <div class="container mb-14 flex flex-col gap-16 lg:mb-16 lg:px-16">
         <div class="lg:max-w-lg">
@@ -560,9 +959,9 @@ get_header();
         <?php endif; ?>
       </div>
     <?php endif; ?>
-  </section>
+  </section>-->
 
-  <section class="pb-32 pt-16 bg-blue-300">
+  <!--<section id="portafolio2" class="pb-32 pt-16 bg-blue-300">
     <?php if ($tabs = $portfolio['tabs']): ?>
       <div class="w-full">
         <div class="relative" role="region" aria-roledescription="carousel">
@@ -626,8 +1025,8 @@ get_header();
         </div>
       </div>
     <?php endif; ?>
-  </section>
-  <section class="py-32 bg-blue-50">
+  </section>-->
+  <!--<section id="ami-para-ti" class="py-32 bg-blue-50">
     <div class="container mx-auto flex flex-col items-center">
       <div class="w-full overflow-clip rounded-lg bg-blue-50/50 2xl:w-[calc(min(100vw-2*theme(container.padding),100%+8rem))]">
         <div class="grid items-center gap-8 lg:grid-cols-2">
@@ -720,8 +1119,8 @@ get_header();
         </div>
       </div>
     </div>
-  </section>
-  <section class="py-32 bg-blue-200">
+  </section>-->
+  <section id="sala-de-prensa" class="py-32 bg-blue-300">
     <div class="container mx-auto px-4">
       <div class="grid items-center gap-8 lg:grid-cols-2">
           <?php if ($training = get_field('training')): ?>
@@ -771,7 +1170,7 @@ get_header();
       </div>
     </div>
   </section>
-  <section class="py-32 bg-blue-300">
+  <section class="py-32 bg-blue-200">
     <div class="container mx-auto px-4">
       <div class="flex flex-col gap-6">
         <?php if ($testimonials = get_field('testimonials')): ?>
@@ -855,7 +1254,7 @@ get_header();
     </div>
   </section>
 
-  <section class="py-16 md:py-24 bg-blue-50">
+  <section class="py-16 md:py-24 bg-blue-100">
     <div class="container mx-auto px-4">
       <div class="grid items-center gap-8 lg:grid-cols-2">
         <div class="flex flex-col items-center px-4 text-center lg:items-start lg:text-left">
@@ -905,8 +1304,8 @@ get_header();
       </div>
     </div>
   </section>
-  
-  <section id="alianzas" class="py-32 bg-blue-200">
+
+  <section id="alianzas" class="py-32 bg-blue-50">
     <div class="container mx-auto px-4">
       <div class="grid overflow-hidden rounded-xl border border-blue-400 md:grid-cols-2">
         <?php if ($alianzas = get_field('alianzas')): ?>
@@ -960,8 +1359,8 @@ get_header();
       </div>
     </div>
   </section>
-  
-  <section id="adaptacion" class="py-32 bg-blue-300">
+
+  <!--<section id="adaptacion" class="py-32 bg-white">
     <div class="container mx-auto px-4">
     <?php if ($adaptacion = get_field('adaptacion')): ?>
       <?php if (!empty($adaptacion['title'])): ?>
@@ -1000,8 +1399,193 @@ get_header();
         </div>
         <?php endif; ?>
     <?php endif; ?>
-  </section>
-</main> 
+  </section>-->
+</main>
+
+<script>
+/**
+ * Total Transmedia Image Rotator with Intersection Observer
+ * Rotates images every 3 seconds with cascade fade effect
+ * Only loads and rotates images when section is visible
+ */
+(function() {
+    'use strict';
+
+    // Configuration
+    const ROTATION_INTERVAL = 3000; // 3 seconds
+    const CASCADE_DELAY = 100; // Delay between each image fade (ms)
+    const FADE_DURATION = 500; // Must match Tailwind duration-500
+
+    // Track active intervals per rotator
+    const activeIntervals = new Map();
+
+    /**
+     * Fetch new random images from REST API
+     */
+    async function fetchNewImages(tactic, numImages, isComposite) {
+        try {
+            const url = new URL('<?php echo esc_url(rest_url('digitalia/v1/tt-images/')); ?>' + tactic);
+            url.searchParams.append('num_images', numImages);
+            if (isComposite) {
+                url.searchParams.append('composite', 'true');
+            }
+
+            const response = await fetch(url.toString());
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            return data.images || [];
+        } catch (error) {
+            console.error('Error fetching TT images:', error);
+            return [];
+        }
+    }
+
+    /**
+     * Apply cascade fade effect when replacing images
+     */
+    async function replaceImagesWithCascade(container, newImages) {
+        const imgElements = container.querySelectorAll('img');
+
+        if (imgElements.length === 0 || newImages.length === 0) {
+            return;
+        }
+
+        // Phase 1: Fade out with cascade
+        imgElements.forEach((img, index) => {
+            setTimeout(() => {
+                img.style.opacity = '0';
+            }, index * CASCADE_DELAY);
+        });
+
+        // Wait for all fade outs to complete
+        await new Promise(resolve => {
+            setTimeout(resolve, (imgElements.length * CASCADE_DELAY) + FADE_DURATION);
+        });
+
+        // Phase 2: Replace src attributes
+        imgElements.forEach((img, index) => {
+            if (newImages[index]) {
+                img.src = newImages[index];
+            }
+        });
+
+        // Phase 3: Fade in with cascade
+        imgElements.forEach((img, index) => {
+            setTimeout(() => {
+                img.style.opacity = '1';
+            }, index * CASCADE_DELAY);
+        });
+    }
+
+    /**
+     * Start rotation for a specific rotator element
+     */
+    function startRotation(rotator) {
+        // Don't start if already rotating
+        if (activeIntervals.has(rotator)) {
+            return;
+        }
+
+        const tactic = rotator.dataset.tactic;
+        const numImages = parseInt(rotator.dataset.numImages) || 4;
+        const isComposite = rotator.dataset.composite === 'true';
+
+        console.log(`[TT Rotator] Starting rotation for: ${tactic}`);
+
+        // Use recursive setTimeout instead of setInterval to ensure 3 seconds between rotations
+        let isRotating = false;
+
+        async function rotate() {
+            if (isRotating) {
+                return; // Skip if previous rotation is still in progress
+            }
+
+            isRotating = true;
+
+            try {
+                const newImages = await fetchNewImages(tactic, numImages, isComposite);
+                if (newImages.length > 0) {
+                    await replaceImagesWithCascade(rotator, newImages);
+                }
+            } catch (error) {
+                console.error('[TT Rotator] Error during rotation:', error);
+            } finally {
+                isRotating = false;
+
+                // Schedule next rotation only after current one completes
+                if (activeIntervals.has(rotator)) {
+                    const timeoutId = setTimeout(rotate, ROTATION_INTERVAL);
+                    activeIntervals.set(rotator, timeoutId);
+                }
+            }
+        }
+
+        // Start first rotation after initial delay
+        const timeoutId = setTimeout(rotate, ROTATION_INTERVAL);
+        activeIntervals.set(rotator, timeoutId);
+    }
+
+    /**
+     * Stop rotation for a specific rotator element
+     */
+    function stopRotation(rotator) {
+        if (activeIntervals.has(rotator)) {
+            clearTimeout(activeIntervals.get(rotator));
+            activeIntervals.delete(rotator);
+            console.log(`[TT Rotator] Stopped rotation for: ${rotator.dataset.tactic}`);
+        }
+    }
+
+    /**
+     * Initialize Intersection Observer
+     */
+    function initIntersectionObserver() {
+        const options = {
+            root: null, // viewport
+            rootMargin: '50px', // Start slightly before visible
+            threshold: 0.1 // 10% of element visible
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Element is visible - start rotation
+                    startRotation(entry.target);
+                } else {
+                    // Element is not visible - stop rotation (optional, saves resources)
+                    stopRotation(entry.target);
+                }
+            });
+        }, options);
+
+        // Observe all rotator elements
+        const rotators = document.querySelectorAll('.tt-image-rotator');
+        rotators.forEach(rotator => {
+            observer.observe(rotator);
+        });
+
+        console.log(`[TT Rotator] Initialized observer for ${rotators.length} sections`);
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initIntersectionObserver);
+    } else {
+        initIntersectionObserver();
+    }
+
+    // Cleanup on page unload
+    window.addEventListener('beforeunload', () => {
+        activeIntervals.forEach((timeoutId, rotator) => {
+            clearTimeout(timeoutId);
+        });
+        activeIntervals.clear();
+    });
+})();
+</script>
 
 <?php
 get_footer();

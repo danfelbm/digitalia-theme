@@ -1817,6 +1817,420 @@ if (!function_exists('digitalia_register_total_transmedia_acf_fields')) {
                             ),
                         ),
                     ),
+                    array(
+                        'key' => 'field_tacticas_transmedia',
+                        'label' => 'Tácticas Transmedia',
+                        'name' => 'tacticas_transmedia',
+                        'type' => 'group',
+                        'layout' => 'block',
+                        'sub_fields' => array(
+                            array(
+                                'key' => 'field_tacticas_intro',
+                                'label' => 'Introducción de Tácticas',
+                                'name' => 'intro',
+                                'type' => 'group',
+                                'sub_fields' => array(
+                                    array(
+                                        'key' => 'field_tacticas_intro_title',
+                                        'label' => 'Título',
+                                        'name' => 'title',
+                                        'type' => 'text',
+                                        'default_value' => 'Tácticas Transmedia',
+                                    ),
+                                    array(
+                                        'key' => 'field_tacticas_intro_description',
+                                        'label' => 'Descripción',
+                                        'name' => 'description',
+                                        'type' => 'textarea',
+                                        'rows' => 3,
+                                        'default_value' => 'Desarrollamos estrategias comunicacionales innovadoras que integran múltiples plataformas para llevar la alfabetización mediática e informacional a todos los colombianos.',
+                                    ),
+                                    array(
+                                        'key' => 'field_tacticas_intro_image',
+                                        'label' => 'Imagen',
+                                        'name' => 'image',
+                                        'type' => 'image',
+                                        'return_format' => 'array',
+                                        'preview_size' => 'medium',
+                                        'instructions' => 'Dimensiones recomendadas: 800x600px',
+                                    ),
+                                ),
+                            ),
+                            array(
+                                'key' => 'field_tactica_ami',
+                                'label' => 'Táctica AMI',
+                                'name' => 'ami',
+                                'type' => 'group',
+                                'sub_fields' => array(
+                                    array(
+                                        'key' => 'field_ami_title',
+                                        'label' => 'Título',
+                                        'name' => 'title',
+                                        'type' => 'text',
+                                        'default_value' => 'AMI',
+                                    ),
+                                    array(
+                                        'key' => 'field_ami_description',
+                                        'label' => 'Descripción',
+                                        'name' => 'description',
+                                        'type' => 'textarea',
+                                        'rows' => 3,
+                                        'default_value' => 'Es una táctica que busca llevar al entendimiento de todas y todos las terminologías y saberes de la Alfabetización Mediática e Informacional. Su objetivo es sacar el conocimiento AMI de la academia y llevarlo a las calles y hogares colombianos.',
+                                    ),
+                                    array(
+                                        'key' => 'field_ami_show_images',
+                                        'label' => 'Mostrar galería de imágenes',
+                                        'name' => 'show_images',
+                                        'type' => 'true_false',
+                                        'ui' => 1,
+                                        'default_value' => 1,
+                                    ),
+                                    array(
+                                        'key' => 'field_ami_num_images',
+                                        'label' => 'Número de imágenes a mostrar',
+                                        'name' => 'num_images',
+                                        'type' => 'number',
+                                        'default_value' => 4,
+                                        'min' => 1,
+                                        'max' => 20,
+                                        'conditional_logic' => array(
+                                            array(
+                                                array(
+                                                    'field' => 'field_ami_show_images',
+                                                    'operator' => '==',
+                                                    'value' => '1',
+                                                ),
+                                            ),
+                                        ),
+                                    ),
+                                    array(
+                                        'key' => 'field_ami_display_type',
+                                        'label' => 'Tipo de visualización',
+                                        'name' => 'display_type',
+                                        'type' => 'select',
+                                        'choices' => array(
+                                            'grid' => 'Grid',
+                                            'carousel' => 'Carrusel',
+                                        ),
+                                        'default_value' => 'grid',
+                                        'conditional_logic' => array(
+                                            array(
+                                                array(
+                                                    'field' => 'field_ami_show_images',
+                                                    'operator' => '==',
+                                                    'value' => '1',
+                                                ),
+                                            ),
+                                        ),
+                                    ),
+                                ),
+                            ),
+                            array(
+                                'key' => 'field_tactica_coyuntura',
+                                'label' => 'Táctica Coyuntura',
+                                'name' => 'coyuntura',
+                                'type' => 'group',
+                                'sub_fields' => array(
+                                    array(
+                                        'key' => 'field_coyuntura_title',
+                                        'label' => 'Título',
+                                        'name' => 'title',
+                                        'type' => 'text',
+                                        'default_value' => 'Coyuntura',
+                                    ),
+                                    array(
+                                        'key' => 'field_coyuntura_description',
+                                        'label' => 'Descripción',
+                                        'name' => 'description',
+                                        'type' => 'textarea',
+                                        'rows' => 3,
+                                        'default_value' => 'Los agentes de la desinformación son expertos en utilizar las coyunturas para manipular a la gente, Coyuntura busca combatir esa desinformación en caliente, para contribuir a la salud digital de las y los colombianos.',
+                                    ),
+                                    array(
+                                        'key' => 'field_coyuntura_show_images',
+                                        'label' => 'Mostrar galería de imágenes',
+                                        'name' => 'show_images',
+                                        'type' => 'true_false',
+                                        'ui' => 1,
+                                        'default_value' => 1,
+                                    ),
+                                    array(
+                                        'key' => 'field_coyuntura_num_images',
+                                        'label' => 'Número de imágenes a mostrar',
+                                        'name' => 'num_images',
+                                        'type' => 'number',
+                                        'default_value' => 5,
+                                        'min' => 1,
+                                        'max' => 20,
+                                        'conditional_logic' => array(
+                                            array(
+                                                array(
+                                                    'field' => 'field_coyuntura_show_images',
+                                                    'operator' => '==',
+                                                    'value' => '1',
+                                                ),
+                                            ),
+                                        ),
+                                    ),
+                                    array(
+                                        'key' => 'field_coyuntura_display_type',
+                                        'label' => 'Tipo de visualización',
+                                        'name' => 'display_type',
+                                        'type' => 'select',
+                                        'choices' => array(
+                                            'grid' => 'Grid',
+                                            'carousel' => 'Carrusel',
+                                        ),
+                                        'default_value' => 'carousel',
+                                        'conditional_logic' => array(
+                                            array(
+                                                array(
+                                                    'field' => 'field_coyuntura_show_images',
+                                                    'operator' => '==',
+                                                    'value' => '1',
+                                                ),
+                                            ),
+                                        ),
+                                    ),
+                                    array(
+                                        'key' => 'field_coyuntura_social_link',
+                                        'label' => 'Link a Twitter/X',
+                                        'name' => 'social_link',
+                                        'type' => 'url',
+                                        'default_value' => 'https://x.com/Digitalia_Col',
+                                    ),
+                                ),
+                            ),
+                            array(
+                                'key' => 'field_tactica_ami_para_ti',
+                                'label' => 'Táctica De AMI para ti',
+                                'name' => 'ami_para_ti',
+                                'type' => 'group',
+                                'sub_fields' => array(
+                                    array(
+                                        'key' => 'field_ami_para_ti_title',
+                                        'label' => 'Título',
+                                        'name' => 'title',
+                                        'type' => 'text',
+                                        'default_value' => 'De AMI para ti',
+                                    ),
+                                    array(
+                                        'key' => 'field_ami_para_ti_description',
+                                        'label' => 'Descripción',
+                                        'name' => 'description',
+                                        'type' => 'textarea',
+                                        'rows' => 3,
+                                        'default_value' => 'Busca desmitificar las narrativas segregadoras, conservadoras y estigmatizantes de la realidad cultural del territorio, con un enfoque rebelde y juvenil.',
+                                    ),
+                                    array(
+                                        'key' => 'field_ami_para_ti_show_images',
+                                        'label' => 'Mostrar galería de imágenes',
+                                        'name' => 'show_images',
+                                        'type' => 'true_false',
+                                        'ui' => 1,
+                                        'default_value' => 1,
+                                    ),
+                                    array(
+                                        'key' => 'field_ami_para_ti_num_images',
+                                        'label' => 'Número de imágenes a mostrar',
+                                        'name' => 'num_images',
+                                        'type' => 'number',
+                                        'default_value' => 8,
+                                        'min' => 1,
+                                        'max' => 20,
+                                        'conditional_logic' => array(
+                                            array(
+                                                array(
+                                                    'field' => 'field_ami_para_ti_show_images',
+                                                    'operator' => '==',
+                                                    'value' => '1',
+                                                ),
+                                            ),
+                                        ),
+                                    ),
+                                    array(
+                                        'key' => 'field_ami_para_ti_display_type',
+                                        'label' => 'Tipo de visualización',
+                                        'name' => 'display_type',
+                                        'type' => 'select',
+                                        'choices' => array(
+                                            'grid' => 'Grid',
+                                            'carousel' => 'Carrusel',
+                                        ),
+                                        'default_value' => 'grid',
+                                        'conditional_logic' => array(
+                                            array(
+                                                array(
+                                                    'field' => 'field_ami_para_ti_show_images',
+                                                    'operator' => '==',
+                                                    'value' => '1',
+                                                ),
+                                            ),
+                                        ),
+                                    ),
+                                    array(
+                                        'key' => 'field_ami_para_ti_social_link',
+                                        'label' => 'Link a TikTok',
+                                        'name' => 'social_link',
+                                        'type' => 'url',
+                                        'default_value' => 'https://www.tiktok.com/@digitalia_col',
+                                    ),
+                                ),
+                            ),
+                            array(
+                                'key' => 'field_tactica_magazine',
+                                'label' => 'Táctica Magazine',
+                                'name' => 'magazine',
+                                'type' => 'group',
+                                'sub_fields' => array(
+                                    array(
+                                        'key' => 'field_magazine_title',
+                                        'label' => 'Título',
+                                        'name' => 'title',
+                                        'type' => 'text',
+                                        'default_value' => 'Magazine',
+                                    ),
+                                    array(
+                                        'key' => 'field_magazine_description',
+                                        'label' => 'Descripción',
+                                        'name' => 'description',
+                                        'type' => 'textarea',
+                                        'rows' => 3,
+                                        'default_value' => 'Magazine pone en diálogo la Alfabetización mediática e informacional con la lucha contra narrativas desinformativas qué en sociedad actual representan grandes obstáculos para la salud digital de la población colombiana. Desde 4 aspectos fundamentales (Yo se, yo pienso, yo creo y yo hago).',
+                                    ),
+                                    array(
+                                        'key' => 'field_magazine_show_images',
+                                        'label' => 'Mostrar galería de imágenes',
+                                        'name' => 'show_images',
+                                        'type' => 'true_false',
+                                        'ui' => 1,
+                                        'default_value' => 1,
+                                    ),
+                                    array(
+                                        'key' => 'field_magazine_num_images',
+                                        'label' => 'Número de imágenes a mostrar',
+                                        'name' => 'num_images',
+                                        'type' => 'number',
+                                        'default_value' => 6,
+                                        'min' => 1,
+                                        'max' => 20,
+                                        'conditional_logic' => array(
+                                            array(
+                                                array(
+                                                    'field' => 'field_magazine_show_images',
+                                                    'operator' => '==',
+                                                    'value' => '1',
+                                                ),
+                                            ),
+                                        ),
+                                    ),
+                                    array(
+                                        'key' => 'field_magazine_display_type',
+                                        'label' => 'Tipo de visualización',
+                                        'name' => 'display_type',
+                                        'type' => 'select',
+                                        'choices' => array(
+                                            'grid' => 'Grid',
+                                            'carousel' => 'Carrusel',
+                                        ),
+                                        'default_value' => 'carousel',
+                                        'conditional_logic' => array(
+                                            array(
+                                                array(
+                                                    'field' => 'field_magazine_show_images',
+                                                    'operator' => '==',
+                                                    'value' => '1',
+                                                ),
+                                            ),
+                                        ),
+                                    ),
+                                    array(
+                                        'key' => 'field_magazine_social_link',
+                                        'label' => 'Link a YouTube',
+                                        'name' => 'social_link',
+                                        'type' => 'url',
+                                        'default_value' => 'https://www.youtube.com/watch?v=y2GLeHAL7G4&list=PLs-jwy4QxT5rrgJYsAHCDIM55ZMFUSR3y&index=4',
+                                    ),
+                                ),
+                            ),
+                            array(
+                                'key' => 'field_tactica_marca',
+                                'label' => 'Táctica Marca',
+                                'name' => 'marca',
+                                'type' => 'group',
+                                'sub_fields' => array(
+                                    array(
+                                        'key' => 'field_marca_title',
+                                        'label' => 'Título',
+                                        'name' => 'title',
+                                        'type' => 'text',
+                                        'default_value' => 'Marca',
+                                    ),
+                                    array(
+                                        'key' => 'field_marca_description',
+                                        'label' => 'Descripción',
+                                        'name' => 'description',
+                                        'type' => 'textarea',
+                                        'rows' => 3,
+                                        'default_value' => 'Difusión y apropiación de la marca Digitalia.',
+                                    ),
+                                    array(
+                                        'key' => 'field_marca_show_images',
+                                        'label' => 'Mostrar galería de imágenes',
+                                        'name' => 'show_images',
+                                        'type' => 'true_false',
+                                        'ui' => 1,
+                                        'default_value' => 1,
+                                    ),
+                                    array(
+                                        'key' => 'field_marca_num_images',
+                                        'label' => 'Número de imágenes a mostrar',
+                                        'name' => 'num_images',
+                                        'type' => 'number',
+                                        'default_value' => 9,
+                                        'min' => 1,
+                                        'max' => 20,
+                                        'conditional_logic' => array(
+                                            array(
+                                                array(
+                                                    'field' => 'field_marca_show_images',
+                                                    'operator' => '==',
+                                                    'value' => '1',
+                                                ),
+                                            ),
+                                        ),
+                                    ),
+                                    array(
+                                        'key' => 'field_marca_display_type',
+                                        'label' => 'Tipo de visualización',
+                                        'name' => 'display_type',
+                                        'type' => 'select',
+                                        'choices' => array(
+                                            'grid' => 'Grid',
+                                            'carousel' => 'Carrusel',
+                                        ),
+                                        'default_value' => 'grid',
+                                        'conditional_logic' => array(
+                                            array(
+                                                array(
+                                                    'field' => 'field_marca_show_images',
+                                                    'operator' => '==',
+                                                    'value' => '1',
+                                                ),
+                                            ),
+                                        ),
+                                    ),
+                                    array(
+                                        'key' => 'field_marca_social_link',
+                                        'label' => 'Link a Instagram',
+                                        'name' => 'social_link',
+                                        'type' => 'url',
+                                        'default_value' => 'https://www.instagram.com/digitalia_col/',
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ),
                 ),
                 'location' => array(
                     array(

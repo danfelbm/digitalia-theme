@@ -1327,6 +1327,239 @@ function digitalia_enqueue_acf_map_scripts() {
 }
 add_action('wp_enqueue_scripts', 'digitalia_enqueue_acf_map_scripts', 20);
 
+/**
+ * Get random images from Total Transmedia tactics directories
+ *
+ * @param string $tactic_folder The folder name within tt-images (e.g., 'AMI', 'Coyuntura', 'ami-para-ti1')
+ * @param int $num_images Number of random images to return
+ * @return array Array of image URLs
+ */
+function digitalia_get_random_tt_images($tactic_folder, $num_images = 4) {
+    $theme_dir = get_template_directory();
+    $theme_uri = get_template_directory_uri();
+
+    // Normalize folder name to lowercase for filesystem
+    $folder_normalized = strtolower(str_replace(' ', '-', $tactic_folder));
+
+    // Define the directory path
+    $images_dir = $theme_dir . '/assets/images/tt-images/' . $folder_normalized;
+
+    // Check if directory exists
+    if (!is_dir($images_dir)) {
+        return array();
+    }
+
+    // Get all image files from the directory
+    $image_files = glob($images_dir . '/*.{jpg,jpeg,png,JPG,JPEG,PNG}', GLOB_BRACE);
+
+    if (empty($image_files)) {
+        return array();
+    }
+
+    // Shuffle the array to randomize
+    shuffle($image_files);
+
+    // Limit to requested number of images
+    $selected_files = array_slice($image_files, 0, $num_images);
+
+    // Convert filesystem paths to URLs
+    $image_urls = array();
+    foreach ($selected_files as $file_path) {
+        $relative_path = str_replace($theme_dir, $theme_uri, $file_path);
+        $image_urls[] = $relative_path;
+    }
+
+    return $image_urls;
+}
+
+/**
+ * Get all subdirectories for a composite tactic (e.g., ami-para-ti has ami-para-ti1, ami-para-ti2, ami-para-ti3)
+ *
+ * @param string $tactic_base The base tactic name (e.g., 'ami-para-ti', 'magazine')
+ * @param int $num_images Number of random images to return from ALL subdirectories combined
+ * @return array Array of image URLs
+ */
+function digitalia_get_random_composite_tt_images($tactic_base, $num_images = 8) {
+    $theme_dir = get_template_directory();
+    $theme_uri = get_template_directory_uri();
+
+    // Normalize folder name
+    $folder_normalized = strtolower(str_replace(' ', '-', $tactic_base));
+
+    // Base directory
+    $base_dir = $theme_dir . '/assets/images/tt-images/';
+
+    // Find all subdirectories matching the pattern
+    $all_dirs = glob($base_dir . $folder_normalized . '*', GLOB_ONLYDIR);
+
+    if (empty($all_dirs)) {
+        // If no composite directories, try single directory
+        return digitalia_get_random_tt_images($tactic_base, $num_images);
+    }
+
+    // Collect all images from all subdirectories
+    $all_images = array();
+    foreach ($all_dirs as $dir) {
+        $image_files = glob($dir . '/*.{jpg,jpeg,png,JPG,JPEG,PNG}', GLOB_BRACE);
+        if (!empty($image_files)) {
+            $all_images = array_merge($all_images, $image_files);
+        }
+    }
+
+    if (empty($all_images)) {
+        return array();
+    }
+
+    // Shuffle to randomize
+    shuffle($all_images);
+
+    // Limit to requested number
+    $selected_files = array_slice($all_images, 0, $num_images);
+
+    // Convert to URLs
+    $image_urls = array();
+    foreach ($selected_files as $file_path) {
+        $relative_path = str_replace($theme_dir, $theme_uri, $file_path);
+        $image_urls[] = $relative_path;
+    }
+
+    return $image_urls;
+}
+
+/**
+ * Get ALL images from Total Transmedia tactics directories (for JS rotation)
+ *
+ * @param string $tactic_folder The folder name within tt-images (e.g., 'AMI', 'Coyuntura')
+ * @return array Array of ALL image URLs
+ */
+function digitalia_get_all_tt_images($tactic_folder) {
+    $theme_dir = get_template_directory();
+    $theme_uri = get_template_directory_uri();
+
+    // Normalize folder name to lowercase for filesystem
+    $folder_normalized = strtolower(str_replace(' ', '-', $tactic_folder));
+
+    // Define the directory path
+    $images_dir = $theme_dir . '/assets/images/tt-images/' . $folder_normalized;
+
+    // Check if directory exists
+    if (!is_dir($images_dir)) {
+        return array();
+    }
+
+    // Get all image files from the directory
+    $image_files = glob($images_dir . '/*.{jpg,jpeg,png,JPG,JPEG,PNG}', GLOB_BRACE);
+
+    if (empty($image_files)) {
+        return array();
+    }
+
+    // Convert filesystem paths to URLs (no shuffle, no limit)
+    $image_urls = array();
+    foreach ($image_files as $file_path) {
+        $relative_path = str_replace($theme_dir, $theme_uri, $file_path);
+        $image_urls[] = $relative_path;
+    }
+
+    return $image_urls;
+}
+
+/**
+ * Get ALL images from composite directories (for JS rotation)
+ *
+ * @param string $tactic_base The base tactic name (e.g., 'ami-para-ti', 'magazine')
+ * @return array Array of ALL image URLs
+ */
+function digitalia_get_all_composite_tt_images($tactic_base) {
+    $theme_dir = get_template_directory();
+    $theme_uri = get_template_directory_uri();
+
+    // Normalize folder name
+    $folder_normalized = strtolower(str_replace(' ', '-', $tactic_base));
+
+    // Base directory
+    $base_dir = $theme_dir . '/assets/images/tt-images/';
+
+    // Find all subdirectories matching the pattern
+    $all_dirs = glob($base_dir . $folder_normalized . '*', GLOB_ONLYDIR);
+
+    if (empty($all_dirs)) {
+        // If no composite directories, try single directory
+        return digitalia_get_all_tt_images($tactic_base);
+    }
+
+    // Collect all images from all subdirectories
+    $all_images = array();
+    foreach ($all_dirs as $dir) {
+        $image_files = glob($dir . '/*.{jpg,jpeg,png,JPG,JPEG,PNG}', GLOB_BRACE);
+        if (!empty($image_files)) {
+            $all_images = array_merge($all_images, $image_files);
+        }
+    }
+
+    if (empty($all_images)) {
+        return array();
+    }
+
+    // Convert to URLs (no shuffle, no limit)
+    $image_urls = array();
+    foreach ($all_images as $file_path) {
+        $relative_path = str_replace($theme_dir, $theme_uri, $file_path);
+        $image_urls[] = $relative_path;
+    }
+
+    return $image_urls;
+}
+
+/**
+ * REST API endpoint for Total Transmedia image rotation
+ */
+add_action('rest_api_init', function() {
+    register_rest_route('digitalia/v1', '/tt-images/(?P<tactic>[a-zA-Z0-9-]+)', array(
+        'methods' => 'GET',
+        'callback' => 'digitalia_get_random_tt_images_rest',
+        'permission_callback' => '__return_true',
+        'args' => array(
+            'tactic' => array(
+                'required' => true,
+                'type' => 'string',
+            ),
+            'num_images' => array(
+                'required' => false,
+                'type' => 'integer',
+                'default' => 4,
+            ),
+            'composite' => array(
+                'required' => false,
+                'type' => 'boolean',
+                'default' => false,
+            ),
+        ),
+    ));
+});
+
+/**
+ * REST API callback for random TT images
+ */
+function digitalia_get_random_tt_images_rest($request) {
+    $tactic = $request->get_param('tactic');
+    $num_images = $request->get_param('num_images');
+    $composite = $request->get_param('composite');
+
+    if ($composite) {
+        $images = digitalia_get_random_composite_tt_images($tactic, $num_images);
+    } else {
+        $images = digitalia_get_random_tt_images($tactic, $num_images);
+    }
+
+    return new WP_REST_Response(array(
+        'success' => true,
+        'images' => $images,
+        'tactic' => $tactic,
+        'count' => count($images),
+    ), 200);
+}
+
 // Custom Roles
 require get_template_directory() . '/inc/custom-roles.php';
 
