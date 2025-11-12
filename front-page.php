@@ -198,14 +198,15 @@ get_header();
 			$description = get_sub_field('description');
 			$link = get_sub_field('link');
 			$icon = get_sub_field('icon');
+			$icon_url = is_array($icon) ? $icon['url'] : $icon; // Handle both array and legacy ID/URL
 			?>
 			<a href="<?php echo esc_url($link); ?>" class="flex w-full cursor-pointer flex-col rounded-lg bg-<?php echo esc_attr($color); ?>-200 p-5 lg:p-8 group">
 			<h3 class="mb-2 w-fit border-b-2 border-solid border-transparent text-xl font-semibold transition text-<?php echo esc_attr($color); ?>-950 lg:text-2xl group-hover:!border-<?php echo esc_attr($color); ?>-500/90"><?php echo esc_html($title); ?></h3>
 			<p class="mb-4 text-sm text-<?php echo esc_attr($color); ?>-800 lg:text-base"><?php echo esc_html($description); ?></p>
 			<div class="mt-auto flex items-end justify-between">
 				<div>
-				<?php if ($icon) : ?>
-					<img src="<?php echo esc_url($icon); ?>" alt="" class="size-8 text-<?php echo esc_attr($color); ?>-500 md:size-12" />
+				<?php if ($icon_url) : ?>
+					<img src="<?php echo esc_url($icon_url); ?>" alt="" class="size-8 text-<?php echo esc_attr($color); ?>-500 md:size-12" />
 				<?php endif; ?>
 				</div>
 				<svg type="right-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right size-7 h-fit text-<?php echo esc_attr($color); ?>-950 transition group-hover:size-7 group-hover:translate-x-2 group-hover:transform">
@@ -225,10 +226,14 @@ get_header();
 				<?php echo esc_html($featured['button_text']); ?>
 			</a>
 			</div>
-			<?php if ($featured['media_type'] === 'video' && $featured['video']) : ?>
-			<video src="<?php echo esc_url($featured['video']); ?>" controls loop playsinline class="aspect-square h-full w-full rounded-lg object-cover md:aspect-[3] js-scroll-video" data-video-autoplay="false"></video>
-			<?php elseif ($featured['media_type'] === 'image' && $featured['image']) : ?>
-			<img src="<?php echo esc_url($featured['image']); ?>" alt="Digital·IA" class="aspect-square h-full w-full rounded-lg object-cover md:aspect-[3]">
+			<?php if ($featured['media_type'] === 'video' && $featured['video']) :
+				$video_url = is_array($featured['video']) ? $featured['video']['url'] : $featured['video'];
+			?>
+			<video src="<?php echo esc_url($video_url); ?>" controls loop playsinline class="aspect-square h-full w-full rounded-lg object-cover md:aspect-[3] js-scroll-video" data-video-autoplay="false"></video>
+			<?php elseif ($featured['media_type'] === 'image' && $featured['image']) :
+				$image_url = is_array($featured['image']) ? $featured['image']['url'] : $featured['image'];
+			?>
+			<img src="<?php echo esc_url($image_url); ?>" alt="Digital·IA" class="aspect-square h-full w-full rounded-lg object-cover md:aspect-[3]">
 			<?php endif; ?>
 		</div>
 		<?php endif; ?>
@@ -348,8 +353,10 @@ get_header();
 									</div>
 								</div>
 								<div class="order-first lg:w-1/2 aspect-video sm:order-last sm:aspect-auto flex items-center justify-center bg-<?php echo esc_html($module['color']); ?>-200 border-b border-<?php echo esc_html($module['color']); ?>-300 lg:border-b-0 lg:border-l lg:h-full">
-									<?php if ($module['image']) : ?>
-										<img src="<?php echo esc_url($module['image']); ?>" alt="<?php echo esc_attr($module['title']); ?>" class="w-24 h-24">
+									<?php if ($module['image']) :
+										$module_image_url = is_array($module['image']) ? $module['image']['url'] : $module['image'];
+									?>
+										<img src="<?php echo esc_url($module_image_url); ?>" alt="<?php echo esc_attr($module['title']); ?>" class="w-24 h-24">
 									<?php endif; ?>
 								</div>
 							</a>
