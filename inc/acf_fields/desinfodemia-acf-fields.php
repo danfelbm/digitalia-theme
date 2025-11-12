@@ -50,13 +50,6 @@ if (function_exists('acf_add_local_field_group')) {
                 'layout' => 'block',
                 'sub_fields' => array(
                     array(
-                        'key' => 'field_gallery_title',
-                        'label' => 'Título de la Sección',
-                        'name' => 'section_title',
-                        'type' => 'text',
-                        'default_value' => 'Galería',
-                    ),
-                    array(
                         'key' => 'field_gallery_images',
                         'label' => 'Imágenes',
                         'name' => 'images',

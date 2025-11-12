@@ -11,7 +11,7 @@
 get_header();
 ?>
 
-<main id="primary" class="site-main bg-red-50">
+<main id="primary" class="site-main bg-black">
 
   <?php
   // Hero Section con Video
@@ -19,18 +19,11 @@ get_header();
     $background_image = !empty($hero['background_image']) ? $hero['background_image']['url'] : '';
     $video_file = !empty($hero['video_file']) ? $hero['video_file']['url'] : '';
   ?>
-    <section class="relative h-[60vh] w-full overflow-hidden">
-      <!-- Background Image -->
-      <?php if ($background_image): ?>
-        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo esc_url($background_image); ?>');">
-          <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-        </div>
-      <?php endif; ?>
-
+    <section class="relative h-[60vh] w-full overflow-hidden bg-black">
       <!-- Video Player -->
       <?php if ($video_file): ?>
         <video
-          class="absolute inset-0 w-full h-full object-cover"
+          class="absolute inset-0 w-full h-full object-contain"
           controls
           poster="<?php echo esc_url($background_image); ?>"
           preload="metadata"
@@ -46,16 +39,9 @@ get_header();
   // Gallery Section - Grid de 5 imágenes
   if ($gallery = get_field('gallery_desinfodemia')):
     $images = !empty($gallery['images']) ? $gallery['images'] : array();
-    $section_title = !empty($gallery['section_title']) ? $gallery['section_title'] : '';
   ?>
-    <section class="py-16 md:py-24 bg-white">
+    <section class="py-16 md:py-24 bg-black">
       <div class="container mx-auto px-6">
-        <?php if ($section_title): ?>
-          <h2 class="text-3xl md:text-4xl font-bold text-red-900 mb-12 text-center">
-            <?php echo esc_html($section_title); ?>
-          </h2>
-        <?php endif; ?>
-
         <?php if (!empty($images)): ?>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <?php foreach ($images as $index => $image): ?>
