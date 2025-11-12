@@ -407,7 +407,7 @@ get_header();
       </div>
     <?php endif; ?>
 
-    <div class="container mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+    <div class="container mt-16">
       <?php
       // Get personas data and filter by Total Transmedia team
       $all_personas = get_personas_data();
@@ -415,38 +415,39 @@ get_header();
         return strtolower($persona['team']) === 'total transmedia';
       });
 
-      if (!empty($tt_personas)):
-        foreach ($tt_personas as $persona):
-          $pill_color = get_team_color_classes($persona['team']);
-          ?>
-          <div class="flex flex-col sm:flex-row bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-            <div class="w-full sm:w-48 h-64 sm:h-auto shrink-0 bg-accent overflow-hidden">
-              <?php if ($persona['image']): ?>
-                <img
-                  src="<?php echo esc_url(get_template_directory_uri() . '/' . $persona['image']); ?>"
-                  alt="<?php echo esc_attr($persona['name']); ?>"
-                  class="w-full h-full object-cover object-top"
-                >
-              <?php endif; ?>
-            </div>
-            <div class="flex flex-1 flex-col items-start p-6">
-              <p class="w-full text-left font-semibold text-lg mb-2">
+      if (!empty($tt_personas)): ?>
+        <div class="flex flex-wrap justify-center gap-8">
+          <?php foreach ($tt_personas as $persona): ?>
+            <div class="flex flex-col items-center text-center group">
+              <!-- Círculo con imagen -->
+              <div class="relative w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden bg-blue-200 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+                <?php if ($persona['image']): ?>
+                  <img
+                    src="<?php echo esc_url(get_template_directory_uri() . '/' . $persona['image']); ?>"
+                    alt="<?php echo esc_attr($persona['name']); ?>"
+                    class="w-full h-full object-cover object-top"
+                  >
+                <?php else: ?>
+                  <div class="w-full h-full flex items-center justify-center bg-blue-300">
+                    <i class="fa-solid fa-user text-3xl text-blue-600"></i>
+                  </div>
+                <?php endif; ?>
+              </div>
+
+              <!-- Nombre -->
+              <p class="mt-3 font-semibold text-blue-900 text-sm max-w-[120px]">
                 <?php echo esc_html($persona['name']); ?>
               </p>
-              <p class="w-full text-left mb-3">
-                <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium <?php echo $pill_color; ?>">
-                  <?php echo esc_html($persona['team']); ?>
-                </span>
-              </p>
-              <p class="w-full text-sm text-muted-foreground">
+
+              <!-- Rol (tooltip o texto pequeño) -->
+              <p class="text-xs text-blue-700 mt-1 max-w-[140px] line-clamp-2">
                 <?php echo esc_html($persona['role']); ?>
               </p>
             </div>
-          </div>
-        <?php
-        endforeach;
-      else: ?>
-        <div class="col-span-full text-center text-muted-foreground">
+          <?php endforeach; ?>
+        </div>
+      <?php else: ?>
+        <div class="text-center text-muted-foreground">
           No se encontraron miembros del equipo Total Transmedia.
         </div>
       <?php endif; ?>
