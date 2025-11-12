@@ -25,6 +25,8 @@ get_header();
         <video
           class="absolute inset-0 w-full h-full object-contain"
           controls
+          autoplay
+          muted
           poster="<?php echo esc_url($background_image); ?>"
           preload="metadata"
         >
