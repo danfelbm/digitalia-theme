@@ -427,7 +427,7 @@ get_header();
               <?php if ($persona['image']): ?>
                 <div
                   class="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105"
-                  style="background-image: url('<?php echo esc_url(get_template_directory_uri() . '/' . $persona['image']); ?>'); background-size: 130%; background-position: center 20%;"
+                  style="background-image: url('<?php echo esc_url(get_template_directory_uri() . '/' . $persona['image']); ?>'); background-size: 280%; background-position: center 20%;"
                   role="img"
                   aria-label="<?php echo esc_attr($persona['name']); ?>"
                 >
