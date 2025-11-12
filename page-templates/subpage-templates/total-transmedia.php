@@ -590,7 +590,10 @@ get_header();
 
     <!-- Táctica AMI -->
     <?php if ($ami && !empty($ami['title'])):
-      $ami_bg_image = !empty($ami['background_image']) ? $ami['background_image'] : '';
+      $ami_bg_image = '';
+      if (!empty($ami['background_image'])) {
+        $ami_bg_image = is_array($ami['background_image']) ? $ami['background_image']['url'] : $ami['background_image'];
+      }
       $ami_overlay = !empty($ami['overlay_opacity']) ? $ami['overlay_opacity'] : 85;
       $ami_overlay_decimal = $ami_overlay / 100;
 
@@ -682,7 +685,10 @@ get_header();
 
     <!-- Táctica Coyuntura -->
     <?php if ($coyuntura && !empty($coyuntura['title'])):
-      $coyuntura_bg_image = !empty($coyuntura['background_image']) ? $coyuntura['background_image'] : '';
+      $coyuntura_bg_image = '';
+      if (!empty($coyuntura['background_image'])) {
+        $coyuntura_bg_image = is_array($coyuntura['background_image']) ? $coyuntura['background_image']['url'] : $coyuntura['background_image'];
+      }
       $coyuntura_overlay = !empty($coyuntura['overlay_opacity']) ? $coyuntura['overlay_opacity'] : 85;
       $coyuntura_overlay_decimal = $coyuntura_overlay / 100;
 
@@ -832,7 +838,10 @@ get_header();
 
     <!-- Táctica De AMI para ti -->
     <?php if ($ami_para_ti && !empty($ami_para_ti['title'])):
-      $ami_para_ti_bg_image = !empty($ami_para_ti['background_image']) ? $ami_para_ti['background_image'] : '';
+      $ami_para_ti_bg_image = '';
+      if (!empty($ami_para_ti['background_image'])) {
+        $ami_para_ti_bg_image = is_array($ami_para_ti['background_image']) ? $ami_para_ti['background_image']['url'] : $ami_para_ti['background_image'];
+      }
       $ami_para_ti_overlay = !empty($ami_para_ti['overlay_opacity']) ? $ami_para_ti['overlay_opacity'] : 85;
       $ami_para_ti_overlay_decimal = $ami_para_ti_overlay / 100;
 
@@ -914,7 +923,10 @@ get_header();
 
     <!-- Táctica Magazine -->
     <?php if ($magazine && !empty($magazine['title'])):
-      $magazine_bg_image = !empty($magazine['background_image']) ? $magazine['background_image'] : '';
+      $magazine_bg_image = '';
+      if (!empty($magazine['background_image'])) {
+        $magazine_bg_image = is_array($magazine['background_image']) ? $magazine['background_image']['url'] : $magazine['background_image'];
+      }
       $magazine_overlay = !empty($magazine['overlay_opacity']) ? $magazine['overlay_opacity'] : 85;
       $magazine_overlay_decimal = $magazine_overlay / 100;
 
@@ -996,7 +1008,10 @@ get_header();
 
     <!-- Táctica Marca -->
     <?php if ($marca && !empty($marca['title'])):
-      $marca_bg_image = !empty($marca['background_image']) ? $marca['background_image'] : '';
+      $marca_bg_image = '';
+      if (!empty($marca['background_image'])) {
+        $marca_bg_image = is_array($marca['background_image']) ? $marca['background_image']['url'] : $marca['background_image'];
+      }
       $marca_overlay = !empty($marca['overlay_opacity']) ? $marca['overlay_opacity'] : 85;
       $marca_overlay_decimal = $marca_overlay / 100;
 
