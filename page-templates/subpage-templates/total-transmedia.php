@@ -1412,7 +1412,7 @@ get_header();
     'use strict';
 
     // Configuration
-    const ROTATION_INTERVAL = 4000; // 4 seconds
+    const ROTATION_INTERVAL = 6000; // 6 seconds
     const CASCADE_DELAY = 100; // Delay between each image fade (ms)
     const FADE_DURATION = 500; // Must match Tailwind duration-500
 
@@ -1493,9 +1493,9 @@ get_header();
         const numImages = parseInt(rotator.dataset.numImages) || 4;
         const isComposite = rotator.dataset.composite === 'true';
 
-        console.log(`[TT Rotator] Starting rotation for: ${tactic}`);
+        // console.log(`[TT Rotator] Starting rotation for: ${tactic}`);
 
-        // Use recursive setTimeout instead of setInterval to ensure 3 seconds between rotations
+        // Use recursive setTimeout instead of setInterval to ensure 6 seconds between rotations
         let isRotating = false;
 
         async function rotate() {
@@ -1535,7 +1535,7 @@ get_header();
         if (activeIntervals.has(rotator)) {
             clearTimeout(activeIntervals.get(rotator));
             activeIntervals.delete(rotator);
-            console.log(`[TT Rotator] Stopped rotation for: ${rotator.dataset.tactic}`);
+            // console.log(`[TT Rotator] Stopped rotation for: ${rotator.dataset.tactic}`);
         }
     }
 
@@ -1567,7 +1567,7 @@ get_header();
             observer.observe(rotator);
         });
 
-        console.log(`[TT Rotator] Initialized observer for ${rotators.length} sections`);
+        // console.log(`[TT Rotator] Initialized observer for ${rotators.length} sections`);
     }
 
     // Initialize when DOM is ready
