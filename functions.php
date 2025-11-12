@@ -1338,21 +1338,31 @@ function digitalia_get_random_tt_images($tactic_folder, $num_images = 4) {
     $theme_dir = get_template_directory();
     $theme_uri = get_template_directory_uri();
 
-    // Normalize folder name to lowercase for filesystem
-    $folder_normalized = strtolower(str_replace(' ', '-', $tactic_folder));
+    // DON'T normalize - use exact folder name to match filesystem
+    // Folders are: AMI, Coyuntura, marca (case-sensitive in production)
+    $folder_normalized = str_replace(' ', '-', $tactic_folder);
 
     // Define the directory path
     $images_dir = $theme_dir . '/assets/images/tt-images/' . $folder_normalized;
 
+    // DEBUG: Log directory check
+    error_log("TT Images - Looking for directory: $images_dir");
+    error_log("TT Images - Directory exists: " . (is_dir($images_dir) ? 'YES' : 'NO'));
+
     // Check if directory exists
     if (!is_dir($images_dir)) {
+        error_log("TT Images - Directory NOT found: $images_dir");
         return array();
     }
 
     // Get all image files from the directory
     $image_files = glob($images_dir . '/*.{jpg,jpeg,png,JPG,JPEG,PNG}', GLOB_BRACE);
 
+    // DEBUG: Log found images
+    error_log("TT Images - Found " . count($image_files) . " images in directory");
+
     if (empty($image_files)) {
+        error_log("TT Images - NO images found, returning empty array");
         return array();
     }
 
@@ -1369,6 +1379,9 @@ function digitalia_get_random_tt_images($tactic_folder, $num_images = 4) {
         $image_urls[] = $relative_path;
     }
 
+    // DEBUG: Log final URLs
+    error_log("TT Images - Returning " . count($image_urls) . " image URLs");
+
     return $image_urls;
 }
 
@@ -1383,16 +1396,23 @@ function digitalia_get_random_composite_tt_images($tactic_base, $num_images = 8)
     $theme_dir = get_template_directory();
     $theme_uri = get_template_directory_uri();
 
-    // Normalize folder name
+    // Normalize folder name (composite folders are already lowercase)
     $folder_normalized = strtolower(str_replace(' ', '-', $tactic_base));
 
     // Base directory
     $base_dir = $theme_dir . '/assets/images/tt-images/';
 
+    // DEBUG: Log search pattern
+    error_log("TT Composite - Looking for directories matching: {$base_dir}{$folder_normalized}*");
+
     // Find all subdirectories matching the pattern
     $all_dirs = glob($base_dir . $folder_normalized . '*', GLOB_ONLYDIR);
 
+    // DEBUG: Log found directories
+    error_log("TT Composite - Found directories: " . print_r($all_dirs, true));
+
     if (empty($all_dirs)) {
+        error_log("TT Composite - No composite directories found, trying single directory");
         // If no composite directories, try single directory
         return digitalia_get_random_tt_images($tactic_base, $num_images);
     }
