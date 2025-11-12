@@ -416,11 +416,15 @@ get_header();
       });
 
       if (!empty($tt_personas)): ?>
-        <div class="flex flex-wrap justify-center gap-8">
-          <?php foreach ($tt_personas as $persona): ?>
+        <div class="flex flex-wrap justify-center gap-3">
+          <?php foreach ($tt_personas as $persona):
+            // Extraer solo el primer nombre
+            $first_name = explode(' ', trim($persona['name']))[0];
+            $first_name = ucfirst(strtolower($first_name));
+          ?>
             <div class="flex flex-col items-center text-center group">
               <!-- Círculo con imagen -->
-              <div class="relative w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden bg-blue-200 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+              <div class="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden bg-blue-200 shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
                 <?php if ($persona['image']): ?>
                   <img
                     src="<?php echo esc_url(get_template_directory_uri() . '/' . $persona['image']); ?>"
@@ -429,19 +433,14 @@ get_header();
                   >
                 <?php else: ?>
                   <div class="w-full h-full flex items-center justify-center bg-blue-300">
-                    <i class="fa-solid fa-user text-3xl text-blue-600"></i>
+                    <i class="fa-solid fa-user text-xl text-blue-600"></i>
                   </div>
                 <?php endif; ?>
               </div>
 
-              <!-- Nombre -->
-              <p class="mt-3 font-semibold text-blue-900 text-sm max-w-[120px]">
-                <?php echo esc_html($persona['name']); ?>
-              </p>
-
-              <!-- Rol (tooltip o texto pequeño) -->
-              <p class="text-xs text-blue-700 mt-1 max-w-[140px] line-clamp-2">
-                <?php echo esc_html($persona['role']); ?>
+              <!-- Solo primer nombre -->
+              <p class="mt-2 font-medium text-blue-900 text-xs">
+                <?php echo esc_html($first_name); ?>
               </p>
             </div>
           <?php endforeach; ?>
