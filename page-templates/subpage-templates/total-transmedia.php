@@ -423,20 +423,22 @@ get_header();
             $first_name = ucfirst(strtolower($first_name));
           ?>
             <div class="flex flex-col items-center text-center group">
-              <!-- Círculo con imagen -->
-              <div class="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden bg-blue-200 shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
-                <?php if ($persona['image']): ?>
-                  <img
-                    src="<?php echo esc_url(get_template_directory_uri() . '/' . $persona['image']); ?>"
-                    alt="<?php echo esc_attr($persona['name']); ?>"
-                    class="w-full h-full object-cover object-top"
-                  >
-                <?php else: ?>
+              <!-- Círculo con imagen de fondo -->
+              <?php if ($persona['image']): ?>
+                <div
+                  class="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105"
+                  style="background-image: url('<?php echo esc_url(get_template_directory_uri() . '/' . $persona['image']); ?>'); background-size: 130%; background-position: center 20%;"
+                  role="img"
+                  aria-label="<?php echo esc_attr($persona['name']); ?>"
+                >
+                </div>
+              <?php else: ?>
+                <div class="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden bg-blue-200 shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
                   <div class="w-full h-full flex items-center justify-center bg-blue-300">
                     <i class="fa-solid fa-user text-xl text-blue-600"></i>
                   </div>
-                <?php endif; ?>
-              </div>
+                </div>
+              <?php endif; ?>
 
               <!-- Solo primer nombre -->
               <p class="mt-2 font-medium text-blue-900 text-xs">
