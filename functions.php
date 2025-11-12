@@ -495,6 +495,7 @@ function digitalia_register_ubicaciones_taxonomy() {
         'show_admin_column' => true,
         'query_var'        => true,
         'rewrite'          => array('slug' => 'ubicacion'),
+        'show_in_rest'     => true,
     );
 
     register_taxonomy('ubicaciones', array('alfabetizador'), $args);
