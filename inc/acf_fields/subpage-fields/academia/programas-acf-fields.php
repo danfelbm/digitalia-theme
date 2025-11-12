@@ -16,7 +16,6 @@ if (!function_exists('digitalia_register_programas_acf_fields')) {
                 'key' => 'group_programas_page',
                 'title' => 'Contenido de Programas',
                 'show_in_rest' => true,
-                'show_in_rest' => true,
                 'fields' => array(
                     // Hero Section
                     array(

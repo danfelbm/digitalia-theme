@@ -16,7 +16,6 @@ if (!function_exists('digitalia_register_recursos_acf_fields')) {
                 'key' => 'group_recursos_page',
                 'title' => 'Contenido de Recursos',
                 'show_in_rest' => true,
-                'show_in_rest' => true,
                 'fields' => array(
                     // Hero Section Fields 
                     array(

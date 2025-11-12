@@ -6,7 +6,6 @@ if (function_exists('acf_add_local_field_group')) :
         'key' => 'group_tt_blog_section',
         'title' => 'Total Transmedia - Blog Section',
                 'show_in_rest' => true,
-                'show_in_rest' => true,
         'fields' => array(
             array(
                 'key' => 'field_tt_blog_title',

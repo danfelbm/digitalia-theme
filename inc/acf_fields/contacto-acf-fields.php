@@ -16,8 +16,6 @@ if (!function_exists('digitalia_register_contacto_acf_fields')) {
                 'key' => 'group_contacto_page',
                 'title' => 'Contenido de Contacto',
                 'show_in_rest' => true,
-                'show_in_rest' => true,
-                'show_in_rest' => true,
                 'fields' => array(
                     // Page Header Section
                     array(

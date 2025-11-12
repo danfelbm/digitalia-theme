@@ -16,8 +16,6 @@ if (!function_exists('digitalia_register_total_transmedia_acf_fields')) {
                 'key' => 'group_total_transmedia_page',
                 'title' => 'Contenido de Total Transmedia',
                 'show_in_rest' => true,
-                'show_in_rest' => true,
-                'show_in_rest' => true,
                 'fields' => array(
                     // Hero Section
                     array(

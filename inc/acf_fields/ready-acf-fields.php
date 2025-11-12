@@ -16,8 +16,6 @@ if (!function_exists('digitalia_register_ready_acf_fields')) {
                 'key' => 'group_ready_page',
                 'title' => 'Contenido de Ready',
                 'show_in_rest' => true,
-                'show_in_rest' => true,
-                'show_in_rest' => true,
                 'fields' => array(
                     // Hero Section
                     array(

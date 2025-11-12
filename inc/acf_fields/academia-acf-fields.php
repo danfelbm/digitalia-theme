@@ -16,8 +16,6 @@ if (!function_exists('digitalia_register_academia_acf_fields')) {
                 'key' => 'group_academia_page',
                 'title' => 'Contenido de Academia',
                 'show_in_rest' => true,
-                'show_in_rest' => true,
-                'show_in_rest' => true,
                 'fields' => array(
                     // Navigation Menu Section
                     array(

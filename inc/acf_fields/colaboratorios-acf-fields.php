@@ -16,8 +16,6 @@ if (!function_exists('digitalia_register_colaboratorios_acf_fields')) {
                 'key' => 'group_colaboratorios_page',
                 'title' => 'Contenido de Colaboratorios',
                 'show_in_rest' => true,
-                'show_in_rest' => true,
-                'show_in_rest' => true,
                 'fields' => array(
                     // Hero Section
                     array(

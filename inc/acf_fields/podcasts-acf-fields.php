@@ -16,8 +16,6 @@ if (!function_exists('digitalia_register_podcast_acf_fields')) {
                 'key' => 'group_podcast_details',
                 'title' => 'Podcast Details',
                 'show_in_rest' => true,
-                'show_in_rest' => true,
-                'show_in_rest' => true,
                 'fields' => array(
                     array(
                         'key' => 'field_episode_excerpt',

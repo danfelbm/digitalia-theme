@@ -16,8 +16,6 @@ if (!function_exists('digitalia_register_enlinea_landing_acf_fields')) {
                 'key' => 'group_enlinea_landing_page',
                 'title' => 'Contenido de En Línea Landing',
                 'show_in_rest' => true,
-                'show_in_rest' => true,
-                'show_in_rest' => true,
                 'fields' => array(
                     // Case Studies Repeater
                     array(

@@ -9,7 +9,6 @@ if (function_exists('acf_add_local_field_group')) :
         'key' => 'group_colaboratorios_blog',
         'title' => 'Colaboratorios - Blog Section',
                 'show_in_rest' => true,
-                'show_in_rest' => true,
         'fields' => array(
             array(
                 'key' => 'field_colaboratorios_blog',

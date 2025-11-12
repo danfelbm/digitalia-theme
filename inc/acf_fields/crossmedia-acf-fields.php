@@ -10,8 +10,6 @@ if (!function_exists('digitalia_register_crossmedia_acf_fields')) {
                 'key' => 'group_crossmedia',
                 'title' => 'Crossmedia - Contenido',
                 'show_in_rest' => true,
-                'show_in_rest' => true,
-                'show_in_rest' => true,
                 'fields' => array(
                     // Header Section
                     array(

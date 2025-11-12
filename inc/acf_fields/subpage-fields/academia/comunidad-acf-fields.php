@@ -16,7 +16,6 @@ if (!function_exists('digitalia_register_comunidad_acf_fields')) {
                 'key' => 'group_comunidad_page',
                 'title' => 'Contenido de Comunidad y Colaboración',
                 'show_in_rest' => true,
-                'show_in_rest' => true,
                 'fields' => array(
                     // Hero Section
                     array(

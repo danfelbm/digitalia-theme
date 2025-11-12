@@ -16,8 +16,6 @@ if (!function_exists('digitalia_register_blog_y_noticias_acf_fields')) {
                 'key' => 'group_blog_y_noticias_page',
                 'title' => 'Contenido de Blog y Noticias',
                 'show_in_rest' => true,
-                'show_in_rest' => true,
-                'show_in_rest' => true,
                 'fields' => array(
                     // Page Header Section
                     array(

@@ -10,8 +10,6 @@ if (function_exists('acf_add_local_field_group')) {
         'key' => 'group_desinfodemia',
         'title' => 'Desinfodemia - Configuración',
                 'show_in_rest' => true,
-                'show_in_rest' => true,
-                'show_in_rest' => true,
         'fields' => array(
             // Hero Section
             array(

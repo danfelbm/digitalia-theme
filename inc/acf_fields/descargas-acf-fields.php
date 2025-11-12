@@ -9,8 +9,6 @@ function digitalia_register_descargas_acf_fields() {
             'key' => 'group_descargas',
             'title' => 'Información del Archivo',
                 'show_in_rest' => true,
-                'show_in_rest' => true,
-                'show_in_rest' => true,
             'fields' => array(
                 array(
                     'key' => 'field_descarga_file_type',

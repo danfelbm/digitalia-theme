@@ -16,7 +16,6 @@ if (!function_exists('digitalia_register_ready_recursos_acf_fields')) {
                 'key' => 'group_ready_recursos',
                 'title' => 'Sección de Recursos',
                 'show_in_rest' => true,
-                'show_in_rest' => true,
                 'fields' => array(
                     array(
                         'key' => 'field_ready_recursos_hero',

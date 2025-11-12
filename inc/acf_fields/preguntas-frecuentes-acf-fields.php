@@ -16,8 +16,6 @@ if (!function_exists('digitalia_register_preguntas_frecuentes_acf_fields')) {
                 'key' => 'group_preguntas_frecuentes_page',
                 'title' => 'Contenido de Preguntas Frecuentes',
                 'show_in_rest' => true,
-                'show_in_rest' => true,
-                'show_in_rest' => true,
                 'fields' => array(
                     // Page Header Section
                     array(

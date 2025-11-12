@@ -16,8 +16,6 @@ if (!function_exists('digitalia_register_espacios_acf_fields')) {
                 'key' => 'group_espacios',
                 'title' => 'Ubicación del Espacio',
                 'show_in_rest' => true,
-                'show_in_rest' => true,
-                'show_in_rest' => true,
                 'fields' => array(
                     array(
                         'key' => 'field_espacio_description',

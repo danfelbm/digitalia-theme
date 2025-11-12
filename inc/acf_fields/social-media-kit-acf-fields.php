@@ -16,8 +16,6 @@ if (!function_exists('digitalia_register_social_media_kit_acf_fields')) {
                 'key' => 'group_social_media_kit_page',
                 'title' => 'Contenido de Social Media Kit',
                 'show_in_rest' => true,
-                'show_in_rest' => true,
-                'show_in_rest' => true,
                 'fields' => array(
                     // Page Header Section
                     array(

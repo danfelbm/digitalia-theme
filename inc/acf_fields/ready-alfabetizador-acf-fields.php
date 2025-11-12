@@ -16,8 +16,6 @@ if (!function_exists('digitalia_register_alfabetizador_acf_fields')) {
                 'key' => 'group_alfabetizador',
                 'title' => 'Información del Alfabetizador',
                 'show_in_rest' => true,
-                'show_in_rest' => true,
-                'show_in_rest' => true,
                 'fields' => array(
                     array(
                         'key' => 'field_avatar',
@@ -251,7 +249,6 @@ if (!function_exists('digitalia_register_ubicaciones_acf_fields')) {
             acf_add_local_field_group(array(
                 'key' => 'group_ubicaciones_location',
                 'title' => 'Datos de Ubicación',
-                'show_in_rest' => true,
                 'show_in_rest' => true,
                 'fields' => array(
                     array(

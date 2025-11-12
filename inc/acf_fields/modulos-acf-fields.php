@@ -16,8 +16,6 @@ if (!function_exists('digitalia_register_modulos_acf_fields')) {
                 'key' => 'group_modulos_page',
                 'title' => 'Contenido de Módulos',
                 'show_in_rest' => true,
-                'show_in_rest' => true,
-                'show_in_rest' => true,
                 'fields' => array(
                     // Header Section
                     array(
