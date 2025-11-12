@@ -710,13 +710,14 @@ get_header();
             <div class="bg-white border-2 border-blue-300 rounded-lg p-6 md:p-8 shadow-md">
               <h4 class="text-2xl font-bold text-blue-900 mb-6">Últimas noticias</h4>
               <?php
-              // Query para obtener los últimos 4 posts del blog
+              // Query para obtener los últimos 4 posts del blog con etiqueta "coyuntura"
               $blog_args = array(
                 'post_type' => 'post',
                 'posts_per_page' => 4,
                 'post_status' => 'publish',
                 'orderby' => 'date',
-                'order' => 'DESC'
+                'order' => 'DESC',
+                'tag' => 'coyuntura'
               );
               $blog_query = new WP_Query($blog_args);
 
