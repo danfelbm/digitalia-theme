@@ -460,6 +460,28 @@ get_header();
                   <?php echo esc_html($ami['description']); ?>
                 </p>
               <?php endif; ?>
+
+              <!-- Botones AMI -->
+              <div class="flex flex-wrap gap-4">
+                <a
+                  href="https://digitalia.gov.co/biblioteca-digital/?type=descarga&category=71"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  <i class="fa-solid fa-book text-xl"></i>
+                  Guías prácticas AMI
+                </a>
+                <a
+                  href="https://digitalia.gov.co/kit-social-media/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  <i class="fa-solid fa-box text-xl"></i>
+                  Kit ABC AMI
+                </a>
+              </div>
             </div>
 
             <!-- Imágenes abajo -->
@@ -516,17 +538,30 @@ get_header();
                   <?php echo esc_html($coyuntura['description']); ?>
                 </p>
               <?php endif; ?>
-              <?php if (!empty($coyuntura['social_link'])): ?>
+
+              <!-- Botones Coyuntura -->
+              <div class="flex flex-wrap gap-4">
+                <?php if (!empty($coyuntura['social_link'])): ?>
+                  <a
+                    href="<?php echo esc_url($coyuntura['social_link']); ?>"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    <i class="fa-brands fa-x-twitter text-xl"></i>
+                    Seguir en X/Twitter
+                  </a>
+                <?php endif; ?>
                 <a
-                  href="<?php echo esc_url($coyuntura['social_link']); ?>"
+                  href="https://digitalia.gov.co/blog-y-noticias/"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                 >
-                  <i class="fa-brands fa-x-twitter text-xl"></i>
-                  Seguir en X/Twitter
+                  <i class="fa-solid fa-rss text-xl"></i>
+                  Blog
                 </a>
-              <?php endif; ?>
+              </div>
             </div>
 
             <!-- Imágenes abajo -->
@@ -717,19 +752,34 @@ get_header();
               <?php if (!empty($marca['description'])): ?>
                 <p class="text-lg text-blue-800 mb-6">
                   <?php echo esc_html($marca['description']); ?>
+                  La identidad visual de Digitalia es clave para comunicar nuestra misión de alfabetización mediática e informacional.
+                  A través de nuestras redes sociales y materiales de comunicación, construimos una presencia digital coherente que conecta con la comunidad y fortalece el reconocimiento de nuestra marca.
                 </p>
               <?php endif; ?>
-              <?php if (!empty($marca['social_link'])): ?>
+
+              <!-- Botones Marca -->
+              <div class="flex flex-wrap gap-4">
+                <?php if (!empty($marca['social_link'])): ?>
+                  <a
+                    href="<?php echo esc_url($marca['social_link']); ?>"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    <i class="fa-brands fa-instagram text-xl"></i>
+                    Seguir en Instagram
+                  </a>
+                <?php endif; ?>
                 <a
-                  href="<?php echo esc_url($marca['social_link']); ?>"
+                  href="https://digitalia.gov.co/descarga/kit-de-prensa/"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                 >
-                  <i class="fa-brands fa-instagram text-xl"></i>
-                  Seguir en Instagram
+                  <i class="fa-solid fa-file-zipper text-xl"></i>
+                  Kit de prensa
                 </a>
-              <?php endif; ?>
+              </div>
             </div>
 
             <!-- Imágenes abajo -->
