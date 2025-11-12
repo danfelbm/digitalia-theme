@@ -589,8 +589,22 @@ get_header();
     </div>
 
     <!-- Táctica AMI -->
-    <?php if ($ami && !empty($ami['title'])): ?>
-      <section id="tactica-ami" class="py-32 bg-blue-200">
+    <?php if ($ami && !empty($ami['title'])):
+      $ami_bg_image = !empty($ami['background_image']) ? $ami['background_image'] : '';
+      $ami_overlay = !empty($ami['overlay_opacity']) ? $ami['overlay_opacity'] : 85;
+      $ami_overlay_decimal = $ami_overlay / 100;
+
+      $ami_style = '';
+      if ($ami_bg_image) {
+        $ami_style = sprintf(
+          'background-image: linear-gradient(rgba(191, 219, 254, %s), rgba(191, 219, 254, %s)), url(%s); background-size: cover; background-position: center; background-repeat: no-repeat;',
+          $ami_overlay_decimal,
+          $ami_overlay_decimal,
+          esc_url($ami_bg_image)
+        );
+      }
+    ?>
+      <section id="tactica-ami" class="py-32 bg-blue-200" style="<?php echo $ami_style; ?>">
         <div class="container mx-auto px-4">
           <div class="flex flex-col gap-8">
             <!-- Texto arriba izquierda -->
@@ -667,8 +681,22 @@ get_header();
     <?php endif; ?>
 
     <!-- Táctica Coyuntura -->
-    <?php if ($coyuntura && !empty($coyuntura['title'])): ?>
-      <section id="tactica-coyuntura" class="py-32 bg-blue-100">
+    <?php if ($coyuntura && !empty($coyuntura['title'])):
+      $coyuntura_bg_image = !empty($coyuntura['background_image']) ? $coyuntura['background_image'] : '';
+      $coyuntura_overlay = !empty($coyuntura['overlay_opacity']) ? $coyuntura['overlay_opacity'] : 85;
+      $coyuntura_overlay_decimal = $coyuntura_overlay / 100;
+
+      $coyuntura_style = '';
+      if ($coyuntura_bg_image) {
+        $coyuntura_style = sprintf(
+          'background-image: linear-gradient(rgba(219, 234, 254, %s), rgba(219, 234, 254, %s)), url(%s); background-size: cover; background-position: center; background-repeat: no-repeat;',
+          $coyuntura_overlay_decimal,
+          $coyuntura_overlay_decimal,
+          esc_url($coyuntura_bg_image)
+        );
+      }
+    ?>
+      <section id="tactica-coyuntura" class="py-32 bg-blue-100" style="<?php echo $coyuntura_style; ?>">
         <div class="container mx-auto px-4">
           <div class="flex flex-col gap-8">
             <!-- Texto arriba izquierda -->
@@ -803,8 +831,22 @@ get_header();
     <?php endif; ?>
 
     <!-- Táctica De AMI para ti -->
-    <?php if ($ami_para_ti && !empty($ami_para_ti['title'])): ?>
-      <section id="tactica-ami-para-ti" class="py-32 bg-blue-50">
+    <?php if ($ami_para_ti && !empty($ami_para_ti['title'])):
+      $ami_para_ti_bg_image = !empty($ami_para_ti['background_image']) ? $ami_para_ti['background_image'] : '';
+      $ami_para_ti_overlay = !empty($ami_para_ti['overlay_opacity']) ? $ami_para_ti['overlay_opacity'] : 85;
+      $ami_para_ti_overlay_decimal = $ami_para_ti_overlay / 100;
+
+      $ami_para_ti_style = '';
+      if ($ami_para_ti_bg_image) {
+        $ami_para_ti_style = sprintf(
+          'background-image: linear-gradient(rgba(239, 246, 255, %s), rgba(239, 246, 255, %s)), url(%s); background-size: cover; background-position: center; background-repeat: no-repeat;',
+          $ami_para_ti_overlay_decimal,
+          $ami_para_ti_overlay_decimal,
+          esc_url($ami_para_ti_bg_image)
+        );
+      }
+    ?>
+      <section id="tactica-ami-para-ti" class="py-32 bg-blue-50" style="<?php echo $ami_para_ti_style; ?>">
         <div class="container mx-auto px-4">
           <div class="flex flex-col gap-8">
             <!-- Texto arriba full width -->
@@ -871,8 +913,22 @@ get_header();
     <?php endif; ?>
 
     <!-- Táctica Magazine -->
-    <?php if ($magazine && !empty($magazine['title'])): ?>
-      <section id="tactica-magazine" class="py-32 bg-white">
+    <?php if ($magazine && !empty($magazine['title'])):
+      $magazine_bg_image = !empty($magazine['background_image']) ? $magazine['background_image'] : '';
+      $magazine_overlay = !empty($magazine['overlay_opacity']) ? $magazine['overlay_opacity'] : 85;
+      $magazine_overlay_decimal = $magazine_overlay / 100;
+
+      $magazine_style = '';
+      if ($magazine_bg_image) {
+        $magazine_style = sprintf(
+          'background-image: linear-gradient(rgba(255, 255, 255, %s), rgba(255, 255, 255, %s)), url(%s); background-size: cover; background-position: center; background-repeat: no-repeat;',
+          $magazine_overlay_decimal,
+          $magazine_overlay_decimal,
+          esc_url($magazine_bg_image)
+        );
+      }
+    ?>
+      <section id="tactica-magazine" class="py-32 bg-white" style="<?php echo $magazine_style; ?>">
         <div class="container mx-auto px-4">
           <div class="flex flex-col gap-8">
             <!-- Texto arriba izquierda -->
@@ -939,8 +995,22 @@ get_header();
     <?php endif; ?>
 
     <!-- Táctica Marca -->
-    <?php if ($marca && !empty($marca['title'])): ?>
-      <section id="tactica-marca" class="py-32 bg-blue-50">
+    <?php if ($marca && !empty($marca['title'])):
+      $marca_bg_image = !empty($marca['background_image']) ? $marca['background_image'] : '';
+      $marca_overlay = !empty($marca['overlay_opacity']) ? $marca['overlay_opacity'] : 85;
+      $marca_overlay_decimal = $marca_overlay / 100;
+
+      $marca_style = '';
+      if ($marca_bg_image) {
+        $marca_style = sprintf(
+          'background-image: linear-gradient(rgba(239, 246, 255, %s), rgba(239, 246, 255, %s)), url(%s); background-size: cover; background-position: center; background-repeat: no-repeat;',
+          $marca_overlay_decimal,
+          $marca_overlay_decimal,
+          esc_url($marca_bg_image)
+        );
+      }
+    ?>
+      <section id="tactica-marca" class="py-32 bg-blue-50" style="<?php echo $marca_style; ?>">
         <div class="container mx-auto px-4">
           <div class="flex flex-col gap-8">
             <!-- Texto arriba izquierda -->
