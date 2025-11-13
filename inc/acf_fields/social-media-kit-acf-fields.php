@@ -541,7 +541,6 @@ if (!function_exists('digitalia_register_social_media_kit_acf_fields')) {
                 'hide_on_screen' => '',
                 'active' => true,
                 'description' => '',
-                'show_in_rest' => 0,
             ));
         }
     }

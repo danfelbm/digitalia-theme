@@ -59,7 +59,6 @@ if (!function_exists('digitalia_register_blog_y_noticias_acf_fields')) {
                 'hide_on_screen' => '',
                 'active' => true,
                 'description' => '',
-                'show_in_rest' => 0,
             ));
         }
     }
