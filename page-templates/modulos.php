@@ -28,50 +28,68 @@ get_header();
                 <!-- Tablist -->
                 <div role="tablist" aria-orientation="horizontal" class="items-center justify-center rounded-md p-1 text-muted-foreground mb-4 grid h-auto grid-cols-2 gap-2 sm:grid-cols-3 md:flex lg:mb-6" tabindex="0" data-orientation="horizontal">
                     <!-- Digitalia Tab -->
-                    <?php $digitalia = get_field('digitalia_module'); ?>
+                    <?php
+                    $digitalia = get_field('digitalia_module');
+                    $digitalia_icon = is_array($digitalia['icon']) ? $digitalia['icon']['url'] : $digitalia['icon'];
+                    ?>
                     <button type="button" role="tab" aria-selected="true" aria-controls="radix-:r2R0:-content-digitalia" data-state="active" id="radix-:r2R0:-trigger-digitalia" class="text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 flex size-full flex-col items-start justify-start gap-1 whitespace-normal rounded-md p-3 text-left bg-gray-100 hover:bg-gray-200 active:bg-gray-300" style="color: #1a1a1a;" tabindex="0">
                         <div class="flex w-full flex-col items-center gap-4">
-                            <img src="<?php echo esc_url($digitalia['icon']); ?>" alt="Digitalia icon" class="w-10 h-10">
+                            <img src="<?php echo esc_url($digitalia_icon); ?>" alt="Digitalia icon" class="w-10 h-10">
                             <p class="text-sm font-semibold lg:text-base"><?php echo esc_html($digitalia['title']); ?></p>
                         </div>
                     </button>
                     <!-- Academia Tab -->
-                    <?php $academia = get_field('academia_module'); ?>
+                    <?php
+                    $academia = get_field('academia_module');
+                    $academia_icon = is_array($academia['icon']) ? $academia['icon']['url'] : $academia['icon'];
+                    ?>
                     <button type="button" role="tab" aria-selected="false" aria-controls="radix-:r2R0:-content-academia" data-state="inactive" id="radix-:r2R0:-trigger-academia" class="text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 flex size-full flex-col items-start justify-start gap-1 whitespace-normal rounded-md p-3 text-left bg-yellow-100 hover:bg-yellow-200 active:bg-yellow-300" style="color: #713f12;" tabindex="-1">
                         <div class="flex w-full flex-col items-center gap-4">
-                            <img src="<?php echo esc_url($academia['icon']); ?>" alt="Academia icon" class="w-10 h-10">
+                            <img src="<?php echo esc_url($academia_icon); ?>" alt="Academia icon" class="w-10 h-10">
                             <p class="text-sm font-semibold lg:text-base"><?php echo esc_html($academia['title']); ?></p>
                         </div>
                     </button>
                     <!-- En Línea Tab -->
-                    <?php $enlinea = get_field('enlinea_module'); ?>
+                    <?php
+                    $enlinea = get_field('enlinea_module');
+                    $enlinea_icon = is_array($enlinea['icon']) ? $enlinea['icon']['url'] : $enlinea['icon'];
+                    ?>
                     <button type="button" role="tab" aria-selected="false" aria-controls="radix-:r2R0:-content-enlinea" data-state="inactive" id="radix-:r2R0:-trigger-enlinea" class="text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 flex size-full flex-col items-start justify-start gap-1 whitespace-normal rounded-md p-3 text-left bg-red-100 hover:bg-red-200 active:bg-red-300" style="color: #7f1d1d;" tabindex="-1">
                         <div class="flex w-full flex-col items-center gap-4">
-                            <img src="<?php echo esc_url($enlinea['icon']); ?>" alt="En Línea icon" class="w-10 h-10">
+                            <img src="<?php echo esc_url($enlinea_icon); ?>" alt="En Línea icon" class="w-10 h-10">
                             <p class="text-sm font-semibold lg:text-base"><?php echo esc_html($enlinea['title']); ?></p>
                         </div>
                     </button>
                     <!-- Total Transmedia Tab -->
-                    <?php $transmedia = get_field('transmedia_module'); ?>
+                    <?php
+                    $transmedia = get_field('transmedia_module');
+                    $transmedia_icon = is_array($transmedia['icon']) ? $transmedia['icon']['url'] : $transmedia['icon'];
+                    ?>
                     <button type="button" role="tab" aria-selected="false" aria-controls="radix-:r2R0:-content-transmedia" data-state="inactive" id="radix-:r2R0:-trigger-transmedia" class="text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 flex size-full flex-col items-start justify-start gap-1 whitespace-normal rounded-md p-3 text-left bg-blue-100 hover:bg-blue-200 active:bg-blue-300" style="color: #1e3a8a;" tabindex="-1">
                         <div class="flex w-full flex-col items-center gap-4">
-                            <img src="<?php echo esc_url($transmedia['icon']); ?>" alt="Total Transmedia icon" class="w-10 h-10">
+                            <img src="<?php echo esc_url($transmedia_icon); ?>" alt="Total Transmedia icon" class="w-10 h-10">
                             <p class="text-sm font-semibold lg:text-base"><?php echo esc_html($transmedia['title']); ?></p>
                         </div>
                     </button>
                     <!-- Colaboratorios Tab -->
-                    <?php $colaboratorios = get_field('colaboratorios_module'); ?>
+                    <?php
+                    $colaboratorios = get_field('colaboratorios_module');
+                    $colaboratorios_icon = is_array($colaboratorios['icon']) ? $colaboratorios['icon']['url'] : $colaboratorios['icon'];
+                    ?>
                     <button type="button" role="tab" aria-selected="false" aria-controls="radix-:r2R0:-content-colaboratorios" data-state="inactive" id="radix-:r2R0:-trigger-colaboratorios" class="text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 flex size-full flex-col items-start justify-start gap-1 whitespace-normal rounded-md p-3 text-left bg-teal-100 hover:bg-teal-200 active:bg-teal-300" style="color: #134e4a;" tabindex="-1">
                         <div class="flex w-full flex-col items-center gap-4">
-                            <img src="<?php echo esc_url($colaboratorios['icon']); ?>" alt="Colaboratorios icon" class="w-10 h-10">
+                            <img src="<?php echo esc_url($colaboratorios_icon); ?>" alt="Colaboratorios icon" class="w-10 h-10">
                             <p class="text-sm font-semibold lg:text-base"><?php echo esc_html($colaboratorios['title']); ?></p>
                         </div>
                     </button>
                     <!-- Ready Tab -->
-                    <?php $ready = get_field('ready_module'); ?>
+                    <?php
+                    $ready = get_field('ready_module');
+                    $ready_icon = is_array($ready['icon']) ? $ready['icon']['url'] : $ready['icon'];
+                    ?>
                     <button type="button" role="tab" aria-selected="false" aria-controls="radix-:r2R0:-content-ready" data-state="inactive" id="radix-:r2R0:-trigger-ready" class="text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 flex size-full flex-col items-start justify-start gap-1 whitespace-normal rounded-md p-3 text-left bg-purple-100 hover:bg-purple-200 active:bg-purple-300" style="color: #581c87;" tabindex="-1">
                         <div class="flex w-full flex-col items-center gap-4">
-                            <img src="<?php echo esc_url($ready['icon']); ?>" alt="Ready icon" class="w-10 h-10">
+                            <img src="<?php echo esc_url($ready_icon); ?>" alt="Ready icon" class="w-10 h-10">
                             <p class="text-sm font-semibold lg:text-base"><?php echo esc_html($ready['title']); ?></p>
                         </div>
                     </button>
