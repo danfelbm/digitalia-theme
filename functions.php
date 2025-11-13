@@ -1692,3 +1692,36 @@ function digitalia_acf_file_rest_format($value_formatted, $value, $format, $fiel
 
     return $value_formatted;
 }
+
+/**
+ * Custom REST API endpoint to get author info with ACF fields
+ * Exposes author name, avatar, and team (equipo) field safely
+ */
+add_action('rest_api_init', function() {
+    // Add author_info field to posts
+    register_rest_field('post', 'author_info', array(
+        'get_callback' => function($post) {
+            $author_id = $post['author'];
+            $author_data = get_userdata($author_id);
+
+            if (!$author_data) {
+                return null;
+            }
+
+            // Get author's team from ACF field
+            $equipo = get_field('equipo', 'user_' . $author_id);
+
+            return array(
+                'id' => $author_id,
+                'name' => $author_data->display_name,
+                'avatar_url' => get_avatar_url($author_id, array('size' => 96)),
+                'team' => $equipo ? $equipo : 'Digital-IA',
+                'url' => get_author_posts_url($author_id),
+            );
+        },
+        'schema' => array(
+            'description' => 'Author information including name, avatar, and team',
+            'type' => 'object',
+        ),
+    ));
+});
