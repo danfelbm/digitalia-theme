@@ -1708,19 +1708,24 @@ add_action('rest_api_init', function() {
                 return null;
             }
 
-            // Get author's team from ACF field
+            // Get author's team and social media from ACF fields
             $equipo = get_field('equipo', 'user_' . $author_id);
+            $red_social = get_field('red_social', 'user_' . $author_id);
+            $description = get_the_author_meta('description', $author_id);
 
             return array(
                 'id' => $author_id,
                 'name' => $author_data->display_name,
+                'slug' => $author_data->user_nicename,
+                'description' => $description ? $description : '',
                 'avatar_url' => get_avatar_url($author_id, array('size' => 96)),
                 'team' => $equipo ? $equipo : 'Digital-IA',
                 'url' => get_author_posts_url($author_id),
+                'red_social' => $red_social ? $red_social : array(),
             );
         },
         'schema' => array(
-            'description' => 'Author information including name, avatar, and team',
+            'description' => 'Author information including name, avatar, team and social media',
             'type' => 'object',
         ),
     ));
