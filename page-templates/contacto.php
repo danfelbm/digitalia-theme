@@ -38,11 +38,19 @@ get_header();
                         <div class="space-y-6">
                             <?php if (!empty($info_session['avatars'])): ?>
                             <div class="mt-16 flex overflow-hidden">
-                                <?php foreach ($info_session['avatars'] as $index => $avatar): ?>
+                                <?php foreach ($info_session['avatars'] as $index => $avatar):
+                                    $avatar_url = '';
+                                    if (isset($avatar['image']) && is_array($avatar['image']) && !empty($avatar['image']['url'])) {
+                                        $avatar_url = $avatar['image']['url'];
+                                    }
+                                    if (!empty($avatar_url)):
+                                ?>
                                 <span class="relative flex shrink-0 overflow-hidden rounded-full <?php echo $index > 0 ? '-ml-4' : ''; ?> size-11">
-                                    <img class="aspect-square h-full w-full" src="<?php echo esc_url($avatar['image']); ?>">
+                                    <img class="aspect-square h-full w-full" src="<?php echo esc_url($avatar_url); ?>">
                                 </span>
-                                <?php endforeach; ?>
+                                <?php
+                                    endif;
+                                endforeach; ?>
                             </div>
                             <?php endif; ?>
                             <div class="space-y-4">
@@ -61,9 +69,18 @@ get_header();
                         </div>
                         <?php if (!empty($info_session['logos'])): ?>
                         <div class="flex items-center space-x-12">
-                            <?php foreach ($info_session['logos'] as $logo): ?>
-                            <img src="<?php echo esc_url($logo['image']); ?>" alt="<?php echo esc_attr($logo['alt']); ?>" class="h-12">
-                            <?php endforeach; ?>
+                            <?php foreach ($info_session['logos'] as $logo):
+                                $logo_url = '';
+                                if (isset($logo['image']) && is_array($logo['image']) && !empty($logo['image']['url'])) {
+                                    $logo_url = $logo['image']['url'];
+                                }
+                                $logo_alt = isset($logo['alt']) ? $logo['alt'] : '';
+                                if (!empty($logo_url)):
+                            ?>
+                            <img src="<?php echo esc_url($logo_url); ?>" alt="<?php echo esc_attr($logo_alt); ?>" class="h-12">
+                            <?php
+                                endif;
+                            endforeach; ?>
                         </div>
                         <?php endif; ?>
                     </div>
