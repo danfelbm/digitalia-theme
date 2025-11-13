@@ -36,7 +36,13 @@ get_header();
                             <h3 class="text-2xl md:text-4xl"><?php echo isset($brand['title']) ? $brand['title'] : 'Recursos de marca Digitalia'; ?></h3>
                         </div>
                         <div class="md:1/3 w-2/5 shrink-0 rounded-r-lg border-l">
-                            <img src="<?php echo isset($brand['image']) ? $brand['image'] : 'https://shadcnblocks.com/images/block/placeholder-1.svg'; ?>" alt="recursos de marca" class="h-full w-full object-cover">
+                            <?php
+                            $brand_image_url = 'https://shadcnblocks.com/images/block/placeholder-1.svg';
+                            if (isset($brand['image']) && is_array($brand['image']) && !empty($brand['image']['url'])) {
+                                $brand_image_url = $brand['image']['url'];
+                            }
+                            ?>
+                            <img src="<?php echo esc_url($brand_image_url); ?>" alt="recursos de marca" class="h-full w-full object-cover">
                         </div>
                     </div>
                     <div class="p-4 text-muted-foreground md:p-8">
@@ -61,7 +67,13 @@ get_header();
                             <h3 class="text-2xl md:text-4xl"><?php echo isset($social['title']) ? $social['title'] : 'Plantillas para Redes Sociales'; ?></h3>
                         </div>
                         <div class="md:1/3 w-2/5 shrink-0 rounded-r-lg border-l">
-                            <img src="<?php echo isset($social['image']) ? $social['image'] : 'https://shadcnblocks.com/images/block/placeholder-4.svg'; ?>" alt="plantillas sociales" class="h-full w-full object-cover">
+                            <?php
+                            $social_image_url = 'https://shadcnblocks.com/images/block/placeholder-4.svg';
+                            if (isset($social['image']) && is_array($social['image']) && !empty($social['image']['url'])) {
+                                $social_image_url = $social['image']['url'];
+                            }
+                            ?>
+                            <img src="<?php echo esc_url($social_image_url); ?>" alt="plantillas sociales" class="h-full w-full object-cover">
                         </div>
                     </div>
                     <div class="p-4 text-muted-foreground md:p-8">
