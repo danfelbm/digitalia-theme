@@ -163,8 +163,15 @@ get_header();
                     </div>
                 </div>
                 <div class="mx-auto">
-                    <?php if ($formacion['media_type'] === 'image' && !empty($formacion['image'])): ?>
-                        <img src="<?php echo esc_url($formacion['image']); ?>" alt="Academia Digital-IA" class="ml-auto max-h-[450px] w-full rounded-xl object-cover">
+                    <?php
+                    // Handle formacion image field - can be array or string
+                    $formacion_image_url = '';
+                    if (!empty($formacion['image'])) {
+                        $formacion_image_url = is_array($formacion['image']) ? $formacion['image']['url'] : $formacion['image'];
+                    }
+                    ?>
+                    <?php if ($formacion['media_type'] === 'image' && $formacion_image_url): ?>
+                        <img src="<?php echo esc_url($formacion_image_url); ?>" alt="Academia Digital-IA" class="ml-auto max-h-[450px] w-full rounded-xl object-cover">
                     <?php elseif ($formacion['media_type'] === 'video' && !empty($formacion['video'])): ?>
                         <video class="ml-auto max-h-[450px] w-full rounded-xl object-cover" controls>
                             <source src="<?php echo esc_url($formacion['video']); ?>" type="video/mp4">
@@ -235,7 +242,16 @@ get_header();
                             <p class="text-sm min-[960px]:text-base"><?php echo esc_html($registration['step_1']['description']); ?></p>
                         </div>
                     </div>
-                    <img src="<?php echo esc_url($registration['step_1']['image']); ?>" alt="<?php echo esc_attr($registration['step_1']['title']); ?>" class="z-10 aspect-video w-full rounded-xl border object-cover min-[960px]:max-h-56 min-[960px]:w-auto">
+                    <?php
+                    // Handle step_1 image field - can be array or string
+                    $step_1_image_url = '';
+                    if (!empty($registration['step_1']['image'])) {
+                        $step_1_image_url = is_array($registration['step_1']['image']) ? $registration['step_1']['image']['url'] : $registration['step_1']['image'];
+                    }
+                    ?>
+                    <?php if ($step_1_image_url): ?>
+                        <img src="<?php echo esc_url($step_1_image_url); ?>" alt="<?php echo esc_attr($registration['step_1']['title']); ?>" class="z-10 aspect-video w-full rounded-xl border object-cover min-[960px]:max-h-56 min-[960px]:w-auto">
+                    <?php endif; ?>
                 </div>
                 <div class="flex flex-col items-center justify-between min-[960px]:flex-row min-[960px]:gap-10">
                     <div class="flex gap-4 min-[960px]:max-w-md">
@@ -251,7 +267,16 @@ get_header();
                             <p class="text-sm min-[960px]:text-base"><?php echo esc_html($registration['step_2']['description']); ?></p>
                         </div>
                     </div>
-                    <img src="<?php echo esc_url($registration['step_2']['image']); ?>" alt="<?php echo esc_attr($registration['step_2']['title']); ?>" class="z-10 max-h-56 w-full rounded-xl border object-cover min-[960px]:aspect-video min-[960px]:w-auto">
+                    <?php
+                    // Handle step_2 image field - can be array or string
+                    $step_2_image_url = '';
+                    if (!empty($registration['step_2']['image'])) {
+                        $step_2_image_url = is_array($registration['step_2']['image']) ? $registration['step_2']['image']['url'] : $registration['step_2']['image'];
+                    }
+                    ?>
+                    <?php if ($step_2_image_url): ?>
+                        <img src="<?php echo esc_url($step_2_image_url); ?>" alt="<?php echo esc_attr($registration['step_2']['title']); ?>" class="z-10 max-h-56 w-full rounded-xl border object-cover min-[960px]:aspect-video min-[960px]:w-auto">
+                    <?php endif; ?>
                 </div>
                 <div class="flex flex-col items-center justify-between min-[960px]:flex-row min-[960px]:gap-10">
                     <div class="flex gap-4 min-[960px]:max-w-md">
@@ -265,7 +290,16 @@ get_header();
                             <p class="text-sm min-[960px]:text-base"><?php echo esc_html($registration['step_3']['description']); ?></p>
                         </div>
                     </div>
-                    <img src="<?php echo esc_url($registration['step_3']['image']); ?>" alt="<?php echo esc_attr($registration['step_3']['title']); ?>" class="z-10 max-h-56 w-full rounded-xl border object-cover min-[960px]:aspect-video min-[960px]:w-auto">
+                    <?php
+                    // Handle step_3 image field - can be array or string
+                    $step_3_image_url = '';
+                    if (!empty($registration['step_3']['image'])) {
+                        $step_3_image_url = is_array($registration['step_3']['image']) ? $registration['step_3']['image']['url'] : $registration['step_3']['image'];
+                    }
+                    ?>
+                    <?php if ($step_3_image_url): ?>
+                        <img src="<?php echo esc_url($step_3_image_url); ?>" alt="<?php echo esc_attr($registration['step_3']['title']); ?>" class="z-10 max-h-56 w-full rounded-xl border object-cover min-[960px]:aspect-video min-[960px]:w-auto">
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -411,12 +445,19 @@ get_header();
                         ?>
                     </div>
 
-                    <?php 
+                    <?php
                     $counter = 1;
-                    while (have_rows('platform_features')) : the_row(); 
+                    while (have_rows('platform_features')) : the_row();
                         $tabpanel_title = get_sub_field('tabpanel_title');
                         $tabpanel_desc = get_sub_field('tabpanel_desc');
                         $tabpanel_img = get_sub_field('tabpanel_img');
+
+                        // Handle tabpanel_img field - can be array or string
+                        $tabpanel_img_url = '';
+                        if (!empty($tabpanel_img)) {
+                            $tabpanel_img_url = is_array($tabpanel_img) ? $tabpanel_img['url'] : $tabpanel_img;
+                        }
+
                         $state = $counter === 1 ? 'active' : 'inactive';
                         $hidden = $counter === 1 ? '' : 'hidden';
                     ?>
@@ -425,7 +466,9 @@ get_header();
                                 <h2 class="mb-2 text-2xl font-medium"><?php echo esc_html($tabpanel_title); ?></h2>
                                 <p class="text-muted-foreground"><?php echo esc_html($tabpanel_desc); ?></p>
                             </div>
-                            <img src="<?php echo esc_url($tabpanel_img); ?>" alt="<?php echo esc_attr($tabpanel_title); ?>" class="aspect-video max-h-[450px] rounded-xl object-cover">
+                            <?php if ($tabpanel_img_url): ?>
+                                <img src="<?php echo esc_url($tabpanel_img_url); ?>" alt="<?php echo esc_attr($tabpanel_title); ?>" class="aspect-video max-h-[450px] rounded-xl object-cover">
+                            <?php endif; ?>
                         </div>
                     <?php 
                         $counter++;
