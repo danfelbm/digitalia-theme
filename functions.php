@@ -1730,30 +1730,3 @@ add_action('rest_api_init', function() {
         ),
     ));
 });
-
-/**
- * Register custom endpoint to get author ID by slug
- * Endpoint: /wp-json/digitalia/v1/author-id/{slug}
- * This allows React app to convert author slug → author ID without accessing /wp/v2/users
- */
-add_action('rest_api_init', function() {
-    register_rest_route('digitalia/v1', '/author-id/(?P<slug>[a-zA-Z0-9-]+)', array(
-        'methods' => 'GET',
-        'callback' => function($request) {
-            $slug = $request['slug'];
-
-            // Get user by slug (user_nicename is the slug)
-            $user = get_user_by('slug', $slug);
-
-            if (!$user) {
-                return new WP_Error('author_not_found', 'Author not found', array('status' => 404));
-            }
-
-            return array(
-                'id' => $user->ID,
-                'slug' => $user->user_nicename,
-            );
-        },
-        'permission_callback' => '__return_true',
-    ));
-});
